@@ -1,0 +1,60 @@
+import React from 'react'
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '~/components/ui/sidebar'
+import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+
+interface Props {
+    className?: string
+}
+
+const items = [
+    {
+        title: "Home",
+        url: "#",
+        icon: Home,
+    },
+    {
+        title: "Inbox",
+        url: "#",
+        icon: Inbox,
+    },
+    {
+        title: "Calendar",
+        url: "#",
+        icon: Calendar,
+    },
+    {
+        title: "Search",
+        url: "#",
+        icon: Search,
+    },
+    {
+        title: "Settings",
+        url: "#",
+        icon: Settings,
+    },
+]
+
+export const AppSidebar: React.FC<Props> = ({ className }) => {
+    return (
+        <Sidebar>
+            <SidebarContent>
+                <SidebarGroup>
+                    <SidebarGroupContent>
+                        <SidebarMenu>
+                            {items.map((item) =>(
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton asChild>
+                                        <a href="">
+                                            <item.icon/>
+                                            <span>{item.title}</span>
+                                        </a>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            ))}
+                        </SidebarMenu>
+                    </SidebarGroupContent>
+                </SidebarGroup>
+            </SidebarContent>
+        </Sidebar>
+    )
+}
