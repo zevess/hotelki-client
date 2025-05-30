@@ -3,7 +3,7 @@ import { Avatar, AvatarImage } from '~/components/ui/avatar'
 
 import ProfileIcon from '../../icons/User.svg?react'
 import CalendarIcon from '../../icons/Calendar.svg?react'
-import PencilIcon from '../../icons/Pencil.svg'
+
 import HeartIcon from '../../icons/Heart.svg?react'
 import PlusCircleIcon from '../../icons/PlusCircle.svg?react'
 import SignOutIcon from '../../icons/SignOut.svg?react'
@@ -29,7 +29,7 @@ const items: ISidebar[] = [
     },
     {
         title: "События",
-        url: "#",
+        url: "events",
         icon: CalendarIcon,
     },
     {
@@ -54,7 +54,7 @@ const items: ISidebar[] = [
 //h-[736px] max-h-[736px]
 export const SidebartTest: React.FC<Props> = ({ className }) => {
     return (
-        <div className={'flex flex-col max-h-[736px] h-full w-[287px] bg-white rounded-xl p-3 mr-10'}>
+        <div className={'flex flex-col max-h-[736px] w-[287px] max-w-[287px] bg-white rounded-xl p-3 mr-[50px]'}>
             <div className='flex justify-between items-center mb-4'>
                 <span className='font-inter font-semibold text-base'>Name</span>
                 <Avatar>
@@ -64,15 +64,15 @@ export const SidebartTest: React.FC<Props> = ({ className }) => {
             <div className='flex flex-col h-full justify-between '>
                 <div className='gap-5'>
                     {items.map((item, index) =>
-                        <a href={item.url} key={index} className='flex flex-row p-1 gap-4 h-8 my-2 hover:bg-gray-100 rounded-xl '>
+                        <a href={item.url} key={index} className='flex flex-row p-1 gap-4 min-h-8 my-2 hover:bg-gray-100 rounded-xl items-center'>
                             <item.icon className={item.isAction ? 'text-[#C084FC]' : 'text-black'} />
-                            <span className={cn("font-inter font-semibold text-base", item.isAction ? 'text-[#C084FC] ' : 'text-black')}>{item.title}</span>
+                            <span className={cn("font-inter font-semibold text-xs sm:text-sm md:text-base", item.isAction ? 'text-[#C084FC] ' : 'text-black')}>{item.title}</span>
                         </a>
                     )}
                 </div>
-                <a href='#' className='flex flex-row p-1 gap-4 h-8 hover:bg-gray-100 rounded-xl '>
+                <a href='#' className='flex flex-row p-1 gap-4 min-h-8 hover:bg-gray-100 rounded-xl '>
                     <SignOutIcon className='text-[#EF4444]' />
-                    <span className='text-base font-semibold text-[#EF4444] px-4'>Выйти из профиля</span>
+                    <span className='text-xs sm:text-sm md:text-base font-semibold text-[#EF4444] px-4'>Выйти из профиля</span>
                 </a>
             </div>
         </div>

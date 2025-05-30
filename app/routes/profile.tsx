@@ -1,3 +1,4 @@
+
 import { ProfilePage } from "~/pages/profile";
 import type { Route } from "./+types/profile";
 
@@ -10,5 +11,5 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export default function Profile() {
-    return <ProfilePage />;
+    return <ProfilePage />
 }

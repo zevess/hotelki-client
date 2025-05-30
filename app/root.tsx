@@ -36,18 +36,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <Container>
+        <Container className="flex flex-col">
           <Header />
-          <div className="flex h-[calc(100vh-3.5rem)] pb-3">
-            <SidebartTest />
-            {children}
+          <div className="flex flex-1 h-full justify-between pb-3">
+            <SidebartTest className="" />
+            <div className="mr-auto">
+              {children}
+            </div>
+
             <ScrollRestoration />
             <Scripts />
-            
-            {/* <div className="flex flex-col max-h-[736px] h-full w-[863px] bg-white">
-              
-            </div> */}
-
           </div>
         </Container>
       </body>
