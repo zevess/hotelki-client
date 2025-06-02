@@ -8,15 +8,16 @@ interface Props {
 
 export const EventItem: React.FC<Props> = ({ className }) => {
     return (
-        <Card className='w-[261px] p-6'>
+        <Card className='w-[261px] h-[284px] flex flex-col justify-between p-6'>
             <CardHeader className='flex justify-between items-center h-10 p-0 m-0'>
                 <div className='flex flex-col'>
-                    <span className='font-inter text-[14px] font-bold'>День рождения</span>
+                    <span className='font-inter text-[14px] font-bold'>🎉 День рождения</span>
                     <span className='font-inter font-normal text-xs'>4 хотелки</span>
                 </div>
                 <EllipsisVertical />
             </CardHeader>
             <CardContent className='flex flex-wrap justify-between p-0 gap-3'>
+                {/* <span className='font-inter text-base font-normal text-center mx-auto'>Тут еще нет хотелок🙁</span> */}
                 <div className='h-[60px] w-[60px] bg-[#FAF5FF] rounded-2xl flex justify-center items-center'>
                     🎁
                 </div>
@@ -29,7 +30,6 @@ export const EventItem: React.FC<Props> = ({ className }) => {
                 <div className='h-[60px] w-[60px] bg-[#FAF5FF] rounded-2xl flex justify-center items-center'>
                     🎁
                 </div>
-                
                 
             </CardContent>
             <CardFooter className='flex justify-between items-center p-0 m-0'>

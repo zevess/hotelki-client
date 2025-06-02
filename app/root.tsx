@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Container className="flex flex-col">
           <Header />
           <div className="flex flex-1 h-full justify-between pb-3">
-            <SidebartTest className="" />
+            <SidebartTest/>
             <div className="mr-auto">
               {children}
             </div>

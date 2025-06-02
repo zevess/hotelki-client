@@ -34,7 +34,7 @@ const items: ISidebar[] = [
     },
     {
         title: "Хотелки",
-        url: "#",
+        url: "wishes",
         icon: HeartIcon,
     },
     {
