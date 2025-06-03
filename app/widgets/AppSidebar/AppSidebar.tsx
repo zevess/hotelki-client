@@ -1,12 +1,10 @@
 import React from 'react'
 import { Avatar, AvatarImage } from '~/components/ui/avatar'
-
-import ProfileIcon from '../../icons/User.svg?react'
-import CalendarIcon from '../../icons/Calendar.svg?react'
-
-import HeartIcon from '../../icons/Heart.svg?react'
-import PlusCircleIcon from '../../icons/PlusCircle.svg?react'
-import SignOutIcon from '../../icons/SignOut.svg?react'
+import ProfileIcon from '../../components/icons/User.svg?react'
+import CalendarIcon from '../../components/icons/Calendar.svg?react'
+import HeartIcon from '../../components/icons/Heart.svg?react'
+import PlusCircleIcon from '../../components/icons/PlusCircle.svg?react'
+import SignOutIcon from '../../components/icons/SignOut.svg?react'
 import { cn } from '~/lib/utils'
 
 
@@ -52,9 +50,9 @@ const items: ISidebar[] = [
 ]
 
 //h-[736px] max-h-[736px]
-export const SidebartTest: React.FC<Props> = ({ className }) => {
+export const AppSidebar: React.FC<Props> = ({ className }) => {
     return (
-        <div className={'flex flex-col max-h-[736px] w-[287px] max-w-[287px] bg-white rounded-xl p-3 mr-[50px]'}>
+        <div className={'flex flex-col max-h-[736px] min-w-[287px] max-w-[287px] bg-white rounded-xl p-3 mr-[50px]'}>
             <div className='flex justify-between items-center mb-4'>
                 <span className='font-inter font-semibold text-base'>Name</span>
                 <Avatar>

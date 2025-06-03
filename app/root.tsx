@@ -11,7 +11,9 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Header } from "./widgets/Header";
 import { Container } from "./components/shared/Container";
-import { SidebartTest } from "./components/shared/SidebartTest";
+import { AppSidebar } from "./widgets/AppSidebar";
+import { FooterSidebar } from "./widgets/FooterSidebar";
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -39,14 +41,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Container className="flex flex-col">
           <Header />
           <div className="flex flex-1 h-full justify-between pb-3">
-            <SidebartTest/>
-            <div className="mr-auto">
+            {/* <AppSidebar/> */}
+            <div className="">
               {children}
             </div>
 
             <ScrollRestoration />
             <Scripts />
           </div>
+          <FooterSidebar />
         </Container>
       </body>
     </html>

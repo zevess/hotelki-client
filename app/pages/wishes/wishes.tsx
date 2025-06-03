@@ -9,7 +9,7 @@ interface Props {
 
 export const WishesPage: React.FC<Props> = ({ className }) => {
     return (
-        <div className={cn('', className)}>
+        <div className={cn('max-w-[865px]', className)}>
             <div className='flex items-center'>
                 <span className='font-open-sans font-bold text-xl mr-4'>Все хотелки</span>
                 <CustomButton variant='purpleOutline'>Создать</CustomButton>

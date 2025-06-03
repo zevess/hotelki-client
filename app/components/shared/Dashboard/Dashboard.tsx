@@ -1,5 +1,5 @@
 import React from 'react'
-import { SidebartTest } from '../SidebartTest'
+import { SidebartTest } from '../../../widgets/AppSidebar'
 import { cn } from '~/lib/utils'
 
 interface Props {
