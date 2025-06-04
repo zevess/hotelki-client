@@ -1,1 +1,0 @@
-export { WishesPage } from './wishes'

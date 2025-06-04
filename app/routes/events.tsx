@@ -1,4 +1,4 @@
-import { EventsPage } from "~/pages/events";
+import { EventsPage } from "~/pages/Events";
 import type { Route } from "./+types/events";
 
 export function meta({ }: Route.MetaArgs) {

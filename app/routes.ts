@@ -4,6 +4,7 @@ export default [
     // layout("components/shared/Dashboard/Dashboard.tsx", [
     index("routes/home.tsx"),
     route("profile", "routes/profile.tsx"),
+    route("profile/edit", "routes/profile-edit.tsx"),
     route("events", "routes/events.tsx"),
     route("wishes", "routes/wishes.tsx")
     // ])

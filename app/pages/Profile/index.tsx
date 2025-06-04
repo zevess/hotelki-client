@@ -13,17 +13,17 @@ interface Props {
 
 export const ProfilePage: React.FC<Props> = ({ className }) => {
     return (
-        <div className={cn('w-[346px] mr-auto')}>
+        <div className={cn('')}>
             <div className='flex items-center'>
                 <Avatar className='w-[56px] h-[56px] mr-6'>
                     <AvatarImage src='https://github.com/zevess.png ' />
                 </Avatar>
                 <div>
                     <span className='font-open-sans font-bold text-xl'>Привет, Name </span>
-                    <div className='flex items-center p-1 gap-4 mt-3'>
+                    <a href='/profile/edit' className='flex items-center p-1 gap-4 mt-3'>
                         <PencilIcon className='text-[#C084FC]' />
                         <span className='text-[#C084FC] text-sm font-semibold'>Редактировать</span>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div className='mt-10 flex flex-col'>
@@ -39,7 +39,7 @@ export const ProfilePage: React.FC<Props> = ({ className }) => {
                 </div>
 
             </div>
-
+            
         </div>
     )
 }

@@ -7,7 +7,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
   return (
-    <header className='flex h-14 items-center justify-between'>
+    <header className='flex h-14 items-center justify-between sticky top-0 z-50 bg-gray-100'>
         <a href='/' className='font-roboto font-black text-base'>
             ХОТЕЛКИ
         </a>

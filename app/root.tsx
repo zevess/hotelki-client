@@ -11,8 +11,9 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { Header } from "./widgets/Header";
 import { Container } from "./components/shared/Container";
-import { AppSidebar } from "./widgets/AppSidebar";
-import { FooterSidebar } from "./widgets/FooterSidebar";
+import { AppSidebar } from "./widgets/Sidebar/AppSidebar";
+import { FooterSidebar } from "./widgets/Sidebar/FooterSidebar";
+
 
 
 export const links: Route.LinksFunction = () => [
@@ -37,20 +38,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="min-h-screen">
         <Container className="flex flex-col">
           <Header />
-          <div className="flex flex-1 h-full justify-between pb-3">
-            {/* <AppSidebar/> */}
-            <div className="">
+          <div className="h-full pb-3 md:flex md:flex-1">
+            <AppSidebar className=""/>
+            <div className="pb-20 md:pb-0 w-full">
               {children}
             </div>
 
             <ScrollRestoration />
             <Scripts />
           </div>
-          <FooterSidebar />
         </Container>
+        <FooterSidebar />
+
       </body>
     </html>
   );

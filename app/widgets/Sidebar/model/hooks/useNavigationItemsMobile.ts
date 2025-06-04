@@ -2,7 +2,7 @@ import ProfileIcon from '../../../../components/icons/User.svg?react'
 import PlusCircleIcon from '../../../../components/icons/PlusCircle.svg?react'
 import HeartIcon from '../../../../components/icons/Heart.svg?react'
 
-export const useNavigationItems = (): INavItem[] => {
+export const useNavigationItemsMobile = (): INavItem[] => {
     return [
         {
             title: "Профиль",

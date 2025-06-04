@@ -6,15 +6,15 @@ import { cn } from '~/lib/utils'
 interface Props {
     className?: string
 }
-
+//sm:w-[44%]
 export const WishesItem: React.FC<Props> = ({ className }) => {
     return (
-        <div className='w-[275px] h-[176px] bg-[#FAF5FF] rounded-2xl p-3 gap-4 flex flex-col' >
-            <div className='flex justify-between w-full'>
+        <div className='w-full sm:w-[275px] sm:h-[176px] bg-[#FAF5FF] rounded-2xl p-3 gap-4 flex flex-col ' >
+            <div className='w-full flex justify-between '>
                 <div className='h-[60px] w-[60px] bg-white rounded-2xl flex justify-center items-center mr-6 '>
                     🎁
                 </div>
-                <div className='flex justify-between w-[167px] h-10 '>
+                <div className='flex flex-1 justify-between h-10 '>
                     <div className='flex flex-col'>
                         <span className='font-inter text-[14px] font-bold'>Форма для льда </span>
                         <span className='font-inter font-normal text-xs'>4500 Р</span>
@@ -26,7 +26,7 @@ export const WishesItem: React.FC<Props> = ({ className }) => {
                 <a href='https://issuewear.com/tproduct/708877549-916886891851-cloudy-sweatshirt' className='font-space-mono text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis hover:text-[#C084FC]'>
                     https://issuewear.com/tproduct/708877549-916886891851-cloudy-sweatshirt
                 </a>
-                <Copy className='w-10 ml-2 hover:text-[#C084FC]'/>
+                <Copy className='w-10 ml-2 hover:text-[#C084FC]' />
             </div>
             <a href="" className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit hover:bg-gray-100'>День рождения</a>
         </div>

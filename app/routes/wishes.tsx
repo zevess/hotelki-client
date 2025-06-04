@@ -1,4 +1,4 @@
-import { WishesPage } from "~/pages/wishes";
+import { WishesPage } from "~/pages/Wishes";
 import type { Route } from "./+types/wishes";
 
 export function meta({ }: Route.MetaArgs) {

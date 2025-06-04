@@ -1,14 +1,15 @@
 import React from 'react'
 import { Avatar, AvatarImage } from '~/components/ui/avatar'
 import { cn } from '~/lib/utils'
-import { CustomButton } from '../../CustomButton'
+
 import { Input } from '~/components/ui/input'
+import { CustomButton } from '~/components/shared/CustomButton'
 
 interface Props {
     className?: string
 }
 
-export const ProfileEdit: React.FC<Props> = ({ className }) => {
+export const ProfileEditPage: React.FC<Props> = ({ className }) => {
     return (
         <div className={cn(
             'flex flex-col w-full max-h-[736px] bg-white max-w-[863px] rounded-[20px] p-6',
@@ -29,10 +30,7 @@ export const ProfileEdit: React.FC<Props> = ({ className }) => {
                     <Input className='h-12' placeholder='Email'/>
                     <CustomButton className='ml-auto my-5' variant='purple'>Сохранить</CustomButton>
                 </div>
-
             </div>
-
-
         </div>
     )
 }

@@ -10,12 +10,12 @@ interface Props {
 
 export const EventsPage: React.FC<Props> = ({ className }) => {
     return (
-        <div className={cn('w-[865px] mr-auto', className)}>
+        <div className={cn('flex flex-col w-full', className)}>
             <div className='flex items-center'>
                 <span className='font-open-sans font-bold text-xl mr-4'>События</span>
                 <CustomButton variant='purpleOutline'>Создать</CustomButton>
             </div>
-            <div className='flex flex-wrap gap-5 mt-3'>
+            <div className='flex flex-col justify-center mt-3 gap-5 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
                 <EventItem />
                 <EventItem />
                 <EventItem />

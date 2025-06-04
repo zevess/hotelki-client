@@ -1,0 +1,21 @@
+import React from 'react'
+import { LinkItem } from './ui/LinkItem'
+import { useNavigationItemsMobile } from '../model/hooks/useNavigationItemsMobile';
+
+interface Props {
+    className?: string
+}
+
+
+export const FooterSidebar: React.FC<Props> = ({ className }) => {
+
+    const items = useNavigationItemsMobile();
+
+    return (
+        <footer className='bg-[#FAFAFA] w-full p-3 gap-10 flex justify-between fixed bottom-0 mt-5 z-50 md:hidden'>
+            {items.map((item, index) => (
+                <LinkItem item={item} key={index}/>
+            ))}
+        </footer>
+    )
+}

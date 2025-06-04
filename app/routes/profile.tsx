@@ -1,5 +1,4 @@
-
-import { ProfilePage } from "~/pages/profile";
+import { ProfilePage } from "~/pages/Profile";
 import type { Route } from "./+types/profile";
 
 
