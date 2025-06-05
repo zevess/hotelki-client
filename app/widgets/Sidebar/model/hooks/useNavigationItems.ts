@@ -22,7 +22,7 @@ export const useNavigationItems = ():INavItem[] => {
     },
     {
         title: "Добавить событие",
-        url: "#",
+        url: "/events/create",
         icon: PlusCircleIcon,
         isAction: true
     },

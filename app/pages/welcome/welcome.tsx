@@ -1,4 +1,3 @@
-import { CustomButton } from "~/components/shared/CustomButton/Button";
 import logoDark from "./logo-dark.svg";
 import logoLight from "./logo-light.svg";
 

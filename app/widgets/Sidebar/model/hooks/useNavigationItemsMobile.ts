@@ -6,18 +6,18 @@ export const useNavigationItemsMobile = (): INavItem[] => {
     return [
         {
             title: "Профиль",
-            url: "profile",
+            url: "/profile",
             icon: ProfileIcon,
         },
         {
             title: "Добавить хотелку",
-            url: "#",
+            url: "/wish/create",
             icon: PlusCircleIcon,
             isAction: true
         },
         {
             title: "Хотелки",
-            url: "wishes",
+            url: "/wishes",
             icon: HeartIcon,
         },
 

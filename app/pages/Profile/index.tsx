@@ -13,7 +13,7 @@ interface Props {
 
 export const ProfilePage: React.FC<Props> = ({ className }) => {
     return (
-        <div className={cn('')}>
+        <div className={cn('w-full md:w-[346px]', className)}>
             <div className='flex items-center'>
                 <Avatar className='w-[56px] h-[56px] mr-6'>
                     <AvatarImage src='https://github.com/zevess.png ' />

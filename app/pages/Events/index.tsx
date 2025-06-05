@@ -1,6 +1,8 @@
 import React from 'react'
 import { CustomButton } from '~/components/shared/CustomButton'
 import { EventItem } from '~/components/shared/Events/EventItem'
+import { Title } from '~/components/shared/Title'
+
 import { cn } from '~/lib/utils'
 
 
@@ -12,8 +14,11 @@ export const EventsPage: React.FC<Props> = ({ className }) => {
     return (
         <div className={cn('flex flex-col w-full', className)}>
             <div className='flex items-center'>
-                <span className='font-open-sans font-bold text-xl mr-4'>События</span>
-                <CustomButton variant='purpleOutline'>Создать</CustomButton>
+                <Title text='События'/>
+                
+                <CustomButton asChild variant='purpleOutline'>
+                    <a href="/events/create">Создать</a> 
+                </CustomButton>
             </div>
             <div className='flex flex-col justify-center mt-3 gap-5 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
                 <EventItem />

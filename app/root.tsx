@@ -38,21 +38,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="min-h-screen">
-        <Container className="flex flex-col">
+      <body className="min-h-screen flex flex-col">
+        <Container>
           <Header />
-          <div className="h-full pb-3 md:flex md:flex-1">
-            <AppSidebar className=""/>
-            <div className="pb-20 md:pb-0 w-full">
+
+          <div className="flex flex-1 overflow-hidden">
+            <AppSidebar />
+
+            <div className="w-full flex-1 overflow-auto">
               {children}
             </div>
-
-            <ScrollRestoration />
-            <Scripts />
           </div>
+
         </Container>
         <FooterSidebar />
 
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   );

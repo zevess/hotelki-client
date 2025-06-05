@@ -12,7 +12,7 @@ interface Props {
 export const ProfileEditPage: React.FC<Props> = ({ className }) => {
     return (
         <div className={cn(
-            'flex flex-col w-full max-h-[736px] bg-white max-w-[863px] rounded-[20px] p-6',
+            'flex flex-col w-full h-full max-h-[736px] bg-white max-w-[863px] rounded-[20px] p-6',
             className
         )}>
             <div className='flex flex-col'>

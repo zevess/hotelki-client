@@ -2,19 +2,18 @@ import { Copy, EllipsisVertical } from 'lucide-react'
 import React from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from '~/components/ui/card'
 import { cn } from '~/lib/utils'
+import { EmojiIcon } from '../../EmojiIcon'
 
 interface Props {
     className?: string
 }
 //sm:w-[44%]
-export const WishesItem: React.FC<Props> = ({ className }) => {
+export const WishItem: React.FC<Props> = ({ className }) => {
     return (
         <div className='w-full sm:w-[275px] sm:h-[176px] bg-[#FAF5FF] rounded-2xl p-3 gap-4 flex flex-col ' >
             <div className='w-full flex justify-between '>
-                <div className='h-[60px] w-[60px] bg-white rounded-2xl flex justify-center items-center mr-6 '>
-                    🎁
-                </div>
-                <div className='flex flex-1 justify-between h-10 '>
+                <EmojiIcon variant='wish'/>
+                <div className='flex flex-1 justify-between h-10 ml-6 '>
                     <div className='flex flex-col'>
                         <span className='font-inter text-[14px] font-bold'>Форма для льда </span>
                         <span className='font-inter font-normal text-xs'>4500 Р</span>
