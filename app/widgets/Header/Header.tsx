@@ -12,8 +12,8 @@ export const Header: React.FC<Props> = ({ className }) => {
         <a href='/' className='font-roboto font-black text-base'>
             ХОТЕЛКИ
         </a>
-        <CustomButton variant='purpleOutline'>
-          Профиль
+        <CustomButton asChild variant='purpleOutline'>
+          <a href="/profile">Профиль</a>
         </CustomButton>
     </header>
   )
