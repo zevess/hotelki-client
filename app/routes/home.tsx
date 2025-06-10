@@ -1,4 +1,4 @@
-import { Welcome } from "~/pages/welcome";
+import { Welcome } from "~/pages/Welcome";
 import type { Route } from "./+types/home";
 
 

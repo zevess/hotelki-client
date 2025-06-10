@@ -13,6 +13,7 @@ import { priorities } from '~/lib/types/priorities'
 interface Props {
     className?: string,
     formTitle: string,
+    formType: 'eventCreate' | 'eventEdit' | 'wishCreate' | 'wishEdit'
 }
 
 

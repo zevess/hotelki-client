@@ -10,9 +10,10 @@ export default [
         route("events", "routes/events.tsx"),
         route("events/create", "routes/event-create.tsx"),
 
-        route("wishes", "routes/wishes.tsx")
-    ])
-
+        route("wishes", "routes/wishes.tsx"),
+        route("wishes/:wishesTag", "routes/wishes-by-tag.tsx")
+    ]),
+    route("auth", "routes/auth.tsx")
     // ])
 
 
