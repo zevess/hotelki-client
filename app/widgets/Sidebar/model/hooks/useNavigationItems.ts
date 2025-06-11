@@ -28,7 +28,7 @@ export const useNavigationItems = ():INavItem[] => {
     },
     {
         title: "Добавить хотелку",
-        url: "#",
+        url: "/wishes/create",
         icon: PlusCircleIcon,
         isAction: true
     },

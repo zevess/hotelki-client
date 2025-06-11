@@ -5,17 +5,18 @@ import { WishItem } from '~/components/shared/Wishes/WishItem'
 
 
 import { cn } from '~/lib/utils'
-import type { Route } from '../../routes/+types/wishes-by-tag'
+import type { IWishes } from './model/types'
 
 
 
 
 interface Props {
     className?: string,
-    title: string
+    title: string,
+    wishes: IWishes[]
 }
 
-export const WishesPage: React.FC<Props> = ({ className, title }) => {
+export const WishesPage: React.FC<Props> = ({ className, title, wishes }) => {
     return (
         <div className={cn('flex flex-col', className)}>
             <div className='flex items-center'>
@@ -23,11 +24,9 @@ export const WishesPage: React.FC<Props> = ({ className, title }) => {
                 <CustomButton variant='purpleOutline'>Создать</CustomButton>
             </div>
             <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
-                <WishItem />
-                <WishItem />
-                <WishItem />
-                <WishItem />
-                <WishItem />
+                {wishes.map((item, index) => (
+                    <WishItem title={item.title} price={item.price} link={item.link} emoji={item.emoji} />
+                ))}
             </div>
         </div>
 

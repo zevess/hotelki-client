@@ -1,4 +1,4 @@
-import { CreateEventPage } from "~/pages/Events/ui/CreateEvent";
+import { EventCreatePage } from "~/pages/Events/ui/EventCreate";
 import type { Route } from "./+types/event-create";
 
 
@@ -10,5 +10,5 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export default function EventCreate() {
-    return <CreateEventPage />
+    return <EventCreatePage />
 }

@@ -3,7 +3,7 @@ import type { Route } from './+types/auth';
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: 'Events' },
+        { title: 'Auth' },
         { name: 'description', content: 'Welcome to React Router!' },
     ];
 }
