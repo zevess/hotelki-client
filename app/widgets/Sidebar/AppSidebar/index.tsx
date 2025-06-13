@@ -31,7 +31,7 @@ export const AppSidebar: React.FC<Props> = ({ className }) => {
                         <LinkItem key={index} item={item}/>
                     )}
                 </div>
-                <a href='#' className='flex flex-row p-1 gap-4 min-h-8 hover:bg-gray-100 rounded-xl '>
+                <a href='#' className='flex flex-row p-1 gap-4 min-h-8 transition duration-200 hover:bg-gray-100 rounded-xl '>
                     <SignOutIcon className='text-[#EF4444]' />
                     <span className='text-xs sm:text-sm md:text-base font-semibold text-[#EF4444] px-4'>Выйти из профиля</span>
                 </a>

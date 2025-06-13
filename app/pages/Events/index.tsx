@@ -2,6 +2,7 @@ import React from 'react'
 import { CustomButton } from '~/components/shared/CustomButton'
 import { EventItem } from '~/components/shared/Events/EventItem'
 import { Title } from '~/components/shared/Title'
+import { wishes } from '~/lib/types/wishes'
 
 import { cn } from '~/lib/utils'
 
@@ -12,57 +13,7 @@ interface Props {
 
 export const EventsPage: React.FC<Props> = ({ className }) => {
 
-    const wishes = [
-        {
-            emoji: "🎁",
-            title: "Книги по саморазвитию",
-            link: "#",
-            price: 1500,
-            priority: "LOW"
-        },
-        {
-            emoji: "🍽️",
-            title: "Обед в любимом ресторане",
-            link: "#",
-            price: 3000,
-            priority: "MIDDLE"
-        },
-        {
-            emoji: "🚗",
-            title: "Новая машина",
-            link: "#",
-            price: 2000000,
-            priority: "HIGH"
-        },
-        {
-            emoji: "🏞",
-            title: "Путешествие в Италию",
-            link: "#",
-            price: 150000,
-            priority: "DREAM"
-        },
-        {
-            emoji: "📱",
-            title: "Новый смартфон",
-            link: "#",
-            price: 80000,
-            priority: "HIGH"
-        },
-        {
-            emoji: "💃",
-            title: "Уроки танцев",
-            link: "#",
-            price: 10000,
-            priority: "MIDDLE"
-        },
-        // {
-        //     emoji: "🖌️",
-        //     title: "Набор кистей художника",
-        //     link: "#",
-        //     price: 5000,
-        //     priority: "LOW"
-        // }
-    ];
+    
 
     return (
         <div className={cn('flex flex-col w-full', className)}>

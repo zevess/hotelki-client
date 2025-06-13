@@ -16,7 +16,7 @@ export const EventItem: React.FC<Props> = ({ className, title, date, wishes }) =
     
     return (
         <a href={`/events/${title}`}>
-            <Card className='w-full sm:w-[261px] sm:h-[284px] flex flex-col justify-between p-6 cursor-pointer hover:border-[#C084FC]'>
+            <Card className='w-full sm:w-[261px] sm:h-[284px] flex flex-col justify-between p-6 cursor-pointer transition duration-200 border-2 border-transparent shadow-none hover:border-[#C084FC] hover:'>
                 <CardHeader className='flex justify-between items-center h-10 p-0 m-0'>
                     <div className='flex flex-col'>
                         <span className='font-inter text-[14px] font-bold'>{title}</span>
