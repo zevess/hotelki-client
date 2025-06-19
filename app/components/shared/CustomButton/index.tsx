@@ -13,7 +13,6 @@ interface Props {
     type?: 'button' | 'reset' | 'submit' 
 }
 
-
 export const CustomButton: React.FC<Props> = ({ className, variant, onClick, asChild, children, type }) => {
     return (
         <Button type={type} asChild={asChild} onClick={onClick} className={cn('border-2 font-inter h-10 cursor-pointer', buttonVariants[variant], className)}>

@@ -20,7 +20,7 @@ export const EventIcon: React.FC<Props> = ({ className, variant, emoji, title })
                     </div>
                 }
             </div>
-            <span className='font-inter text-xs font-normal mt-2 text-center group-hover:text-[#C084FC]'>{variant == 'create' ? "Создать" : title}</span>
+            <span className='font-inter text-xs font-normal mt-2 text-center transition duration-200 group-hover:text-[#C084FC]'>{variant == 'create' ? "Создать" : title}</span>
         </a >
     )
 }

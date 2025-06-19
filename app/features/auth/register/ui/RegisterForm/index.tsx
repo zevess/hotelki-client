@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { CustomButton } from '~/components/shared/CustomButton'
 import { Input } from '~/components/ui/input'
+import { authService } from '~/entities/auth/auth-service'
 import { registerSchema, type RegisterSchema } from '~/lib/validationSchemas/register/registerSchema'
 
 interface Props {
@@ -18,7 +19,8 @@ export const RegisterForm: React.FC<Props> = ({ className, setIsRegister }) => {
     })
 
     const onSubmit: SubmitHandler<RegisterSchema> = (data) => {
-        console.log(data);
+        // console.log(data);
+        authService.register(data)
     }
 
     return (

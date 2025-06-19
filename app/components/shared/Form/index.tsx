@@ -15,6 +15,7 @@ import { EventsForm } from './ui/EventsForm'
 import { WishesForm } from './ui/WishesForm'
 
 
+
 interface Props {
     className?: string,
     formTitle: string,
@@ -31,7 +32,6 @@ export const Form: React.FC<Props> = ({ className, formTitle, formType }) => {
             {(formType == 'eventCreate' || formType == 'eventEdit') && <EventsForm/> }
             {(formType == 'wishCreate' || formType == 'wishEdit') && <WishesForm/> }
 
-            
         </div>
     )
 }

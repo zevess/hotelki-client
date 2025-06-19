@@ -13,6 +13,7 @@ import { Header } from "./widgets/Header";
 import { Container } from "./components/shared/Container";
 import { AppSidebar } from "./widgets/Sidebar/AppSidebar";
 import { FooterSidebar } from "./widgets/Sidebar/FooterSidebar";
+import { Providers } from "./lib/providers";
 
 
 
@@ -39,12 +40,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Container>
-          <Header />
-          {children}
-        </Container>
-        <FooterSidebar />
+        <Providers>
+          <Container>
+            <Header />
 
+            {children}
+
+          </Container>
+          <FooterSidebar />
+        </Providers>
         <ScrollRestoration />
         <Scripts />
       </body>
