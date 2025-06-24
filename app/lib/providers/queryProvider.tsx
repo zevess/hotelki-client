@@ -1,14 +1,13 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 
-
 interface Props {
-    className?: string
+    className?: string,
     children: React.ReactNode
+
 }
 
-export const Providers: React.FC<Props> = ({ className, children }) => {
-
+export const QueryProvider: React.FC<Props> = ({ className, children }) => {
     const [client] = React.useState(
         new QueryClient({
             defaultOptions: {
@@ -18,7 +17,6 @@ export const Providers: React.FC<Props> = ({ className, children }) => {
             }
         })
     )
-    
 
     return (
         <QueryClientProvider client={client}>

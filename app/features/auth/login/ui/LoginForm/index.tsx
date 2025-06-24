@@ -3,7 +3,8 @@ import React from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { CustomButton } from '~/components/shared/CustomButton'
 import { Input } from '~/components/ui/input'
-import { authService } from '~/entities/auth/auth-service'
+import { authService } from '~/entities/auth/auth.service'
+import { useAuth } from '~/hooks/useAuth'
 import { loginSchema, type LoginSchema } from '~/lib/validationSchemas/login/loginSchema'
 
 interface Props {
@@ -13,13 +14,15 @@ interface Props {
 
 export const LoginForm: React.FC<Props> = ({ className, setIsRegister }) => {
 
+    const { auth, isAuthLoading } = useAuth(false)
+
     const { register, handleSubmit, formState: { errors } } = useForm<LoginSchema>({
         resolver: zodResolver(loginSchema)
     })
 
     const onSubmit: SubmitHandler<LoginSchema> = (data) => {
-        console.log(data);
-        authService.login(data)
+        // console.log(data);
+        auth(data);
     }
 
     return (

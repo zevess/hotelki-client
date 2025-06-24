@@ -2,6 +2,7 @@ import React from 'react'
 import { CustomButton } from '~/components/shared/CustomButton'
 import { EventItem } from '~/components/shared/Events/EventItem'
 import { Title } from '~/components/shared/Title'
+
 import { wishes } from '~/lib/types/wishes'
 
 import { cn } from '~/lib/utils'
@@ -12,8 +13,6 @@ interface Props {
 }
 
 export const EventsPage: React.FC<Props> = ({ className }) => {
-
-    
 
     return (
         <div className={cn('flex flex-col w-full', className)}>

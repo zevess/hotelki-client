@@ -5,8 +5,9 @@ import PencilIcon from '../../components/icons/Pencil.svg?react'
 import { PlusIcon } from 'lucide-react'
 import { EventIcon } from '~/components/shared/Events/EventIcon'
 import { events } from '~/lib/types/events'
-import type { IUser } from '~/lib/types/user'
+import type { IUser } from '~/entities/user/user.types'
 import { useProfile } from '~/hooks/useProfile'
+import Cookies from 'js-cookie'
 
 
 
@@ -18,11 +19,10 @@ interface Props {
 
 export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
 
-    const { user } = useProfile()
+    // const { user } = useProfile()
     // alert(userData.id === user?.id)
 
-    const isCurrentUser = user?.id == userData.id 
-
+    // const isCurrentUser = user?.id == userData.id 
 
     return (
         <div className={cn('w-full md:w-[346px]', className)}>
@@ -32,12 +32,12 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                 </Avatar>
                 <div>
                     <span className='font-open-sans font-bold text-xl'>Привет, {userData.name} </span>
-                    {isCurrentUser &&
+                    {/* {isCurrentUser &&
                         <a href='/profile/edit' className='flex items-center p-1 gap-4 mt-3 border-2 border-transparent transition duration-200 rounded-xl hover:border-[#C084FC] hover:bg-gray-200'>
                             <PencilIcon className='text-[#C084FC]' />
                             <span className='text-[#C084FC] text-sm font-semibold'>Редактировать</span>
                         </a>
-                    }
+                    } */}
 
                 </div>
             </div>
@@ -48,13 +48,10 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                 </div>
 
                 <div className='flex flex-wrap gap-3 mt-[3px]'>
-
                     <EventIcon variant='create' />
                     {events.slice(0, 3).map((item, index) => (
-                        <EventIcon variant='event' emoji={item.emoji} title={item.title} />
+                        <EventIcon key={index} variant='event' emoji={item.emoji} title={item.title} />
                     ))}
-                    {/* <EventIcon variant='event' /> */}
-                    {/* <EventIcon variant='event' /> */}
                 </div>
 
             </div>

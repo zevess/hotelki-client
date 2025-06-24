@@ -1,9 +1,9 @@
 import { type RouteConfig, index, layout, route } from "@react-router/dev/routes";
 
 export default [
-    // layout("components/shared/Dashboard/Dashboard.tsx", [
+
     index("routes/home.tsx"),
-    layout("routes/sidebar.tsx", [
+    layout("routes/dashboard.tsx", [
         route("profile/:userId", "routes/profile.tsx"),
         route("profile/edit", "routes/profile-edit.tsx"),
 
@@ -15,7 +15,7 @@ export default [
         route("wishes/create", "routes/wish-create.tsx")
     ]),
     route("auth", "routes/auth.tsx")
-    // ])
+
 
 
 ] satisfies RouteConfig;

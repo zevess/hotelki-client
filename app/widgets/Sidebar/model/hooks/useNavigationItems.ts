@@ -3,11 +3,11 @@ import PlusCircleIcon from '../../../../components/icons/PlusCircle.svg?react'
 import HeartIcon from '../../../../components/icons/Heart.svg?react'
 import CalendarIcon from '../../../../components/icons/Calendar.svg?react'
 
-export const useNavigationItems = ():INavItem[] => {
+export const useNavigationItems = (userId: string | undefined):INavItem[] => {
     return [
     {
         title: "Профиль",
-        url: "/profile",
+        url: `/profile/${userId}`,
         icon: ProfileIcon,
     },
     {

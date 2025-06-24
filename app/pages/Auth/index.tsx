@@ -7,12 +7,19 @@ import { RegisterForm } from '~/features/auth/register/ui/RegisterForm'
 import { Input } from '~/components/ui/input'
 import { cn } from '~/lib/utils'
 
+import { useNavigate } from 'react-router'
+
 interface Props {
     className?: string
 }
 
 export const AuthPage: React.FC<Props> = ({ className }) => {
     const [isRegister, setIsRegister] = React.useState(false)
+    
+    const navigate = useNavigate();
+
+
+    
 
     return (
         <div className='flex-1 flex justify-center items-center'>
