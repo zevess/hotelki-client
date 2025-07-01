@@ -1,6 +1,6 @@
 import { WishesPage } from "~/pages/Wishes";
 import type { Route } from "./+types/wishes";
-import { wishes } from "~/pages/Wishes/model/types";
+
 
 export function meta({ }: Route.MetaArgs) {
     return [
@@ -9,12 +9,11 @@ export function meta({ }: Route.MetaArgs) {
     ];
 }
 
-export async function loader({ params }: Route.LoaderArgs) {
-    return wishes
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+    return params
 }
 
 export default function Wishes({ loaderData }: Route.ComponentProps) {
 
-
-    return <WishesPage title={"Все хотелки"} wishes={wishes} />
+    return <WishesPage title={"Все хотелки"} userId={loaderData.userId} />
 }

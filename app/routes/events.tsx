@@ -8,6 +8,11 @@ export function meta({ }: Route.MetaArgs) {
     ];
 }
 
-export default function Events() {
-    return <EventsPage />
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
+    return params
+}
+
+export default function Events({ loaderData }: Route.ComponentProps) {
+    return <EventsPage userId={loaderData.userId} />
+
 }

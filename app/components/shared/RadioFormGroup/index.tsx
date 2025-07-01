@@ -10,7 +10,7 @@ type radioGroup = {
 interface Props {
     className?: string
     radioGroupValues: radioGroup[]
-    setSelected: React.Dispatch<React.SetStateAction<string>>,
+    setSelected: React.Dispatch<React.SetStateAction<any>>, //поменять тип с any
     selected: string
 }
 

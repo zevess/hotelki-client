@@ -1,0 +1,14 @@
+export const APP_URL = import.meta.env.VITE_APP_URL as string
+
+export const PUBLIC_URL = {
+    root: (url = '') => `${url ? url : ""}`,
+    home: () => PUBLIC_URL.root('/'),
+    auth: () => PUBLIC_URL.root('/auth'),
+
+    profile: (userId = '') => PUBLIC_URL.root(`/profile/${userId}`),
+    wishes: (userId = '') => PUBLIC_URL.root(`/wishes/${userId}`),
+    events: (userId = '') => PUBLIC_URL.root(`/events/${userId}`),
+
+    eventCreate: () => PUBLIC_URL.root('/events/create'),
+    wishesCreate: () => PUBLIC_URL.root('/wishes/create')
+}

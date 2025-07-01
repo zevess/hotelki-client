@@ -41,11 +41,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="min-h-screen flex flex-col">
         <Providers>
-          <Container>
+          {children}
+          {/* <Container>
             <Header />
             {children}
           </Container>
-          <FooterSidebar />
+          <FooterSidebar /> */}
         </Providers>
         <ScrollRestoration />
         <Scripts />

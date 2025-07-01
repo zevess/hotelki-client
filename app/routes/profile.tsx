@@ -10,7 +10,7 @@ export function meta({ }: Route.MetaArgs) {
     ];
 }
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     
     const userData = userService.getUser(params.userId)
     return userData

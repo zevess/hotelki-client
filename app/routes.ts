@@ -7,11 +7,11 @@ export default [
         route("profile/:userId", "routes/profile.tsx"),
         route("profile/edit", "routes/profile-edit.tsx"),
 
-        route("events", "routes/events.tsx"),
+        route("events/:userId", "routes/events.tsx"),
         route("events/create", "routes/event-create.tsx"),
-        route("events/:wishesTag", "routes/event-wishes.tsx"),
+        // route("events/:wishesTag", "routes/event-wishes.tsx"),
 
-        route("wishes", "routes/wishes.tsx"),
+        route("wishes/:userId", "routes/wishes.tsx"),
         route("wishes/create", "routes/wish-create.tsx")
     ]),
     route("auth", "routes/auth.tsx")

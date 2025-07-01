@@ -2,11 +2,11 @@ import ProfileIcon from '../../../../components/icons/User.svg?react'
 import PlusCircleIcon from '../../../../components/icons/PlusCircle.svg?react'
 import HeartIcon from '../../../../components/icons/Heart.svg?react'
 
-export const useNavigationItemsMobile = (): INavItem[] => {
+export const useNavigationItemsMobile = (userId: string | undefined): INavItem[] => {
     return [
         {
             title: "Профиль",
-            url: "/profile",
+            url: `/profile/${userId}`,
             icon: ProfileIcon,
         },
         {

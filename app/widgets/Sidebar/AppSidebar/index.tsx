@@ -10,33 +10,35 @@ import { useNavigate } from 'react-router'
 import { useMutation } from '@tanstack/react-query'
 import type { IUser } from '~/entities/user/user.types'
 import { useAuthStore } from '~/lib/store/authStore'
+import { PUBLIC_URL } from '~/lib/config/url.config'
 
 
 interface Props {
     className?: string,
-    user: IUser | null,
-    name: string,
-    avatar: string
+    // user: IUser | null
+
 }
 
-export const AppSidebar: React.FC<Props> = ({ className, user, name, avatar }) => {
+export const AppSidebar: React.FC<Props> = ({ className }) => {
 
+    const { user } = useAuthStore();
     const items = useNavigationItems(user?.id);
     const navigate = useNavigate()
 
 
     const { mutate: logout } = useMutation({
         mutationKey: ['logout'],
-        mutationFn: () => authService.logout(),
-        onSuccess: () => navigate('/auth')
+        mutationFn: () => authService.logout().then(() => useAuthStore.persist.clearStorage()),
+        onSuccess: () => navigate(PUBLIC_URL.auth())
     })
+
 
     return (
         <div className={'hidden md:flex md:flex-col max-h-[736px] min-w-[287px] max-w-[287px] bg-white rounded-xl p-3 mr-[50px]'}>
             <div className='flex justify-between items-center mb-4'>
-                <span className='font-inter font-semibold text-base'>{name}</span>
+                <span className='font-inter font-semibold text-base'>{user?.name}</span>
                 <Avatar>
-                    <AvatarImage src={avatar} />
+                    <AvatarImage src={user?.avatar} />
                     {/* <AvatarImage src='https://github.com/zevess.png' /> */}
                 </Avatar>
             </div>
@@ -46,7 +48,9 @@ export const AppSidebar: React.FC<Props> = ({ className, user, name, avatar }) =
                         <LinkItem key={index} item={item} />
                     )}
                 </div>
-                <a onClick={() => logout()} className='flex flex-row p-1 gap-4 min-h-8 transition duration-200 cursor-pointer hover:bg-gray-100 rounded-xl '>
+                <a onClick={() => {
+                    logout()
+                }} className='flex flex-row p-1 gap-4 min-h-8 transition duration-200 cursor-pointer hover:bg-gray-100 rounded-xl '>
                     <SignOutIcon className='text-[#EF4444]' />
                     <span className='text-xs sm:text-sm md:text-base font-semibold text-[#EF4444] px-4'>Выйти из профиля</span>
                 </a>

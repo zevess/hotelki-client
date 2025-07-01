@@ -1,18 +1,21 @@
 export const priorities = [
     {
-        value: "low",
+        value: "LOW",
         label: "Низкий"
     },
     {
-        value: "middle",
+        value: "MIDDLE",
         label: "Средний"
     },
     {
-        value: "high",
+        value: "HIGH",
         label: "Высокий"
     },
     {
-        value: "dream",
+        value: "DREAM",
         label: "Мечта"
     },
 ]
+
+const prioritiesValues = priorities.map(p => p.value)
+export type Priority = (typeof priorities)[number]['value']

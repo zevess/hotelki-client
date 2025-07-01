@@ -11,8 +11,10 @@ import { useForm } from 'react-hook-form'
 import { priorities } from '~/lib/types/priorities'
 import EmojiPicker from 'emoji-picker-react'
 import { EmojiChoose } from '../Emoji/EmojiChoose'
-import { EventsForm } from './ui/EventsForm'
-import { WishesForm } from './ui/WishesForm'
+
+
+import { EventForm } from '~/features/event/ui/EventForm'
+import { WishesForm } from '~/features/wish/ui/WishForm'
 
 
 
@@ -29,8 +31,8 @@ export const Form: React.FC<Props> = ({ className, formTitle, formType }) => {
         <div className={cn('bg-white w-full h-full flex flex-col items-start p-6 gap-2.5 rounded-[20px] max-h-[736px]')}>
             <Title text={formTitle} />
 
-            {(formType == 'eventCreate' || formType == 'eventEdit') && <EventsForm/> }
-            {(formType == 'wishCreate' || formType == 'wishEdit') && <WishesForm/> }
+            {(formType == 'eventCreate' || formType == 'eventEdit') && <EventForm />}
+            {(formType == 'wishCreate' || formType == 'wishEdit') && <WishesForm />}
 
         </div>
     )

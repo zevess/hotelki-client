@@ -8,7 +8,6 @@ class UserService {
             url: API_URL.auth('/@me'),
             method: 'GET'
         })
-
         return data
     }
 
