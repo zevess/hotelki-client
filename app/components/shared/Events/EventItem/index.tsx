@@ -12,11 +12,13 @@ interface Props {
     className?: string,
     title: string,
     date: Date,
-    wishes?: any[]
+    wishes?: any[],
+    userId: string,
+    slug: string
     // price: number
 }
 
-export const EventItem: React.FC<Props> = ({ className, title, date, wishes }) => {
+export const EventItem: React.FC<Props> = ({ className, title, date, wishes, userId, slug }) => {
 
 
     const isoDate = new Date(date)
@@ -28,7 +30,7 @@ export const EventItem: React.FC<Props> = ({ className, title, date, wishes }) =
 
 
     return (
-        <a href={`/events/${title}`}>
+        <a href={`/events/${userId}/${slug}`}>
             <Card className='w-full sm:w-[261px] sm:h-[284px] flex flex-col justify-between p-6 cursor-pointer transition duration-200 border-2 border-transparent shadow-none hover:border-[#C084FC] hover:'>
                 <CardHeader className='flex justify-between items-center h-10 p-0 m-0'>
                     <div className='flex flex-col'>

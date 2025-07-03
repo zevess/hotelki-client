@@ -60,7 +60,7 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                 <div className='flex flex-wrap gap-3 mt-[3px]'>
                     <EventIcon variant='create' />
                     {events?.slice(0, 3).map((item, index) => (
-                        <EventIcon key={index} variant='event' emoji={item.emoji} title={item.title} />
+                        <EventIcon eventLink={item.slug} userId={userData.id} key={index} variant='event' emoji={item.emoji} title={item.title} />
                     ))}
                     {/* {events.slice(0, 3).map((item, index) => (
                         <EventIcon key={index} variant='event' emoji={item.emoji} title={item.title} />

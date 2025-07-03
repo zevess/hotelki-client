@@ -10,10 +10,13 @@ interface Props {
     title: string,
     price: number,
     link: string,
-    emoji: string
+    emoji: string,
+    slug: string,
+    eventTitle?: string,
+    userId: string,
 }
 //sm:w-[44%]
-export const WishItem: React.FC<Props> = ({ className, title, emoji, price, link }) => {
+export const WishItem: React.FC<Props> = ({ className, title, emoji, price, link, slug, eventTitle, userId }) => {
     return (
         <div className='w-full sm:w-[275px] sm:h-[176px] bg-[#FAF5FF] rounded-2xl p-3 gap-4 flex flex-col' >
             <div className='w-full flex justify-between '>
@@ -33,7 +36,7 @@ export const WishItem: React.FC<Props> = ({ className, title, emoji, price, link
                 <CopyToClipboard textToCopy={link} />
 
             </div>
-            <a href="/events/den_rozhdenya" className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit hover:bg-gray-100'>День рождения</a>
+            <a href={`/events/${userId}/${slug}`} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit hover:bg-gray-100'>{eventTitle}</a>
         </div>
     )
 }

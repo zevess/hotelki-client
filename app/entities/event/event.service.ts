@@ -19,6 +19,14 @@ class EventService {
         return data
     }
 
+    async getByUserAndSlug(userId: string | undefined, slug: string | undefined) {
+        const { data } = await api<IEventResponse>({
+            url: API_URL.event(`/by-user/${userId}/${slug}`),
+            method: 'GET'
+        })
+        return data
+    }
+
     async create(data: IEvent) {
         const response = await apiWithAuth<IEventResponse>({
             url: API_URL.event('/create'),

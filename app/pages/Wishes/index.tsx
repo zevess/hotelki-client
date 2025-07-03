@@ -21,11 +21,13 @@ export const WishesPage: React.FC<Props> = ({ className, title, userId }) => {
         <div className={cn('flex flex-col', className)}>
             <div className='flex items-center'>
                 <Title text={title || 'Все хотелки'} />
-                <CustomButton variant='purpleOutline'>Создать</CustomButton>
+                <CustomButton asChild variant='purpleOutline'>
+                    <a href="/wishes/create">Создать</a>
+                </CustomButton>
             </div>
             <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
                 {wishes && wishes.map((item, index) => (
-                    <WishItem key={index} title={item.title} price={item.price} link={item.link} emoji={item.emoji} />
+                    <WishItem userId={item.userId} slug={item.event.slug} eventTitle={item.event.title} key={index} title={item.title} price={item.price} link={item.link} emoji={item.emoji} />
                 ))}
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 interface Props {
     className?: string,
-    text: string
+    text: string | undefined
 }
 
 export const Title: React.FC<Props> = ({ className, text }) => {
