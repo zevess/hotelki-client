@@ -4,7 +4,7 @@ export interface IEvent {
     title: string,
     emoji: string,
     date: Date,
-    slug: string
+    slug?: string
 }
 
 

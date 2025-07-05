@@ -1,6 +1,6 @@
-import { api, apiWithAuth } from "~/lib/api/interceptor";
+import { api, apiWithAuth } from "~/lib/api/api.interceptor";
 import { API_URL } from "~/lib/config/api.config";
-import type { IUser } from "~/entities/user/user.types";
+import type { IUser, IUserUpdate } from "~/entities/user/user.types";
 
 class UserService {
     async getProfile() {
@@ -17,6 +17,16 @@ class UserService {
             method: 'GET'
         })
         return data
+    }
+
+    async editUser(data: IUserUpdate) {
+        const response = await apiWithAuth<IUser>({
+            url: API_URL.user('/update'),
+            method: "PATCH",
+            data
+        })
+
+        return response
     }
 
 }

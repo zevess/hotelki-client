@@ -1,10 +1,10 @@
-import { EventCreatePage } from "~/pages/Events/ui/EventCreate";
+import { EventCreatePage } from "~/pages/events/ui/event-create";
 import type { Route } from "./+types/event-create";
 
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Events" },
+        { title: "Создать событие" },
         { name: "description", content: "Welcome to React Router!" },
     ];
 }

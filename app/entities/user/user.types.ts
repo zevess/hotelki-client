@@ -5,3 +5,9 @@ export interface IUser {
     avatar: string,
     password: string
 }
+
+export interface IUserUpdate{
+    name?: string,
+    email?: string,
+    avatar?: string
+}

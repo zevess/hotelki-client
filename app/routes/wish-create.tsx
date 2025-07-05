@@ -1,9 +1,9 @@
-import { WishCreatePage } from '~/pages/Wishes/ui/WishCreate';
+import { WishCreatePage } from '~/pages/wishes/ui/wish-create';
 import type { Route } from './+types/wish-create';
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: 'Events' },
+        { title: 'Создать хотелку' },
         { name: 'description', content: 'Welcome to React Router!' },
     ];
 }

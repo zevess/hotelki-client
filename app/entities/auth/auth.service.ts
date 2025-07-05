@@ -1,4 +1,4 @@
-import { api } from "~/lib/api/interceptor";
+import { api } from "~/lib/api/api.interceptor";
 import { API_URL } from "~/lib/config/api.config";
 import type { IAuth, IAuthResponse } from "~/entities/auth/auth.types";
 import { removeFromStorage, saveTokenStorage } from "./auth.token";

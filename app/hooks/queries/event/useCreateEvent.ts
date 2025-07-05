@@ -13,8 +13,7 @@ export const useCreateEvent = () => {
         mutationFn: (data: IEvent) =>
             eventService.create(data),
         onSuccess(data) {
-            // console.log(data)
-            navigate(PUBLIC_URL.profile(data.data.userId))
+            navigate(PUBLIC_URL.wishes(data.data.userId))
         },
         onError(error) {
             if (error.message) {

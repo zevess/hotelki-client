@@ -1,8 +1,8 @@
 import { Outlet } from "react-router";
 
-import { Header } from "~/widgets/Header";
-import { DashboardLayout } from "~/widgets/Layout";
-import { AppSidebar } from "~/widgets/Sidebar/AppSidebar";
+import { Header } from "~/widgets/header/ui";
+import { DashboardLayout } from "~/widgets/layout";
+import { AppSidebar } from "~/widgets/sidebar/app-sidebar";
 import type { Route } from "./+types/dashboard";
 
 

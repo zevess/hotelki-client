@@ -11,7 +11,8 @@ import { PUBLIC_URL } from "~/lib/config/url.config"
 export const useAuth = (isRegister: boolean) => {
 
     const navigate = useNavigate()
-    const { setUser } = useAuthStore()
+    const { setUser, setCurrentUser } = useAuthStore()
+    
 
     const { mutate: auth, isPending: isAuthLoading } = useMutation({
         mutationKey: ['auth user'],
@@ -19,6 +20,7 @@ export const useAuth = (isRegister: boolean) => {
             authService.main(isRegister ? "register" : 'login', data),
         onSuccess(data) {
             setUser(data.data.user)
+            setCurrentUser(data.data.user)
             navigate(PUBLIC_URL.profile(data.data.user.id))
         },
         onError(error) {

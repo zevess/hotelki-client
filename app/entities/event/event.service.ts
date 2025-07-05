@@ -1,4 +1,4 @@
-import { api, apiWithAuth } from "~/lib/api/interceptor";
+import { api, apiWithAuth } from "~/lib/api/api.interceptor";
 import { API_URL } from "~/lib/config/api.config";
 import type { IEvent, IEventResponse } from "./event.types";
 

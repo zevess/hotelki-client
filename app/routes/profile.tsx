@@ -1,17 +1,17 @@
-import { ProfilePage } from "~/pages/Profile";
+import { ProfilePage } from "~/pages/profile";
 import type { Route } from "./+types/profile";
 import { userService } from "~/entities/user/user.service";
 
 
-export function meta({ }: Route.MetaArgs) {
+export function meta({ matches }: Route.MetaArgs) {
     return [
-        { title: "Profile" },
+        { title: matches[2].data.name },
         { name: "description", content: "Welcome to React Router!" },
     ];
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-    
+
     const userData = userService.getUser(params.userId)
     return userData
 }

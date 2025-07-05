@@ -6,7 +6,7 @@ export interface IWish {
     price: number,
     link: string,
     emoji: string,
-    slug: string,
+    slug?: string,
     priority: "LOW" | "MEDIUM" | "HIGH" | "DREAM",
 }
 

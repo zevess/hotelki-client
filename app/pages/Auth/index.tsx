@@ -1,17 +1,15 @@
 import React from 'react'
-import { Login } from '~/components/shared/Auth/Login'
-import { Register } from '~/components/shared/Auth/Register'
-import { CustomButton } from '~/components/shared/CustomButton'
-import { LoginForm } from '~/features/auth/login/ui/LoginForm'
-import { RegisterForm } from '~/features/auth/register/ui/RegisterForm'
+import { CustomButton } from '~/components/custom-button'
+import { LoginForm } from '~/features/auth/login/ui/login-form'
+import { RegisterForm } from '~/features/auth/register/ui/register-form'
 import { Input } from '~/components/ui/input'
 import { cn } from '~/lib/utils'
 
 import { useNavigate } from 'react-router'
 import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
-import { Container } from '~/components/shared/Container'
-import { Header } from '~/widgets/Header'
+import { Container } from '~/components/container'
+import { Header } from '~/widgets/header/ui'
 
 interface Props {
     className?: string

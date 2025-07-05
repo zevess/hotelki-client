@@ -2,27 +2,23 @@ import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 import type { IUser } from '~/entities/user/user.types'
 
-
-// interface AuthStore {
-//     user: IUser | null,
-//     isAuthorized: boolean,
-//     setUser: (user: IUser | null) => void,
-// }
-
 type AuthStore = {
     user: IUser | null,
     setUser: (user: IUser | null) => void,
+    currentUser: IUser | null,
+    setCurrentUser: (user: IUser | null) => void,
 }
 
 export const useAuthStore = create<AuthStore>()(
     persist(
         (set, get) => ({
-            // bears: 0,
             user: null,
+            currentUser: null,
             setUser: (user) => set({ user }),
+            setCurrentUser: (currentUser) => set({ currentUser })
         }),
         {
-            name: 'user-storage', // name of the item in the storage (must be unique)
+            name: 'user-storage',
             storage: createJSONStorage(() => localStorage)
         },
     ),

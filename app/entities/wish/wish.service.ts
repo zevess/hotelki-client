@@ -1,4 +1,4 @@
-import { api, apiWithAuth } from "~/lib/api/interceptor";
+import { api, apiWithAuth } from "~/lib/api/api.interceptor";
 import { type IWish, type IWishResponse } from "./wish.types";
 import { API_URL } from "~/lib/config/api.config";
 

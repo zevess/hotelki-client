@@ -1,9 +1,9 @@
-import { ProfileEditPage } from "~/pages/Profile/ui/ProfileEdit";
+import { ProfileEditPage } from "~/pages/profile/ui/profile-edit";
 import type { Route } from "./+types/profile-edit";
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Profile" },
+        { title: "Редактировать профиль" },
         { name: "description", content: "Welcome to React Router!" },
     ];
 }

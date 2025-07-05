@@ -15,7 +15,6 @@ export const useCreateWish = () => {
         mutationFn: (data: IWish) =>
             wishService.create(data),
         onSuccess(data) {
-            // console.log(data)
             navigate(PUBLIC_URL.wishes(data.data.userId))
         },
         onError(error) {

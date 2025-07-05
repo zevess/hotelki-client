@@ -4,12 +4,19 @@ import { useAuthStore } from "~/lib/store/authStore"
 
 export const useProfile = () => {
 
+    const { setUser } = useAuthStore()
+
     const { data: user, isLoading } = useQuery({
         queryKey: ['profile'],
         queryFn: async () => {
-            const data = await userService.getProfile()
-            
-            return data
+            try {
+                const data = await userService.getProfile()
+                setUser(data)
+                return data
+            } catch (error) {
+                setUser(null)
+            }
+
         },
     })
 

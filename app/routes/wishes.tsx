@@ -1,10 +1,10 @@
-import { WishesPage } from "~/pages/Wishes";
+import { WishesPage } from "~/pages/wishes";
 import type { Route } from "./+types/wishes";
 
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Wishes" },
+        { title: "Хотелки" },
         { name: "description", content: "Welcome to React Router!" },
     ];
 }

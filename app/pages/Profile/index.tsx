@@ -1,38 +1,33 @@
 import React, { useLayoutEffect } from 'react'
 import { Avatar, AvatarImage } from '~/components/ui/avatar'
 import { cn } from '~/lib/utils'
-import PencilIcon from '../../components/icons/Pencil.svg?react'
-import { PlusIcon } from 'lucide-react'
-import { EventIcon } from '~/components/shared/Events/EventIcon'
-import { events } from '~/lib/types/events'
 import type { IUser } from '~/entities/user/user.types'
 import { useProfile } from '~/hooks/useProfile'
-import Cookies from 'js-cookie'
-import { useAuthStore } from '~/lib/store/authStore'
-import { useBearStore } from '~/lib/store/bearStore'
 import { useGetEvents } from '~/hooks/queries/event/useGetEvents'
 import { PUBLIC_URL } from '~/lib/config/url.config'
-
+import { ProfileEditButton } from '~/components/profile-edit-button'
+import { EventIcon } from '~/features/event/ui/event-icon'
+import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
+import { useAuthStore } from '~/lib/store/authStore'
 
 
 interface Props {
     className?: string,
     userData: IUser,
-
 }
 
 export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
 
     const { user } = useProfile()
-
     const { events } = useGetEvents(userData.id)
+    // const { userProfile } = useGetUserProfile(userData.id)
+    const { setCurrentUser } = useAuthStore()
 
-    console.log(events)
+    React.useEffect(() => {
+        setCurrentUser(userData)
+    }, [])
 
-
-    // alert(userData.id === user?.id)
-
-    // const isCurrentUser = user?.id == userData.id 
+    const isSameUser = user?.id === userData.id
 
     return (
         <div className={cn('w-full md:w-[346px]', className)}>
@@ -42,13 +37,7 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                 </Avatar>
                 <div>
                     <span className='font-open-sans font-bold text-xl'>Привет, {userData.name} </span>
-                    {user &&
-                        <a href='/profile/edit' className='flex items-center p-1 gap-4 mt-3 border-2 border-transparent transition duration-200 rounded-xl hover:border-[#C084FC] hover:bg-gray-200'>
-                            <PencilIcon className='text-[#C084FC]' />
-                            <span className='text-[#C084FC] text-sm font-semibold'>Редактировать</span>
-                        </a>
-                    }
-
+                    {(user && isSameUser) && <ProfileEditButton />}
                 </div>
             </div>
             <div className='mt-10 flex flex-col'>
@@ -58,18 +47,12 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                 </div>
 
                 <div className='flex flex-wrap gap-3 mt-[3px]'>
-                    <EventIcon variant='create' />
+                    {isSameUser && <EventIcon variant='create' />}
                     {events?.slice(0, 3).map((item, index) => (
-                        <EventIcon eventLink={item.slug} userId={userData.id} key={index} variant='event' emoji={item.emoji} title={item.title} />
+                        <EventIcon eventSlug={item.slug} userId={userData.id} key={index} variant='event' emoji={item.emoji} title={item.title} />
                     ))}
-                    {/* {events.slice(0, 3).map((item, index) => (
-                        <EventIcon key={index} variant='event' emoji={item.emoji} title={item.title} />
-                    ))} */}
                 </div>
             </div>
-
-
-
         </div>
     )
 }

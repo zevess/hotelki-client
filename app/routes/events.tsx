@@ -1,9 +1,9 @@
-import { EventsPage } from "~/pages/Events";
+import { EventsPage } from "~/pages/events";
 import type { Route } from "./+types/events";
 
 export function meta({ }: Route.MetaArgs) {
     return [
-        { title: "Events" },
+        { title: "События" },
         { name: "description", content: "Welcome to React Router!" },
     ];
 }

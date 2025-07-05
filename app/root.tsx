@@ -9,11 +9,12 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { Header } from "./widgets/Header";
-import { Container } from "./components/shared/Container";
-import { AppSidebar } from "./widgets/Sidebar/AppSidebar";
-import { FooterSidebar } from "./widgets/Sidebar/FooterSidebar";
-import { Providers } from "./lib/providers";
+import { Header } from "./widgets/header/ui";
+import { Container } from "./components/container";
+import { AppSidebar } from "./widgets/sidebar/app-sidebar";
+import { FooterSidebar } from "./widgets/sidebar/footer-sidebar";
+import { QueryProvider } from "./lib/providers/queryProvider";
+
 
 
 
@@ -40,14 +41,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Providers>
+        <QueryProvider>
           {children}
           {/* <Container>
             <Header />
             {children}
           </Container>
           <FooterSidebar /> */}
-        </Providers>
+        </QueryProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
