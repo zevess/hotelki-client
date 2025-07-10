@@ -21,18 +21,17 @@ interface Props {
 export const AppSidebar: React.FC<Props> = ({ className }) => {
 
     const navigate = useNavigate()
-    const params = useParams()
+    // const params = useParams()
 
-    const { currentUser } = useAuthStore()
-    const { user } = useAuthStore();
-    const { setCurrentUser } = useAuthStore()
+    const { setCurrentUser, currentUser, user } = useAuthStore()
 
-    const { userProfile } = useGetUserProfile(params.userId !== undefined ? params.userId : "")
-    const items = useNavigationItems(currentUser?.id, Boolean(user?.id));
+    // const { userProfile } = useGetUserProfile(params.userId !== undefined ? params.userId : "")
 
-    React.useEffect(() => {
-        userProfile && setCurrentUser(userProfile)
-    }, [])
+    // React.useEffect(() => {
+    //     userProfile && setCurrentUser(userProfile)
+    // }, [])
+
+    // console.log(userProfile)
 
     const { mutate: logout } = useMutation({
         mutationKey: ['logout'],
@@ -40,6 +39,7 @@ export const AppSidebar: React.FC<Props> = ({ className }) => {
         onSuccess: () => navigate(PUBLIC_URL.auth())
     })
 
+    const items = useNavigationItems(currentUser?.id, Boolean(user?.id));
 
     return (
         <div className={'hidden md:flex md:flex-col max-h-[736px] min-w-[287px] max-w-[287px] bg-white rounded-xl p-3 mr-[50px]'}>

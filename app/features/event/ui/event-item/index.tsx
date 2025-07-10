@@ -9,6 +9,8 @@ import { getRemainingTime } from '~/lib/dateTransform'
 import { EmojiIcon } from '~/components/emoji/emoji-icon'
 import type { IEventResponse } from '~/entities/event/event.types'
 import { PUBLIC_URL } from '~/lib/config/url.config'
+import { OptionsDropdown } from '~/components/options-dropdown'
+import { useAuthStore } from '~/lib/store/authStore'
 
 
 interface Props {
@@ -16,9 +18,10 @@ interface Props {
     eventData: IEventResponse
 }
 
-export const EventItem: React.FC<Props> = ({ className,  eventData }) => {
+export const EventItem: React.FC<Props> = ({ className, eventData }) => {
 
 
+    const { user } = useAuthStore()
     const isoDate = new Date(eventData.date)
     const formatedDate = format(eventData.date, "d MM yyyy", { locale: ru });
     const duration = intervalToDuration({ start: new Date(), end: isoDate })
@@ -36,12 +39,12 @@ export const EventItem: React.FC<Props> = ({ className,  eventData }) => {
                         <span className='font-inter text-[14px] font-bold'>{eventData.emoji} {eventData.title}</span>
                         {wishes && <span className='font-inter font-normal text-xs'>{wishes.length} хотелки</span>}
                     </div>
-                    <EllipsisVertical />
+                    {user && <OptionsDropdown type='EVENT' itemId={eventData.id} editPageLink={`/events/${eventData.userId}/${eventData.slug}`} />}
+
                 </CardHeader>
                 <CardContent className='min-h-[132px] flex flex-wrap items-center justify-around p-0 sm:gap-3'>
 
-
-                    {!wishes && <span className='font-inter text-base font-normal text-center mx-auto'>Тут еще нет хотелок🙁</span>}
+                    {wishes.length == 0 && <span className='font-inter text-base font-normal text-center mx-auto'>Тут еще нет хотелок 🙁</span>}
 
                     {wishes && (wishes.length > 6 ?
                         <EmojiIcon emoji='🎁' className='mr-auto ml-auto' variant='event' emojisCount={wishes.length} />
@@ -53,12 +56,12 @@ export const EventItem: React.FC<Props> = ({ className,  eventData }) => {
                 </CardContent>
                 <CardFooter className='flex justify-between items-center p-0 m-0'>
                     <span className='font-inter font-normal text-xs'>{formatedDate}</span>
-                    <div className='h-6 bg-[#FAF5FF] rounded-full flex items-center justify-center px-1'>
+                    {formatedRemainingTime && <div className='h-6 bg-[#FAF5FF] rounded-full flex items-center justify-center px-1'>
                         <span className='font-inter font-normal text-xs py-1 px-2'>Через {formatedRemainingTime}</span>
-                    </div>
+                    </div>}
+
                 </CardFooter>
             </Card>
         </a>
-
     )
 }

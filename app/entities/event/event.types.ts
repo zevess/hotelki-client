@@ -3,7 +3,7 @@ import type { IWish, IWishResponse } from "../wish/wish.types"
 export interface IEvent {
     title: string,
     emoji: string,
-    date: Date,
+    date: string,
     slug?: string
 }
 
@@ -20,5 +20,5 @@ export interface IEventsWishes{
     slug: string,
     emoji: string,
     userId: string,
-    wish: IWish[]
+    wish?: IWish[]
 }

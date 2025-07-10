@@ -2,9 +2,9 @@ import type { IEvent } from "../event/event.types";
 
 export interface IWish {
     title: string,
-    eventId: string,
+    eventId?: string | null,
     price: number,
-    link: string,
+    link?: string | null,
     emoji: string,
     slug?: string,
     priority: "LOW" | "MEDIUM" | "HIGH" | "DREAM",
@@ -15,5 +15,5 @@ export interface IWishResponse extends IWish {
     createdAt: Date,
     updatedAt: Date,
     userId: string,
-    event: IEvent
+    event?: IEvent
 }

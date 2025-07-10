@@ -12,7 +12,7 @@ export function meta({ matches }: Route.MetaArgs) {
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 
-    const userData = userService.getUser(params.userId)
+    const userData = await userService.getUser(params.userId)
     return userData
 }
 

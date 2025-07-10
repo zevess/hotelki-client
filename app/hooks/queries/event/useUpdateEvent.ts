@@ -6,16 +6,16 @@ import { eventService } from "~/entities/event/event.service"
 import type { IEvent } from "~/entities/event/event.types"
 import { PUBLIC_URL } from "~/lib/config/url.config"
 
-export const useCreateEvent = () => {
+export const useUpdateEvent = (eventId: string) => {
     const navigate = useNavigate()
 
-    const { mutate: createEvent, isPending: isEventCreating } = useMutation({
-        mutationKey: ['create event'],
+    const { mutate: updateEvent, isPending: isEvenUpdating } = useMutation({
+        mutationKey: ['update event'],
         mutationFn: (data: IEvent) =>
-            eventService.create(data),
+            eventService.update(eventId, data),
         onSuccess(data) {
             navigate(PUBLIC_URL.events(data.data.userId))
-            toast.success("Событие создано")
+            toast.success("Событие обновлено")
         },
         onError(error) {
             if (error.message) {
@@ -27,10 +27,10 @@ export const useCreateEvent = () => {
     })
     return useMemo(
         () => ({
-            createEvent,
-            isEventCreating
+            updateEvent,
+            isEvenUpdating
         }),
-        [createEvent, isEventCreating]
+        [updateEvent, isEvenUpdating]
     )
 
 }

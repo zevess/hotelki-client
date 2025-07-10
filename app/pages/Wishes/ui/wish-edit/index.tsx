@@ -7,6 +7,6 @@ interface Props {
 
 export const WishEditPage: React.FC<Props> = ({ className }) => {
     return (
-        <Form formTitle={'Редактирование хотелки'} formType={'wishEdit'} />
+        <Form isEditing={true} formTitle={'Редактирование хотелки'} formType={'wishEdit'} />
     )
 }

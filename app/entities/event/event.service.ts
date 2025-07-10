@@ -3,7 +3,7 @@ import { API_URL } from "~/lib/config/api.config";
 import type { IEvent, IEventResponse } from "./event.types";
 
 class EventService {
-    async getById(eventId: string) {
+    async getById(eventId: string | undefined) {
         const { data } = await api<IEvent>({
             url: API_URL.event(`/by-id/${eventId}`),
             method: 'GET'
@@ -38,7 +38,7 @@ class EventService {
     }
 
     async update(eventId: string, data: IEvent) {
-        const response = await apiWithAuth<IEvent>({
+        const response = await apiWithAuth<IEventResponse>({
             url: API_URL.event(`/update/${eventId}`),
             method: 'PATCH',
             data

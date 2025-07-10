@@ -7,6 +7,6 @@ interface Props {
 
 export const EventEditPage: React.FC<Props> = ({ className }) => {
   return (
-    <Form formType='eventEdit' formTitle={'Редактирование события'} />
+    <Form formType='eventEdit' formTitle={'Редактирование события'} isEditing />
   )
 }

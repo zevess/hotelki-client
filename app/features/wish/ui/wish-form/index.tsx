@@ -1,29 +1,42 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
+import { useNavigate, useParams } from 'react-router'
 import { CustomButton } from '~/components/custom-button'
 import { EmojiChoose } from '~/components/emoji/emoji-select'
 import { RadioFormGroup } from '~/components/radio-form-group'
 import { SelectInput } from '~/components/select'
 import { Input } from '~/components/ui/input'
 import { wishSchema, type WishSchema } from '~/entities/wish/wish.schema'
-import { useGetEvents } from '~/hooks/queries/event/useGetEvents'
+import { useGetEvent } from '~/hooks/queries/event/useGetEvent'
+import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
+
 import { useCreateWish } from '~/hooks/queries/wish/useCreateWish'
+import { useGetWishBySlug } from '~/hooks/queries/wish/useGetWishBySlug'
+import { useUpdateWish } from '~/hooks/queries/wish/useUpdateWish'
 import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
 import { priorities } from '~/lib/types/priorities'
 
 
 interface Props {
-    className?: string
+    className?: string,
+    isEditing: boolean
 }
 
-export const WishesForm: React.FC<Props> = ({ className }) => {
+export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
 
+    const params = useParams()
     const { user } = useAuthStore()
-    const { events } = useGetEvents(user?.id)
+    const { events } = useGetUserEvents(user?.id)
+
+    const { wishBySlug } = useGetWishBySlug(params?.userId, params?.slug)
+    console.log(wishBySlug)
+
 
     const { createWish } = useCreateWish()
+    const { updateWish } = useUpdateWish(wishBySlug?.id ? wishBySlug.id : "")
+    const navigate = useNavigate()
 
     const [event, setEvent] = React.useState('');
     const [priority, setPriority] = React.useState<"LOW" | "MEDIUM" | "HIGH" | "DREAM">("LOW");
@@ -34,10 +47,24 @@ export const WishesForm: React.FC<Props> = ({ className }) => {
     })
 
     React.useEffect(() => {
-        setValue('emoji', emoji);
+
+        if (!user) navigate(-1)
+
+        if (isEditing) {
+            wishBySlug?.title && setValue("title", wishBySlug.title)
+            wishBySlug?.eventId && setValue("eventId", wishBySlug.eventId)
+            wishBySlug?.link && setValue("link", wishBySlug.link)
+            wishBySlug?.price && setValue("price", wishBySlug.price)
+            wishBySlug?.priority && setPriority(wishBySlug.priority)
+            wishBySlug?.emoji && setEmoji(wishBySlug.emoji)
+
+        }
+
         setValue('priority', priority);
         setValue('eventId', event)
-    }, [emoji, priority, event, setValue])
+        setValue('emoji', emoji);
+
+    }, [user, wishBySlug])
 
 
     const onSubmit: SubmitHandler<WishSchema> = (data) => {
@@ -45,9 +72,9 @@ export const WishesForm: React.FC<Props> = ({ className }) => {
             ...data,
             priority: priority,
             emoji: emoji,
-            eventId: event
+            eventId: event ? event : null
         }
-        createWish(fullData)
+        isEditing ? updateWish(fullData) : createWish(fullData)
         console.log(fullData)
     }
 

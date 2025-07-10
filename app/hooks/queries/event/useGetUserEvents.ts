@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useMemo } from "react"
 import { eventService } from "~/entities/event/event.service"
 
-export const useGetEvents = (userId: string | undefined) => {
+export const useGetUserEvents = (userId: string | undefined) => {
 
     const { data: events, isLoading } = useQuery({
         queryKey: ['get events by user'],

@@ -16,6 +16,7 @@ export const SelectInput: React.FC<Props> = ({ className, selectItems, setValue 
                 <SelectValue placeholder={'Событие'} />
             </SelectTrigger>
             <SelectContent>
+                <SelectItem className='text-gray-500 hover:!text-gray-600' value={`${null}`}>Без события</SelectItem>
                 {selectItems && selectItems.map((item, index) => (
                     <SelectItem key={index} value={item.id}>{item.title} {item.emoji}</SelectItem>
                 ))}

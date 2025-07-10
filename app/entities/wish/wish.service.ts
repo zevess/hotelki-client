@@ -27,6 +27,14 @@ class WishService {
         return data
     }
 
+    async getByUserAndSlug(userId: string | undefined, slug?: string | undefined) {
+        const { data } = await api<IWishResponse>({
+            url: API_URL.wish(`/by-user/${userId}/${slug}`),
+            method: 'GET'
+        })
+        return data
+    }
+
     async create(data: IWish) {
         const response = await apiWithAuth<IWishResponse>({
             url: API_URL.wish('/create'),

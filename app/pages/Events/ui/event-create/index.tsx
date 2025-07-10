@@ -8,6 +8,6 @@ interface Props {
 
 export const EventCreatePage: React.FC<Props> = ({ className }) => {
     return (
-        <Form formType='eventCreate' formTitle={'Создание события'} />
+        <Form isEditing={false} formType='eventCreate' formTitle={'Создание события'} />
     )
 }

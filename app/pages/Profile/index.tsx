@@ -3,12 +3,13 @@ import { Avatar, AvatarImage } from '~/components/ui/avatar'
 import { cn } from '~/lib/utils'
 import type { IUser } from '~/entities/user/user.types'
 import { useProfile } from '~/hooks/useProfile'
-import { useGetEvents } from '~/hooks/queries/event/useGetEvents'
+
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { ProfileEditButton } from '~/components/profile-edit-button'
 import { EventIcon } from '~/features/event/ui/event-icon'
 import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
 import { useAuthStore } from '~/lib/store/authStore'
+import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
 
 
 interface Props {
@@ -18,9 +19,8 @@ interface Props {
 
 export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
 
-    const { user } = useProfile()
-    const { events } = useGetEvents(userData.id)
-    // const { userProfile } = useGetUserProfile(userData.id)
+    const { user } = useAuthStore()
+    const { events } = useGetUserEvents(userData.id)
     const { setCurrentUser } = useAuthStore()
 
     React.useEffect(() => {

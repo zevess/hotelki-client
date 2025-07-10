@@ -3,10 +3,12 @@ import { CreateButton } from '~/components/create-button'
 import { CustomButton } from '~/components/custom-button'
 import { Title } from '~/components/title'
 import { eventService } from '~/entities/event/event.service'
+import type { IUser } from '~/entities/user/user.types'
 import { EventItem } from '~/features/event/ui/event-item'
 import { WishItem } from '~/features/wish/ui/wish-item'
-import { useGetEvents } from '~/hooks/queries/event/useGetEvents'
-import { useGetWishesByEvent } from '~/hooks/queries/event/useGetWishesByEvent'
+import { useGetEventBySlug } from '~/hooks/queries/event/useGetEventBySlug'
+import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
+
 import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
 import { useProfile } from '~/hooks/useProfile'
 import { PUBLIC_URL } from '~/lib/config/url.config'
@@ -17,24 +19,24 @@ import { cn } from '~/lib/utils'
 
 interface Props {
     className?: string,
-    userId: string,
+    // userId: string,
     slug?: string,
+    userData: IUser
 }
 
-export const EventsPage: React.FC<Props> = ({ className, userId, slug }) => {
+export const EventsPage: React.FC<Props> = ({ className,  slug, userData }) => {
 
-    const { events } = useGetEvents(userId)
-    const { wishesByEventSlug } = useGetWishesByEvent(userId, slug)
+    const { events } = useGetUserEvents(userData.id)
+    const { wishesByEventSlug } = useGetEventBySlug(userData.id, slug)
     const { user } = useProfile()
 
-    // const { userProfile } = useGetUserProfile(userId)
-    // const { setCurrentUser } = useAuthStore()
+    const { setCurrentUser } = useAuthStore()
 
-    // React.useEffect(() => {
-    //     userProfile && setCurrentUser(userProfile)
-    // }, [])
+    React.useEffect(() => {
+        setCurrentUser(userData)
+    }, [])
 
-    const isSameUser = user?.id === userId
+    const isSameUser = user?.id === userData.id
 
     return (
         <div className={cn('flex flex-col w-full', className)}>

@@ -9,6 +9,8 @@ import { useEditUser } from '~/hooks/queries/user/useUpdateUser'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { userSchema, type UserSchema } from '~/entities/user/user.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useNavigate } from 'react-router'
+import { useAuthStore } from '~/lib/store/authStore'
 
 interface Props {
     className?: string
@@ -16,8 +18,13 @@ interface Props {
 
 export const ProfileEditPage: React.FC<Props> = ({ className }) => {
 
-    const { user } = useProfile()
     const { edit } = useEditUser()
+    const { user } = useAuthStore()
+    const navigate = useNavigate()
+
+    React.useEffect(() => {
+        if (!user) navigate(-1)
+    }, [user])
 
     const { register, handleSubmit, setValue } = useForm<UserSchema>({
         resolver: zodResolver(userSchema)

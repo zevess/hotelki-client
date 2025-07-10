@@ -11,26 +11,26 @@ import { WishItem } from '~/features/wish/ui/wish-item'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useAuthStore } from '~/lib/store/authStore'
 import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
+import type { IUser } from '~/entities/user/user.types'
 
 
 interface Props {
     className?: string,
     title: string,
-    userId: string
+    // userId: string,
+    userData: IUser,
 }
 
-export const WishesPage: React.FC<Props> = ({ className, title, userId }) => {
+export const WishesPage: React.FC<Props> = ({ className, title, userData }) => {
 
-    const { wishes } = useGetWishes(userId)
-    const { userProfile } = useGetUserProfile(userId)
+    const { wishes } = useGetWishes(userData.id)
+    console.log(wishes)
 
-    // console.log(userProfile)
+    const { setCurrentUser } = useAuthStore()
 
-    // const { setCurrentUser } = useAuthStore()
-
-    // React.useEffect(() => {
-    //     userProfile && setCurrentUser(userProfile)
-    // }, [])
+    React.useEffect(() => {
+        setCurrentUser(userData)
+    }, [])
 
     return (
         <div className={cn('flex flex-col', className)}>
@@ -40,7 +40,7 @@ export const WishesPage: React.FC<Props> = ({ className, title, userId }) => {
             </div>
             <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
                 {wishes && wishes.map((item, index) => (
-                    <WishItem key={index} wishData={item} eventSlug={item.event.slug} eventTitle={item.event.title} />
+                    <WishItem key={index} wishData={item} eventSlug={item.event && item.event.slug} eventTitle={item.event && item.event.title} />
                 ))}
             </div>
         </div>

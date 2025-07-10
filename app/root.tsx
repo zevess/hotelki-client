@@ -14,6 +14,7 @@ import { Container } from "./components/container";
 import { AppSidebar } from "./widgets/sidebar/app-sidebar";
 import { FooterSidebar } from "./widgets/sidebar/footer-sidebar";
 import { QueryProvider } from "./lib/providers/queryProvider";
+import { Toaster } from "./components/ui/sonner";
 
 
 
@@ -42,6 +43,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="min-h-screen flex flex-col">
         <QueryProvider>
+          <Toaster position='top-center' richColors/>
+
           {children}
           {/* <Container>
             <Header />
