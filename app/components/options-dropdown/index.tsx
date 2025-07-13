@@ -8,6 +8,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useDeleteEvent } from '~/hooks/queries/event/useDeleteEvent'
 import { OptionsAlertDialog } from '../options-alert-dialog'
 import { useDeleteWish } from '~/hooks/queries/wish/useDeleteWish'
+import { cn } from '~/lib/utils'
 
 
 interface Props {
@@ -25,8 +26,8 @@ export const OptionsDropdown: React.FC<Props> = ({ className, itemId, editPageLi
     return (
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>
-                <div className='p-2 rounded-full hover:bg-gray-100 group cursor-pointer'>
-                    <EllipsisVertical className='relative group-hover:text-[#C084FC]' />
+                <div className={cn('p-2 rounded-full hover:bg-gray-100 group cursor-pointer flex items-center transition duration-200', className)}>
+                    <EllipsisVertical className='relative group-hover:text-[#C084FC] transition duration-200' />
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">

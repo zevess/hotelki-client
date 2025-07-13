@@ -24,11 +24,10 @@ interface Props {
     userData: IUser
 }
 
-export const EventsPage: React.FC<Props> = ({ className,  slug, userData }) => {
+export const EventsPage: React.FC<Props> = ({ className, slug, userData }) => {
 
     const { events } = useGetUserEvents(userData.id)
     const { wishesByEventSlug } = useGetEventBySlug(userData.id, slug)
-    const { user } = useProfile()
 
     const { setCurrentUser } = useAuthStore()
 
@@ -36,7 +35,9 @@ export const EventsPage: React.FC<Props> = ({ className,  slug, userData }) => {
         setCurrentUser(userData)
     }, [])
 
-    const isSameUser = user?.id === userData.id
+    if(!userData){
+        console.log("FEFEWFEW")
+    }
 
     return (
         <div className={cn('flex flex-col w-full', className)}>
@@ -44,7 +45,7 @@ export const EventsPage: React.FC<Props> = ({ className,  slug, userData }) => {
                 <Title text={slug ? wishesByEventSlug?.title : "События"} />
                 <CreateButton href={slug ? PUBLIC_URL.wishesCreate() : PUBLIC_URL.eventCreate()} variant='purpleOutline' />
             </div>
-            <div className='flex flex-col justify-center mt-3 gap-5 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
+            <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-normal'>
 
                 {!slug && events?.map((item, index) => (
                     <EventItem key={index} eventData={item} />

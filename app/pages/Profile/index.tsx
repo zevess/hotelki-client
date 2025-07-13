@@ -14,42 +14,42 @@ import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
 
 interface Props {
     className?: string,
-    userData: IUser,
+    userData: IUser | null,
 }
 
 export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
 
     const { user } = useAuthStore()
-    const { events } = useGetUserEvents(userData.id)
+    const { events } = useGetUserEvents(userData?.id)
     const { setCurrentUser } = useAuthStore()
 
     React.useEffect(() => {
         setCurrentUser(userData)
     }, [])
 
-    const isSameUser = user?.id === userData.id
+    const isSameUser = user?.id === userData?.id
 
     return (
         <div className={cn('w-full md:w-[346px]', className)}>
             <div className='flex items-center'>
                 <Avatar className='w-[56px] h-[56px] mr-6'>
-                    <AvatarImage src={userData.avatar || 'https://github.com/zevess.png '} />
+                    <AvatarImage src={userData?.avatar || 'https://github.com/zevess.png '} />
                 </Avatar>
                 <div>
-                    <span className='font-open-sans font-bold text-xl'>Привет, {userData.name} </span>
+                    <span className='font-open-sans font-bold text-xl'>Привет, {userData?.name} </span>
                     {(user && isSameUser) && <ProfileEditButton />}
                 </div>
             </div>
             <div className='mt-10 flex flex-col'>
                 <div className='flex justify-between items-center'>
                     <span className='font-open-sans font-bold text-xl'>События</span>
-                    <a href={PUBLIC_URL.events(userData.id)} className='font-open-sans text-base font-normal hover:text-[#C084FC]'>Посмотреть все</a>
+                    <a href={PUBLIC_URL.events(userData?.id)} className='font-open-sans text-base font-normal hover:text-[#C084FC]'>Посмотреть все</a>
                 </div>
 
                 <div className='flex flex-wrap gap-3 mt-[3px]'>
                     {isSameUser && <EventIcon variant='create' />}
                     {events?.slice(0, 3).map((item, index) => (
-                        <EventIcon eventSlug={item.slug} userId={userData.id} key={index} variant='event' emoji={item.emoji} title={item.title} />
+                        <EventIcon eventSlug={item.slug} userId={userData?.id} key={index} variant='event' emoji={item.emoji} title={item.title} />
                     ))}
                 </div>
             </div>

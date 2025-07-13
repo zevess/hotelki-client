@@ -16,8 +16,6 @@ import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
 import { priorities } from '~/lib/types/priorities'
 
-
-
 interface Props {
     className?: string,
     isEditing: boolean
@@ -26,23 +24,22 @@ interface Props {
 export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
 
     const params = useParams()
+    const navigate = useNavigate()
 
+    const { user } = useAuthStore()
     const { wishesByEventSlug } = useGetEventBySlug(params.userId, params.slug)
-
-    // console.log(wishesByEventSlug)
 
     const { createEvent } = useCreateEvent()
     const { updateEvent } = useUpdateEvent(wishesByEventSlug?.id ? wishesByEventSlug?.id : "")
+
     const [emoji, setEmoji] = React.useState('🎁');
 
     const { register, handleSubmit, setValue } = useForm<EventSchema>({
         resolver: zodResolver(eventSchema)
     })
 
-    const { user } = useAuthStore()
-    const navigate = useNavigate()
-
     React.useEffect(() => {
+        if (!user) navigate(-1)
         if (isEditing) {
             wishesByEventSlug?.title && setValue("title", wishesByEventSlug?.title)
             wishesByEventSlug?.emoji && setEmoji(wishesByEventSlug.emoji)
@@ -51,7 +48,6 @@ export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
                 setValue("date", formattedDate)
             }
         }
-        if (!user) navigate(-1)
         setValue('emoji', emoji)
     }, [user, wishesByEventSlug])
 
@@ -61,9 +57,6 @@ export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
             date: data.date,
             emoji: emoji
         }
-
-        console.log(fullData)
-
         isEditing ? updateEvent(fullData) : createEvent(fullData)
     }
 

@@ -16,6 +16,7 @@ class UserService {
             url: API_URL.user(`/by-id/${userId}`),
             method: 'GET'
         })
+
         return data
     }
 

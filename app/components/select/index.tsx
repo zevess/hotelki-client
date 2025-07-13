@@ -5,24 +5,26 @@ import type { IEvent, IEventResponse } from '~/entities/event/event.types'
 interface Props {
     className?: string,
     selectItems: IEventResponse[] | undefined,
-    setValue: React.Dispatch<React.SetStateAction<string>>
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+    disabled: boolean,
+    defaultValue: string
 }
 
-export const SelectInput: React.FC<Props> = ({ className, selectItems, setValue }) => {
-    return (
+export const SelectInput: React.FC<Props> = ({ className, selectItems, setValue, disabled, defaultValue }) => {
+    
+    // const [selectedOption, setSelectedOption] = React.useState(defaultValue)
 
-        <Select onValueChange={setValue}>
+    return (
+        <Select value={defaultValue} disabled={disabled} onValueChange={setValue}>
             <SelectTrigger className={className}>
-                <SelectValue placeholder={'Событие'} />
+                <SelectValue placeholder={'Событие'}></SelectValue>
             </SelectTrigger>
             <SelectContent>
-                <SelectItem className='text-gray-500 hover:!text-gray-600' value={`${null}`}>Без события</SelectItem>
                 {selectItems && selectItems.map((item, index) => (
                     <SelectItem key={index} value={item.id}>{item.title} {item.emoji}</SelectItem>
                 ))}
             </SelectContent>
         </Select>
-
 
     )
 }

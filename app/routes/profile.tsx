@@ -1,6 +1,7 @@
 import { ProfilePage } from "~/pages/profile";
 import type { Route } from "./+types/profile";
 import { userService } from "~/entities/user/user.service";
+import { data } from "react-router";
 
 
 export function meta({ matches }: Route.MetaArgs) {
