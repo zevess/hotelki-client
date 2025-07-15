@@ -17,7 +17,7 @@ export const useNavigationItemsMobile = (userId: string | undefined): INavItem[]
         },
         {
             title: "Хотелки",
-            url: "/wishes",
+            url: `/wishes/${userId}`,
             icon: HeartIcon,
         },
 

@@ -36,13 +36,11 @@ export const OptionsDropdown: React.FC<Props> = ({ className, itemId, editPageLi
                 <DropdownMenuGroup className='flex flex-col gap-1'>
                     <DropdownMenuItem className='cursor-pointer' onClick={() => navigate(`${editPageLink}/edit`)}><Edit /> Редактировать</DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                        <OptionsAlertDialog onConfirm={() => {
+                        <OptionsAlertDialog title='Вы уверены?' description={type == 'EVENT' ? 'Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.': "Это действие не может быть отменено"} action='Удалить' onConfirm={() => {
                             type == 'EVENT' && deleteEvent(itemId)
                             type == 'WISH' && deleteWish(itemId)
                             setOpen(false)
-                        }} trigger={
-                            <DropdownMenuItem onSelect={(e) => e.preventDefault()} className='bg-red-500 text-white hover:!bg-red-600 hover:!text-white cursor-pointer'><Trash2 className='text-white hover:text-white' /> Удалить</DropdownMenuItem>
-                        } />
+                        }}><DropdownMenuItem onSelect={(e) => e.preventDefault()} className='bg-red-500 text-white hover:!bg-red-600 hover:!text-white cursor-pointer'><Trash2 className='text-white hover:text-white' /> Удалить</DropdownMenuItem></OptionsAlertDialog>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

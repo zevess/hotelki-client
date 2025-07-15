@@ -11,11 +11,6 @@ export function meta({ }: Route.MetaArgs) {
     ];
 }
 
-export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-    // const eventData = await eventService.getByUserAndSlug(params.userId, params.slug)
-    // console.log(eventData)
-}
-
 export default function EventsEdit({ loaderData }: Route.ComponentProps) {
     return <EventEditPage />
 }

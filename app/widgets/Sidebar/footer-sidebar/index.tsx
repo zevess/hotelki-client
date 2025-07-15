@@ -12,16 +12,7 @@ export const FooterSidebar: React.FC<Props> = ({ className }) => {
 
     const { user } = useAuthStore();
 
-
-
-    // React.useEffect(() => {
-    //     const dada = localStorage.getItem('user-storage')
-    //     console.log(dada)
-    // }, [])
-
     const items = useNavigationItemsMobile(user?.id);
-
-
 
     return (
         <footer className='bg-[#FAFAFA] w-full p-3 gap-10 flex justify-between sticky bottom-0 z-50 md:hidden'>

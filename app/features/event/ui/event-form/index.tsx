@@ -34,7 +34,7 @@ export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
 
     const [emoji, setEmoji] = React.useState('🎁');
 
-    const { register, handleSubmit, setValue } = useForm<EventSchema>({
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<EventSchema>({
         resolver: zodResolver(eventSchema)
     })
 
@@ -65,9 +65,14 @@ export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
             <form onSubmit={handleSubmit(onSubmit)} className='w-full'>
                 <div className='flex items-center w-full gap-5'>
                     <EmojiChoose emoji={emoji} setEmoji={setEmoji} />
-                    <Input {...register('title')} placeholder='Название' className='flex-1'></Input>
+                    <div className='w-full'>
+                        <Input {...register('title')} placeholder='Название' className='flex-1'></Input>
+                        {errors.title && <span className='text-red-500 absolute'>{errors.title.message}</span>}
+                    </div>
+
                 </div>
                 <Input className='mt-5' {...register('date')} placeholder='Дата' type='date'></Input>
+                {errors.date && <span className='text-red-500 absolute'>{errors.date.message}</span>}
                 <CustomButton type='submit' className='mt-5' variant='purple'>Сохранить</CustomButton>
             </form>
         </>

@@ -1,12 +1,13 @@
 import { ProfilePage } from "~/pages/profile";
-import type { Route } from "./+types/profile";
+
 import { userService } from "~/entities/user/user.service";
-import { data } from "react-router";
+import type { Route } from "./+types/profile";
+
 
 
 export function meta({ matches }: Route.MetaArgs) {
     return [
-        { title: matches[2].data.name },
+        { title: matches[2].data.name},
         { name: "description", content: "Welcome to React Router!" },
     ];
 }

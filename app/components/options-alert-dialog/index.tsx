@@ -4,30 +4,34 @@ import { Button } from "../ui/button";
 import React from 'react'
 import { DropdownMenuItem } from "../ui/dropdown-menu";
 import { Trash2 } from "lucide-react";
+import { cn } from "~/lib/utils";
 
 interface Props {
   className?: string,
-  trigger?: React.ReactNode,
-  onConfirm?: () => void
+  children?: React.ReactNode,
+  onConfirm?: () => void,
+  title: string,
+  description?: string,
+  action: string
 }
 
-export const OptionsAlertDialog: React.FC<Props> = ({ className, trigger, onConfirm }) => {
+export const OptionsAlertDialog: React.FC<Props> = ({ className, children, onConfirm, title, description, action }) => {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        {trigger}
+        {children}
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
+          <AlertDialogTitle>{title}</AlertDialogTitle>
           <AlertDialogDescription>
-            Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.
+            {description}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Отмена</AlertDialogCancel>
-          <AlertDialogAction onClick={onConfirm} className="bg-red-500 hover:bg-red-600">
-            Удалить
+          <AlertDialogCancel className="cursor-pointer">Отмена</AlertDialogCancel>
+          <AlertDialogAction onClick={onConfirm} className={cn("bg-red-500 hover:bg-red-600 cursor-pointer", className)}>
+            {action}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -35,6 +39,7 @@ export const OptionsAlertDialog: React.FC<Props> = ({ className, trigger, onConf
   )
 }
 
+// Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.
 
 
 

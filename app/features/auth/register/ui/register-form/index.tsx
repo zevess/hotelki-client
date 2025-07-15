@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { CustomButton } from '~/components/custom-button'
 import { Input } from '~/components/ui/input'
+import { Spinner } from '~/components/ui/spinner'
 import { registerSchema, type RegisterSchema } from '~/entities/auth/auth.schema'
 import { authService } from '~/entities/auth/auth.service'
 import { useAuth } from '~/hooks/useAuth'
@@ -16,7 +17,7 @@ interface Props {
 
 export const RegisterForm: React.FC<Props> = ({ className, setIsRegister }) => {
 
-    const { auth, isAuthLoading } = useAuth(true)
+    const { auth, isAuthLoading, authError } = useAuth(true)
 
     const { register, handleSubmit, formState: { errors } } = useForm<RegisterSchema>({
         resolver: zodResolver(registerSchema)
@@ -37,8 +38,12 @@ export const RegisterForm: React.FC<Props> = ({ className, setIsRegister }) => {
                 {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
             </div>
             <div className='flex flex-col gap-5 mt-5'>
-                <CustomButton type='submit' variant='purple'>Зарегистрироваться</CustomButton>
-                <CustomButton className='mx-auto ' onClick={() => setIsRegister(false)} variant='purpleBorderless'>Вход</CustomButton>
+                <CustomButton disabled={isAuthLoading} type='submit' variant='purple'>
+                    {isAuthLoading && <Spinner className='text-white' />}
+                    Зарегистрироваться
+                </CustomButton>
+                <CustomButton disabled={isAuthLoading} className='' onClick={() => setIsRegister(false)} variant='purpleBorderless'>Вход</CustomButton>
+                {(authError?.message == "Network Error") && <span className='text-center font-semibold'>Ошибка при соединении с сервером.<br />Повторите попытку позже</span>}
             </div>
         </form>
     )
