@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { Container } from '~/components/container'
 import { CustomButton } from '~/components/custom-button'
 import { useProfile } from '~/hooks/useProfile'
@@ -24,9 +25,9 @@ export const Welcome: React.FC<Props> = ({ className }) => {
                         <span className='font-bold text-6xl'>Создайте <br /> вишлист легко</span>
                         <p className='font-normal text-xl my-6'>Хотите поделиться своими желаниями с друзьями и близкими? Наш сервис поможет вам быстро создать и управлять вашим персональным вишлистом.</p>
                         <CustomButton asChild variant='purple'>
-                            <a href={user ? PUBLIC_URL.profile(user.id) : PUBLIC_URL.auth()}>
+                            <Link to={user ? PUBLIC_URL.profile(user.id) : PUBLIC_URL.auth()}>
                                 Создать вишлист
-                            </a>
+                            </Link>
                         </CustomButton>
                     </div>
 

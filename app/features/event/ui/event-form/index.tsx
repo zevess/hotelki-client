@@ -14,7 +14,7 @@ import { useGetEventBySlug } from '~/hooks/queries/event/useGetEventBySlug'
 import { useUpdateEvent } from '~/hooks/queries/event/useUpdateEvent'
 import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
-import { priorities } from '~/lib/types/priorities'
+import { priorities } from '~/lib/types/priorities.types'
 
 interface Props {
     className?: string,

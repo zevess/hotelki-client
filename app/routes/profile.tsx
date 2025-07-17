@@ -1,8 +1,6 @@
 import { ProfilePage } from "~/pages/profile";
-
 import { userService } from "~/entities/user/user.service";
 import type { Route } from "./+types/profile";
-
 
 
 export function meta({ matches }: Route.MetaArgs) {

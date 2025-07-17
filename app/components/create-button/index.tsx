@@ -3,6 +3,7 @@ import { CustomButton } from '../custom-button'
 import type { IButtonVariants } from '../custom-button/model/types'
 import { useProfile } from '~/hooks/useProfile'
 import { PUBLIC_URL } from '~/lib/config/url.config'
+import { Link } from 'react-router'
 
 interface Props {
     className?: string,
@@ -15,7 +16,7 @@ export const CreateButton: React.FC<Props> = ({ className, variant, href }) => {
 
     return (
         <CustomButton asChild variant={variant}>
-            <a href={user ? href : PUBLIC_URL.auth()}>Создать</a>
+            <Link to={user ? href : PUBLIC_URL.auth()}>Создать</Link>
         </CustomButton>
     )
 }

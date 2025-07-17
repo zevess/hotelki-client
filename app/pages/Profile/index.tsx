@@ -10,6 +10,7 @@ import { EventIcon } from '~/features/event/ui/event-icon'
 import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
 import { useAuthStore } from '~/lib/store/authStore'
 import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
+import { Link } from 'react-router'
 
 
 interface Props {
@@ -36,14 +37,14 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                     <AvatarImage src={userData?.avatar || 'https://github.com/zevess.png '} />
                 </Avatar>
                 <div>
-                    <span className='font-open-sans font-bold text-xl'>Привет, {userData?.name} </span>
+                    <span className='font-open-sans font-bold text-xl'>{isSameUser && "Привет,"} {userData?.name} </span>
                     {(user && isSameUser) && <ProfileEditButton />}
                 </div>
             </div>
             <div className='mt-10 flex flex-col'>
                 <div className='flex justify-between items-center'>
                     <span className='font-open-sans font-bold text-xl'>События</span>
-                    <a href={PUBLIC_URL.events(userData?.id)} className='font-open-sans text-base font-normal hover:text-[#C084FC]'>Посмотреть все</a>
+                    <Link to={PUBLIC_URL.events(userData?.id)} className='font-open-sans text-base font-normal hover:text-[#C084FC]'>Посмотреть все</Link>
                 </div>
 
                 <div className='flex flex-wrap gap-3 mt-[3px]'>

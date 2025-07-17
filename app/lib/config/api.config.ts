@@ -7,5 +7,5 @@ export const API_URL = {
     event: (url = '') => API_URL.root(`/event${url}`),
     wish: (url = '') => API_URL.root(`/wish${url}`),
     user: (url = '') => API_URL.root(`/user${url}`),
-
+    
 }

@@ -35,7 +35,7 @@ export const EventsPage: React.FC<Props> = ({ className, slug, userData }) => {
         setCurrentUser(userData)
     }, [])
 
-    if(!userData){
+    if (!userData) {
         console.log("FEFEWFEW")
     }
 
@@ -46,6 +46,8 @@ export const EventsPage: React.FC<Props> = ({ className, slug, userData }) => {
                 <CreateButton href={slug ? PUBLIC_URL.wishesCreate() : PUBLIC_URL.eventCreate()} variant='purpleOutline' />
             </div>
             <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-normal'>
+
+                {events?.length == 0 && <span className='font-inter text-xl font-semibold text-center mx-auto mt-6'>Тут еще нет событий🙁</span>}
 
                 {!slug && events?.map((item, index) => (
                     <EventItem key={index} eventData={item} />

@@ -1,17 +1,3 @@
-// import { differenceInDays, isAfter } from "date-fns";
-
-// export const getTimeRemaining = (targetDateISO: string): string => {
-//     const now = new Date();
-//     const targetDate = new Date(targetDateISO);
-//     if (!isAfter(targetDate, now)) {
-//         return `${targetDate}`
-//     }
-
-//     const remaining = differenceInDays(targetDate, now);
-
-//     return `Осталось ${remaining} дней`
-
-// }
 import { differenceInDays, differenceInHours, differenceInMinutes, isAfter } from "date-fns";
 
 export const getRemainingTime = (targetDateISO: string): string => {

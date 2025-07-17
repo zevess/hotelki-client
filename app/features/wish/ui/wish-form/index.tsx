@@ -18,7 +18,7 @@ import { useGetWishBySlug } from '~/hooks/queries/wish/useGetWishBySlug'
 import { useUpdateWish } from '~/hooks/queries/wish/useUpdateWish'
 import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
-import { priorities } from '~/lib/types/priorities'
+import { priorities } from '~/lib/types/priorities.types'
 
 
 interface Props {
@@ -76,7 +76,6 @@ export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
             emoji: emoji,
             eventId: isEventDisabled ? null : event
         }
-        // console.log(fullData)
         isEditing ? updateWish(fullData) : createWish(fullData)
     }
 

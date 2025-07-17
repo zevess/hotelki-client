@@ -9,6 +9,7 @@ import { CopyToClipboard } from '~/components/copy-to-clipboard'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useAuthStore } from '~/lib/store/authStore'
 import { OptionsDropdown } from '~/components/options-dropdown'
+import { Link } from 'react-router'
 
 interface Props {
     className?: string,
@@ -35,14 +36,14 @@ export const WishItem: React.FC<Props> = ({ className, wishData, eventSlug, even
             </div>
             <div className='h-9'>
                 {wishData.link && <div className='bg-white flex items-center justify-between py-1.5 px-3 rounded-xl'>
-                    <a href={wishData.link} className='font-space-mono text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis hover:text-[#C084FC]'>
+                    <Link to={wishData.link} className='font-space-mono text-sm text-center whitespace-nowrap overflow-hidden text-ellipsis hover:text-[#C084FC]'>
                         {wishData.link}
-                    </a>
+                    </Link>
                     <CopyToClipboard textToCopy={wishData.link} />
                 </div>}
 
             </div>
-            {eventSlug && <a href={PUBLIC_URL.eventSlug(wishData.userId, eventSlug)} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit transition duration-200 hover:bg-gray-100'>{eventTitle}</a>}
+            {eventSlug && <Link to={PUBLIC_URL.eventSlug(wishData.userId, eventSlug)} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit transition duration-200 hover:bg-gray-100'>{eventTitle}</Link>}
         </div>
     )
 }

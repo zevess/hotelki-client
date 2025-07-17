@@ -6,6 +6,8 @@ export const PUBLIC_URL = {
     auth: () => PUBLIC_URL.root('/auth'),
 
     profile: (userId = '') => PUBLIC_URL.root(`/profile/${userId}`),
+    profileEdit: () => PUBLIC_URL.root(`/profile/edit`),
+
     wishes: (userId = '') => PUBLIC_URL.root(`/wishes/${userId}`),
     events: (userId = '') => PUBLIC_URL.root(`/events/${userId}`),
     eventSlug: (userId = '', slug = '') => PUBLIC_URL.root(`/events/${userId}/${slug}`),

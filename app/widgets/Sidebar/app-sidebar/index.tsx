@@ -22,8 +22,6 @@ interface Props {
 export const AppSidebar: React.FC<Props> = ({ className }) => {
 
     const navigate = useNavigate()
-    // const params = useParams()
-
     const { setCurrentUser, currentUser, user } = useAuthStore()
 
     const { mutate: logout } = useMutation({

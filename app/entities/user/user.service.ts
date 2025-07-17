@@ -1,6 +1,8 @@
 import { api, apiWithAuth } from "~/lib/api/api.interceptor";
 import { API_URL } from "~/lib/config/api.config";
 import type { IUser, IUserUpdate } from "~/entities/user/user.types";
+import axios from "axios";
+import { type IImgbbResponse } from "~/lib/types/imgbb.types";
 
 class UserService {
     async getProfile() {
@@ -19,6 +21,20 @@ class UserService {
 
         return data
     }
+
+    // async uploadUserAvatar(file: File) {
+    //     const data = new FormData();
+    //     data.set('key', `63ac10bfee095f5bc43ea6522a93ffdd`);
+    //     data.append('image', file)
+    //     const response = await api<IImgbbResponse>({
+    //         url: 'https://api.imgbb.com/1/upload',
+    //         method: "POST",
+    //         data
+    //     })
+    //     // const response = await axios.post('https://api.imgbb.com/1/upload', body);
+    //     return response.data.data.url;
+
+    // }
 
     async editUser(data: IUserUpdate) {
         const response = await apiWithAuth<IUser>({

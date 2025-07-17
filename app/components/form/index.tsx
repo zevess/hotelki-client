@@ -8,7 +8,7 @@ import { RadioFormGroup } from '../radio-form-group'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { priorities } from '~/lib/types/priorities'
+import { priorities } from '~/lib/types/priorities.types'
 import EmojiPicker from 'emoji-picker-react'
 import { EmojiChoose } from '../emoji/emoji-select'
 

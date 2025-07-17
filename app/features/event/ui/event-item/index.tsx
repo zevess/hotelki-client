@@ -12,6 +12,7 @@ import { PUBLIC_URL } from '~/lib/config/url.config'
 import { OptionsDropdown } from '~/components/options-dropdown'
 import { useAuthStore } from '~/lib/store/authStore'
 import { pluralize, } from '~/lib/pluralize'
+import { Link } from 'react-router'
 
 
 interface Props {
@@ -33,7 +34,7 @@ export const EventItem: React.FC<Props> = ({ className, eventData }) => {
     const wishesCount = pluralize(wishes.length, ['хотелка', "хотелки", "хотелок"])
 
     return (
-        <a href={PUBLIC_URL.eventSlug(eventData.userId, eventData.slug)}>
+        <Link to={PUBLIC_URL.eventSlug(eventData.userId, eventData.slug)}>
             <Card className='w-full sm:w-[261px] sm:h-[284px] flex flex-col justify-between p-6 cursor-pointer transition duration-200 border-2 border-transparent shadow-none hover:border-[#C084FC]'>
                 <CardHeader className='flex justify-between items-center h-10 p-0 m-0'>
                     <div className='flex flex-col'>
@@ -63,6 +64,6 @@ export const EventItem: React.FC<Props> = ({ className, eventData }) => {
 
                 </CardFooter>
             </Card>
-        </a>
+        </Link>
     )
 }

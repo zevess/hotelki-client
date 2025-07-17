@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { CustomButton } from '~/components/custom-button'
 import { Spinner } from '~/components/ui/spinner'
 import { useProfile } from '~/hooks/useProfile'
+import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useAuthStore } from '~/lib/store/authStore'
 
 interface Props {
@@ -15,12 +17,12 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <header className='flex h-14 mb-5 items-center justify-between sticky top-0 z-50 bg-gray-100'>
-      <a href='/' className='font-roboto font-black text-base'>
+      <Link to={PUBLIC_URL.root()} className='font-roboto font-black text-base'>
         ХОТЕЛКИ
-      </a>
+      </Link>
 
       <CustomButton asChild variant='purpleOutline'>
-        <a href={!user ? "/auth" : `/profile/${user?.id}` }>{!user ? "Войти" : "Профиль"}</a>
+        <Link to={!user ? PUBLIC_URL.auth() : PUBLIC_URL.profile(user.id) }>{!user ? "Войти" : "Профиль"}</Link>
       </CustomButton>
     </header>
   )
