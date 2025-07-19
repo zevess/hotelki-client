@@ -15,6 +15,8 @@ interface Props {
 
 export const DashboardLayout: React.FC<Props> = ({ className }) => {
 
+    useProfile()
+
     return (
         <>
             <Container>

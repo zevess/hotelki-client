@@ -7,10 +7,12 @@ import { Input } from '~/components/ui/input';
 interface Props {
     className?: string;
     avatar?: string | null
-    setImage: React.Dispatch<React.SetStateAction<File | null>>
+    setImage: React.Dispatch<React.SetStateAction<File | null>>,
+    setDefaultImage: React.Dispatch<React.SetStateAction<boolean>>,
+    isDefaultImage: boolean
 }
 
-export const AvatarUploader: React.FC<Props> = ({ avatar, setImage }) => {
+export const AvatarUploader: React.FC<Props> = ({ avatar, setImage, setDefaultImage, isDefaultImage }) => {
 
     const [file, setFile] = React.useState<string | null>(avatar ? avatar : null);
     const fileInputRef = React.useRef<HTMLInputElement>(null)
@@ -32,11 +34,11 @@ export const AvatarUploader: React.FC<Props> = ({ avatar, setImage }) => {
     return (
         <div className='flex items-center h-14 gap-5 mt-3 '>
             {file && <Avatar className='w-[56px] h-[56px]'>
-                <AvatarImage src={file} />
+                <AvatarImage src={isDefaultImage ? "https://i.ibb.co/chBSqBxn/default-avatar.jpg" : file} />
             </Avatar>}
             <Input type='file' accept='image/*' className='hidden' ref={fileInputRef} onChange={handleImageSelect} />
             <CustomButton variant='purple' onClick={triggerFileInput}>Сменить фото</CustomButton>
-            <CustomButton variant='redOutline'>Удалить фото</CustomButton>
+            <CustomButton variant='redOutline' onClick={() => setDefaultImage(true)}>Удалить фото</CustomButton>
         </div>
     );
 };

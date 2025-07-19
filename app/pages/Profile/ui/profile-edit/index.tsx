@@ -1,7 +1,5 @@
 import React from 'react'
-import { Avatar, AvatarImage } from '~/components/ui/avatar'
 import { cn } from '~/lib/utils'
-
 import { Input } from '~/components/ui/input'
 import { CustomButton } from '~/components/custom-button'
 import { useProfile } from '~/hooks/useProfile'
@@ -12,9 +10,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router'
 import { useAuthStore } from '~/lib/store/authStore'
 import { AvatarUploader } from '~/features/user/ui/avatar-upload'
-import { userService } from '~/entities/user/user.service'
+
 import { useImageUpload } from '~/hooks/useImageUpload'
-import { uploadImage } from '~/lib/uploadImage'
+
 
 interface Props {
     className?: string
@@ -22,11 +20,13 @@ interface Props {
 
 export const ProfileEditPage: React.FC<Props> = ({ className }) => {
 
-    const { edit, isUserEditing } = useEditUser()
     const { user } = useAuthStore()
+    const { imageUpload, uploadedImage, isImageUploading } = useImageUpload()
+    const { edit, isUserEditing } = useEditUser()
     const navigate = useNavigate()
 
-    const [image, setImage] = React.useState<File | null>(null)
+    const [newImage, setNewImage] = React.useState<File | null>(null)
+    const [isDefaultImage, setIsDefaultImage] = React.useState(false)
 
 
     React.useEffect(() => {
@@ -42,17 +42,23 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
 
     const onSubmit: SubmitHandler<UserSchema> = async (data) => {
 
-        let currentImage = user?.avatar
-        const newAvatar = image && await uploadImage(image)
-
-        const fullData = {
-            name: data.name,
-            avatar: newAvatar ? newAvatar : currentImage
+        if (newImage) {
+            imageUpload(newImage, {
+                onSuccess: (uploadedImageUrl) => {
+                    edit({
+                        name: data.name,
+                        avatar: uploadedImageUrl
+                    })
+                }
+            })
+        } else {
+            edit({
+                name: data.name,
+                avatar: isDefaultImage ? "https://i.ibb.co/chBSqBxn/default-avatar.jpg" : user?.avatar 
+            })
         }
 
-        edit(fullData);
     }
-
 
     return (
         <div className={cn(
@@ -61,13 +67,13 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
         )}>
             <div className='flex flex-col'>
                 <span className='font-inter text-base'>Фотография</span>
-                <AvatarUploader setImage={setImage} avatar={user?.avatar} />
+                <AvatarUploader setImage={setNewImage} avatar={user?.avatar} setDefaultImage={setIsDefaultImage} isDefaultImage={isDefaultImage} />
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex flex-col '>
                         <Input {...register('name')} className='h-12 my-5' placeholder='Имя' />
                         {/* <Input {...register('email')} className='h-12' placeholder='Email' /> */}
-                        <CustomButton disabled={isUserEditing} type='submit' className='ml-auto my-5' variant='purple'>Сохранить</CustomButton>
+                        <CustomButton disabled={isImageUploading} type='submit' className='ml-auto my-5' variant='purple'>Сохранить</CustomButton>
                     </div>
                 </form>
 
