@@ -1,6 +1,7 @@
 import { WishesPage } from "~/pages/wishes";
 import type { Route } from "./+types/wishes";
 import { userService } from "~/entities/user/user.service";
+import { wishService } from "~/entities/wish/wish.service";
 
 
 export function meta({ }: Route.MetaArgs) {
@@ -12,9 +13,10 @@ export function meta({ }: Route.MetaArgs) {
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     const userData = await userService.getUser(params.userId)
-    return userData 
+    const wishesData = await wishService.getByUser(params.userId)
+    return { userData, wishesData }
 }
 
 export default function Wishes({ loaderData }: Route.ComponentProps) {
-    return <WishesPage userData={loaderData} title={"Все хотелки"}  />
+    return <WishesPage userData={loaderData.userData} title={"Все хотелки"} wishesData={loaderData.wishesData} />
 }

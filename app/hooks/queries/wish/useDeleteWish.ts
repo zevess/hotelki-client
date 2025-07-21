@@ -21,7 +21,6 @@ export const useDeleteWish = () => {
                 queryKey: ['get wishes by user']
             })
             toast.success("Хотелка удалена")
-            // navigate(PUBLIC_URL.events(data.data.userId))
         },
         onError(error) {
             if (error.message) {

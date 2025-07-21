@@ -11,16 +11,16 @@ import { userService } from "~/entities/user/user.service"
 import { toast } from "sonner"
 import axios from "axios"
 
-export const useEditUser = () => {
+export const useUpdateUser = () => {
 
     const navigate = useNavigate()
     const { setUser, setCurrentUser } = useAuthStore()
 
 
-    const { mutate: edit, isPending: isUserEditing } = useMutation({
-        mutationKey: ['edit user'],
+    const { mutate: update, isPending: isUserUpdating } = useMutation({
+        mutationKey: ['update user'],
         mutationFn: (data: IUserUpdate) =>
-            userService.editUser(data),
+            userService.updateUser(data),
         onSuccess(data) {
             setUser(data.data)
             setCurrentUser(data.data)
@@ -28,8 +28,10 @@ export const useEditUser = () => {
             toast.success("Профиль обновлён")
         },
         onError(error) {
-            if (axios.isAxiosError(error)) {
-                
+            toast.error("Ошибка при обновлении профиля. Попробуйте позже :( ")
+
+            if (error.message) {
+                console.log(error.message)
             } else {
                 console.log("Ошибка при обновлении профиля")
             }
@@ -38,10 +40,10 @@ export const useEditUser = () => {
 
     return useMemo(
         () => ({
-            edit,
-            isUserEditing
+            update,
+            isUserUpdating
         }),
-        [edit, isUserEditing]
+        [update, isUserUpdating]
     )
 
 }

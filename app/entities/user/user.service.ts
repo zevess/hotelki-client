@@ -22,7 +22,7 @@ class UserService {
         return data
     }
 
-    async editUser(data: IUserUpdate) {
+    async updateUser(data: IUserUpdate) {
         const response = await apiWithAuth<IUser>({
             url: API_URL.user('/update'),
             method: "PATCH",

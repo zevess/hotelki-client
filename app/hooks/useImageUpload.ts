@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { useMemo } from "react"
+import { toast } from "sonner"
 import { uploadImage } from "~/lib/uploadImage"
 
 export const useImageUpload = () => {
@@ -11,7 +12,8 @@ export const useImageUpload = () => {
             // console.log(data)
         },
         onError(error) {
-            console.log(error)
+            toast.error("Ошибка при загрузке изображения. Попробуйте позже :( ")
+            console.log(error.message)
         }
     })
 

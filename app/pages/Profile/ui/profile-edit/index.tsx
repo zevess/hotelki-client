@@ -3,7 +3,7 @@ import { cn } from '~/lib/utils'
 import { Input } from '~/components/ui/input'
 import { CustomButton } from '~/components/custom-button'
 import { useProfile } from '~/hooks/useProfile'
-import { useEditUser } from '~/hooks/queries/user/useEditUser'
+
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { userSchema, type UserSchema } from '~/entities/user/user.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,6 +12,7 @@ import { useAuthStore } from '~/lib/store/authStore'
 import { AvatarUploader } from '~/features/user/ui/avatar-upload'
 
 import { useImageUpload } from '~/hooks/useImageUpload'
+import { useUpdateUser } from '~/hooks/queries/user/useUpdateUser'
 
 
 interface Props {
@@ -22,7 +23,7 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
 
     const { user } = useAuthStore()
     const { imageUpload, uploadedImage, isImageUploading } = useImageUpload()
-    const { edit, isUserEditing } = useEditUser()
+    const { update, isUserUpdating } = useUpdateUser()
     const navigate = useNavigate()
 
     const [newImage, setNewImage] = React.useState<File | null>(null)
@@ -45,16 +46,16 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
         if (newImage) {
             imageUpload(newImage, {
                 onSuccess: (uploadedImageUrl) => {
-                    edit({
+                    update({
                         name: data.name,
                         avatar: uploadedImageUrl
                     })
                 }
             })
         } else {
-            edit({
+            update({
                 name: data.name,
-                avatar: isDefaultImage ? "https://i.ibb.co/chBSqBxn/default-avatar.jpg" : user?.avatar 
+                avatar: isDefaultImage ? "https://i.ibb.co/chBSqBxn/default-avatar.jpg" : user?.avatar
             })
         }
 
@@ -76,7 +77,6 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
                         <CustomButton disabled={isImageUploading} type='submit' className='ml-auto my-5' variant='purple'>Сохранить</CustomButton>
                     </div>
                 </form>
-
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useMemo } from "react"
 import { useNavigate } from "react-router"
+import { toast } from "sonner"
 import { eventService } from "~/entities/event/event.service"
 import type { IEvent } from "~/entities/event/event.types"
 import { wishService } from "~/entities/wish/wish.service"
@@ -16,8 +17,10 @@ export const useUpdateWish = (wishId: string) => {
             wishService.update(data, wishId),
         onSuccess(data) {
             navigate(PUBLIC_URL.wishes(data.data.userId))
+            toast.success("Хотелка обновлена")
         },
         onError(error) {
+            toast.error("Ошибка при обновлении хотелки. Попробуйте позже :( ")
             if (error.message) {
                 console.log(error.message)
             } else {

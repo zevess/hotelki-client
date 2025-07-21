@@ -12,6 +12,7 @@ import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useAuthStore } from '~/lib/store/authStore'
 import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
 import type { IUser } from '~/entities/user/user.types'
+import type { IWishResponse } from '~/entities/wish/wish.types'
 
 
 interface Props {
@@ -19,12 +20,12 @@ interface Props {
     title: string,
     // userId: string,
     userData: IUser,
+    wishesData: IWishResponse[]
 }
 
-export const WishesPage: React.FC<Props> = ({ className, title, userData }) => {
+export const WishesPage: React.FC<Props> = ({ className, title, userData, wishesData }) => {
 
-    const { wishes } = useGetWishes(userData.id)
-    console.log(wishes)
+    // const { wishes } = useGetWishes(userData.id)
 
     const { setCurrentUser } = useAuthStore()
 
@@ -40,9 +41,9 @@ export const WishesPage: React.FC<Props> = ({ className, title, userData }) => {
             </div>
             <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
 
-                {wishes?.length == 0 && <span className='font-inter text-xl font-semibold text-center mx-auto mt-6'>Тут еще нет хотелок🙁</span>}
+                {wishesData?.length == 0 && <span className='font-inter text-xl font-semibold text-center mx-auto mt-6'>Тут еще нет хотелок🙁</span>}
 
-                {wishes && wishes.map((item, index) => (
+                {wishesData && wishesData.map((item, index) => (
                     <WishItem key={index} wishData={item} eventSlug={item.event && item.event.slug} eventTitle={item.event && item.event.title} />
                 ))}
             </div>

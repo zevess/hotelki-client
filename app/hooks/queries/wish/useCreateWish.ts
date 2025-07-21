@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useMemo } from "react"
 import { useNavigate } from "react-router"
+import { toast } from "sonner"
 import { eventService } from "~/entities/event/event.service"
 import type { IEvent } from "~/entities/event/event.types"
 import { wishService } from "~/entities/wish/wish.service"
@@ -16,8 +17,12 @@ export const useCreateWish = () => {
             wishService.create(data),
         onSuccess(data) {
             navigate(PUBLIC_URL.wishes(data.data.userId))
+            toast.success("Хотелка создана")
         },
         onError(error) {
+
+            toast.error("Ошибка при создании хотелки. Попробуйте позже :( ")
+
             if (error.message) {
                 console.log(error.message)
             } else {

@@ -18,6 +18,7 @@ export const useUpdateEvent = (eventId: string) => {
             toast.success("Событие обновлено")
         },
         onError(error) {
+            toast.error("Ошибка при обновлении события. Попробуйте позже :( ")
             if (error.message) {
                 console.log(error.message)
             } else {

@@ -5,6 +5,7 @@ import { Spinner } from '~/components/ui/spinner'
 import { useProfile } from '~/hooks/useProfile'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useAuthStore } from '~/lib/store/authStore'
+import { MobileSidebar } from '~/widgets/sidebar/mobile-sidebar'
 
 interface Props {
   className?: string,
@@ -22,8 +23,11 @@ export const Header: React.FC<Props> = ({ className }) => {
       </Link>
 
       <CustomButton asChild variant='purpleOutline'>
-        <Link to={!user ? PUBLIC_URL.auth() : PUBLIC_URL.profile(user.id) }>{!user ? "Войти" : "Профиль"}</Link>
+        <Link to={!user ? PUBLIC_URL.auth() : PUBLIC_URL.profile(user.id)}>{!user ? "Войти" : "Профиль"}</Link>
       </CustomButton>
+
+      <MobileSidebar />
+
     </header>
   )
 }

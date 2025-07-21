@@ -18,6 +18,7 @@ export const useCreateEvent = () => {
             toast.success("Событие создано")
         },
         onError(error) {
+            toast.error("Ошибка при создании события. Попробуйте позже :( ")
             if (error.message) {
                 console.log(error.message)
             } else {

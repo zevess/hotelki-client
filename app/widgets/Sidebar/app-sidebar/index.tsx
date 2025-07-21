@@ -1,6 +1,5 @@
 import React from 'react'
 import { Avatar, AvatarImage } from '~/components/ui/avatar'
-import SignOutIcon from '../../../components/icons/SignOut.svg?react'
 import { cn } from '~/lib/utils'
 import { LinkItem } from './ui/link-item'
 import { useNavigationItems } from '../model/hooks/useNavigationItems'
@@ -13,6 +12,8 @@ import { useAuthStore } from '~/lib/store/authStore'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
 import { OptionsAlertDialog } from '~/components/options-alert-dialog'
+import { useLogout } from '~/hooks/queries/user/useLogout'
+import { SignOutButton } from '~/components/sign-out-button'
 
 
 interface Props {
@@ -24,14 +25,7 @@ export const AppSidebar: React.FC<Props> = ({ className }) => {
     const navigate = useNavigate()
     const { setCurrentUser, currentUser, user } = useAuthStore()
 
-    const { mutate: logout } = useMutation({
-        mutationKey: ['logout'],
-        mutationFn: () => authService.logout(),
-        onSuccess() {
-            useAuthStore.persist.clearStorage()
-            navigate(PUBLIC_URL.auth())
-        }
-    })
+    const { logout } = useLogout()
 
     const items = useNavigationItems(currentUser?.id, Boolean(user?.id));
 
@@ -49,10 +43,8 @@ export const AppSidebar: React.FC<Props> = ({ className }) => {
                         <LinkItem key={index} item={item} />
                     )}
                 </div>
-                <OptionsAlertDialog title='Вы уверены?' action='Выйти' onConfirm={() => logout()}><div className='flex flex-row p-1 gap-4 min-h-8 transition duration-200 cursor-pointer hover:bg-gray-100 rounded-xl '>
-                    <SignOutIcon className='text-[#EF4444]' />
-                    <span className='text-xs sm:text-sm md:text-base font-semibold text-[#EF4444] px-4'>Выйти из профиля</span>
-                </div></OptionsAlertDialog>
+                <SignOutButton />
+
 
             </div>
         </div>

@@ -21,7 +21,7 @@ export const DashboardLayout: React.FC<Props> = ({ className }) => {
         <>
             <Container>
                 <Header />
-
+                
                 <div className="flex flex-1 overflow-hidden">
                     <AppSidebar />
                     <div className="w-full flex-1 overflow-auto">
