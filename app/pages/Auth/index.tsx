@@ -10,34 +10,49 @@ import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
 import { Container } from '~/components/container'
 import { Header } from '~/widgets/header/ui'
+import { Spinner } from '~/components/ui/spinner'
+import { useVerification } from '~/hooks/useVerification'
 
 interface Props {
-    className?: string
+    className?: string,
+    token?: string
 }
 
-export const AuthPage: React.FC<Props> = ({ className }) => {
-    const [isRegister, setIsRegister] = React.useState(false)
+export const AuthPage: React.FC<Props> = ({ className, token }) => {
+    const [authType, setAuthType] = React.useState<"register" | "login" | "verify">(token ? "verify" : "login")
 
     const navigate = useNavigate();
+    const { user } = useProfile()
 
-    // const { user } = useProfile()
-    // const { user } = useAuthStore()
+    const { verify, isVerifying } = useVerification()
 
-    // React.useEffect(() => {
-    //     if (user) {
-    //         navigate(`/profile/${user.id}`);
-    //     }
-    // }, [])
+
+    React.useEffect(() => {
+        user && navigate(-1)
+
+        if (token && !isVerifying) {
+            verify(token)
+        }
+
+    }, [token])
 
 
     return (
         <Container>
-            <Header/>
+            <Header />
             <div className='flex-1 flex justify-center items-center'>
                 <div className={cn('w-[520px] bg-white p-6 rounded-[20px] ', className)}>
                     <div className='w-full flex flex-col gap-5'>
-                        <span className='font-open-sans font-bold text-xl mx-auto'>{isRegister ? "Регистрация" : "Вход"}</span>
-                        {isRegister ? <RegisterForm setIsRegister={setIsRegister} /> : <LoginForm setIsRegister={setIsRegister} />}
+
+                        <span className='font-open-sans font-bold text-xl mx-auto'>
+                            {authType == 'register' && "Регистрация"}
+                            {authType == 'login' && "Вход"}
+                            {authType == 'verify' && "Подтверждение"}
+                        </span>
+
+                        {(authType == 'verify' && isVerifying) && <Spinner />}
+                        {authType == 'login' && <LoginForm setAuthType={setAuthType} />}
+                        {authType == 'register' && <RegisterForm setAuthType={setAuthType} />}
                     </div>
                 </div>
             </div>

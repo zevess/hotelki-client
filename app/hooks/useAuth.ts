@@ -16,11 +16,12 @@ export const useAuth = (isRegister: boolean) => {
     const navigate = useNavigate()
     const { setUser, setCurrentUser } = useAuthStore()
 
-    const { mutate: auth, isPending: isAuthLoading, error: authError } = useMutation({
+    const { mutate: auth, isPending: isAuthLoading, error: authError, isSuccess, data: createdUser } = useMutation({
         mutationKey: ['auth user'],
         mutationFn: (data: IAuth) =>
             authService.main(isRegister ? "register" : 'login', data),
         onSuccess(data) {
+            console.log(data)
             setUser(data.data.user)
             setCurrentUser(data.data.user)
             navigate(PUBLIC_URL.profile(data.data.user.id))
@@ -39,9 +40,9 @@ export const useAuth = (isRegister: boolean) => {
         () => ({
             auth,
             isAuthLoading,
-            authError
+            authError, isSuccess, createdUser
         }),
-        [auth, isAuthLoading, authError]
+        [auth, isAuthLoading, authError, isSuccess, createdUser]
     )
 
 }

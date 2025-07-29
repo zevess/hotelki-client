@@ -11,10 +11,10 @@ import { useAuth } from '~/hooks/useAuth'
 
 interface Props {
     className?: string,
-    setIsRegister: React.Dispatch<React.SetStateAction<boolean>>
+    setAuthType: React.Dispatch<React.SetStateAction<"register" | "login" | "verify">>
 }
 
-export const LoginForm: React.FC<Props> = ({ className, setIsRegister }) => {
+export const LoginForm: React.FC<Props> = ({ className, setAuthType }) => {
 
     const { auth, isAuthLoading, authError } = useAuth(false)
 
@@ -41,7 +41,7 @@ export const LoginForm: React.FC<Props> = ({ className, setIsRegister }) => {
                     {isAuthLoading && <Spinner className='text-white' />}
                     Вход
                 </CustomButton>
-                <CustomButton disabled={isAuthLoading} className='' onClick={() => setIsRegister(true)} variant='purpleBorderless'>Регистрация</CustomButton>
+                <CustomButton disabled={isAuthLoading} className='' onClick={() => setAuthType("register")} variant='purpleBorderless'>Регистрация</CustomButton>
                 {(authError?.message == "Network Error") && <span className='text-center font-semibold'>Ошибка при соединении с сервером.<br />Повторите попытку позже</span>}
 
             </div>

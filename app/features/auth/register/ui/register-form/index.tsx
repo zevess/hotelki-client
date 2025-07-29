@@ -11,13 +11,12 @@ import { useAuth } from '~/hooks/useAuth'
 
 interface Props {
     className?: string,
-    setIsRegister: React.Dispatch<React.SetStateAction<boolean>>
-
+    setAuthType: React.Dispatch<React.SetStateAction<"register" | "login" | "verify">>
 }
 
-export const RegisterForm: React.FC<Props> = ({ className, setIsRegister }) => {
+export const RegisterForm: React.FC<Props> = ({ className, setAuthType }) => {
 
-    const { auth, isAuthLoading, authError } = useAuth(true)
+    const { auth, isAuthLoading, authError, isSuccess, createdUser } = useAuth(true)
 
     const { register, handleSubmit, formState: { errors } } = useForm<RegisterSchema>({
         resolver: zodResolver(registerSchema)
@@ -25,6 +24,12 @@ export const RegisterForm: React.FC<Props> = ({ className, setIsRegister }) => {
 
     const onSubmit: SubmitHandler<RegisterSchema> = (data) => {
         auth(data);
+    }
+
+    if(isSuccess){
+        return (
+            <p>{createdUser?.data?.message}</p>
+        )
     }
 
     return (
@@ -42,7 +47,7 @@ export const RegisterForm: React.FC<Props> = ({ className, setIsRegister }) => {
                     {isAuthLoading && <Spinner className='text-white' />}
                     Зарегистрироваться
                 </CustomButton>
-                <CustomButton disabled={isAuthLoading} className='' onClick={() => setIsRegister(false)} variant='purpleBorderless'>Вход</CustomButton>
+                <CustomButton disabled={isAuthLoading} className='' onClick={() => setAuthType("login")} variant='purpleBorderless'>Вход</CustomButton>
                 {(authError?.message == "Network Error") && <span className='text-center font-semibold'>Ошибка при соединении с сервером.<br />Повторите попытку позже</span>}
             </div>
         </form>

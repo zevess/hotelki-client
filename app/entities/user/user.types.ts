@@ -3,7 +3,9 @@ export interface IUser {
     name: string,
     email: string,
     avatar: string,
-    password: string
+    password: string,
+    role: string,
+    isVerified: boolean
 }
 
 export interface IUserUpdate{

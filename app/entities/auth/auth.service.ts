@@ -5,19 +5,42 @@ import { removeFromStorage, saveTokenStorage } from "./auth.token";
 
 class AuthService {
     async main(type: 'login' | 'register', data: IAuth) {
-        const response = await api<IAuthResponse>({
+        const response = await api({
             url: API_URL.auth(`/${type}`),
             method: 'POST',
             data
         })
 
+        if (type == 'login' || response.data.accessToken)
+            saveTokenStorage(response.data.accessToken)
+
+        return response
+    }
+
+    async sendVerification(email: string) {
+        const response = await api({
+            url: API_URL.sendToken(),
+            method: "POST",
+            data: {
+                "email": email
+            }
+        })
+
+        return response
+    }
+
+    async verify(token: string) {
+        const response = await api<IAuthResponse>({
+            url: API_URL.verify(),
+            method: "POST",
+            data: { "token": token }
+        })
         if (response.data.accessToken)
             saveTokenStorage(response.data.accessToken)
 
         return response
     }
 
-    
     async refresh() {
         const response = await api<IAuthResponse>({
             url: API_URL.auth('/refresh'),
@@ -36,10 +59,10 @@ class AuthService {
             method: 'POST'
         })
 
-        if(response.data) removeFromStorage()
+        if (response.data) removeFromStorage()
 
         return response
-        
+
     }
 
 }

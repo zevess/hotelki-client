@@ -18,7 +18,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
   return (
     <header className='flex h-14 mb-5 items-center justify-between sticky top-0 z-50 bg-gray-100'>
-      <Link to={PUBLIC_URL.root()} className='font-roboto font-black text-base'>
+      <Link to={PUBLIC_URL.home()} className='font-roboto font-black text-base'>
         ХОТЕЛКИ
       </Link>
 

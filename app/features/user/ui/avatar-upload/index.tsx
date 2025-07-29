@@ -32,13 +32,16 @@ export const AvatarUploader: React.FC<Props> = ({ avatar, setImage, setDefaultIm
     }
 
     return (
-        <div className='flex items-center h-14 gap-5 mt-3 '>
+        <div className='flex flex-wrap items-center gap-5 mt-3 '>
             {file && <Avatar className='w-[56px] h-[56px]'>
                 <AvatarImage src={isDefaultImage ? "https://i.ibb.co/chBSqBxn/default-avatar.jpg" : file} />
             </Avatar>}
             <Input type='file' accept='image/*' className='hidden' ref={fileInputRef} onChange={handleImageSelect} />
-            <CustomButton variant='purple' onClick={triggerFileInput}>Сменить фото</CustomButton>
-            <CustomButton variant='redOutline' onClick={() => setDefaultImage(true)}>Удалить фото</CustomButton>
+            <div className='flex flex-wrap gap-5'>
+                <CustomButton variant='purple' onClick={triggerFileInput}>Сменить фото</CustomButton>
+                <CustomButton variant='redOutline' onClick={() => setDefaultImage(true)}>Удалить фото</CustomButton>
+            </div>
+
         </div>
     );
 };

@@ -13,6 +13,9 @@ import { AvatarUploader } from '~/features/user/ui/avatar-upload'
 
 import { useImageUpload } from '~/hooks/useImageUpload'
 import { useUpdateUser } from '~/hooks/queries/user/useUpdateUser'
+import { BadgeCheck } from 'lucide-react'
+import { Separator } from '~/components/ui/separator'
+import { useSendVerification } from '~/hooks/useSendVerification'
 
 
 interface Props {
@@ -24,6 +27,7 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
     const { user } = useAuthStore()
     const { imageUpload, uploadedImage, isImageUploading } = useImageUpload()
     const { update, isUserUpdating } = useUpdateUser()
+    const { sendVerification } = useSendVerification()
     const navigate = useNavigate()
 
     const [newImage, setNewImage] = React.useState<File | null>(null)
@@ -67,7 +71,20 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
             className
         )}>
             <div className='flex flex-col'>
-                <span className='font-inter text-base'>Фотография</span>
+
+                {user?.isVerified == false && <div className='flex flex-col gap-4'>
+                    <span className='text-xl font-semibold'>Аккаунт не подтвержден. Некоторые функции могут быть ограничены</span>
+                    <CustomButton onClick={() => sendVerification(user.email)} variant='purple' className='w-fit'>Подтвердить аккаунт</CustomButton>
+
+                    <Separator className='mb-3' />
+                </div>}
+
+
+                <div className='flex justify-between'>
+                    <span className='font-inter text-base'>Фотография</span>
+                    {user?.isVerified && <BadgeCheck className='mx-1.5' />}
+                </div>
+
                 <AvatarUploader setImage={setNewImage} avatar={user?.avatar} setDefaultImage={setIsDefaultImage} isDefaultImage={isDefaultImage} />
 
                 <form onSubmit={handleSubmit(onSubmit)}>

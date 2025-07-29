@@ -15,7 +15,8 @@ export default [
         route("wishes/create", "routes/wish-create.tsx"),
         route("wishes/:userId/:slug/edit", "routes/wish-edit.tsx")
     ]),
-    route("auth", "routes/auth.tsx")
+    route("auth", "routes/auth.tsx"),
+    route("auth/email-confirmation/:token?", "routes/new-verification.tsx")
 
 
 

@@ -11,6 +11,7 @@ import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
 import { useAuthStore } from '~/lib/store/authStore'
 import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
 import { Link } from 'react-router'
+import { BadgeCheck } from 'lucide-react'
 
 
 interface Props {
@@ -37,7 +38,11 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                     <AvatarImage src={userData?.avatar || 'https://github.com/zevess.png '} />
                 </Avatar>
                 <div>
-                    <span className='font-open-sans font-bold text-xl'>{isSameUser && "Привет,"} {userData?.name} </span>
+                    <div className='flex items-center'>
+                        <span className='font-open-sans font-bold text-xl'>{isSameUser && "Привет,"} {userData?.name} </span>
+                        {userData?.isVerified && <BadgeCheck className='mx-1.5' size={'20px'}/> }
+                    </div>
+
                     {(user && isSameUser) && <ProfileEditButton />}
                 </div>
             </div>
