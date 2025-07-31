@@ -41,6 +41,30 @@ class AuthService {
         return response
     }
 
+    async resetPassword(email: string) {
+        const response = await api({
+            url: API_URL.resetPassword(),
+            method: "POST",
+            data: {
+                "email": email
+            }
+        })
+
+        return response
+    }
+
+    async newPassword(token: string, password: string) {
+        const response = await api({
+            url: API_URL.newPassword(token),
+            method: "POST",
+            data: {
+                "password": password
+            }
+        })
+
+        return response
+    }
+
     async refresh() {
         const response = await api<IAuthResponse>({
             url: API_URL.auth('/refresh'),

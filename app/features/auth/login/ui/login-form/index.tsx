@@ -1,12 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
+import { Link } from 'react-router'
 import { CustomButton } from '~/components/custom-button'
 import { Input } from '~/components/ui/input'
 import { Spinner } from '~/components/ui/spinner'
 import { loginSchema, type LoginSchema } from '~/entities/auth/auth.schema'
 import { authService } from '~/entities/auth/auth.service'
 import { useAuth } from '~/hooks/useAuth'
+import { PUBLIC_URL } from '~/lib/config/url.config'
 
 
 interface Props {
@@ -33,6 +35,7 @@ export const LoginForm: React.FC<Props> = ({ className, setAuthType }) => {
             <div className='flex flex-col gap-2.5'>
                 <Input {...register('email')} placeholder='Email' />
                 {errors.email && <span className='text-red-500'>{errors.email.message}</span>}
+                <Link to={PUBLIC_URL.passwordRecovery()} className='text-[#C084FC] w-fit hover:underline'>Забыли пароль?</Link>
                 <Input {...register('password')} type='password' placeholder='Пароль' />
                 {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
             </div>

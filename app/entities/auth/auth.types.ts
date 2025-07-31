@@ -11,3 +11,8 @@ export interface IAuthResponse {
     user: IUser,
     accessToken: string
 }
+
+export interface IResetPassword{
+    password: string,
+    token: string
+}

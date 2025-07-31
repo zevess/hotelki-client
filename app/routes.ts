@@ -16,7 +16,11 @@ export default [
         route("wishes/:userId/:slug/edit", "routes/wish-edit.tsx")
     ]),
     route("auth", "routes/auth.tsx"),
-    route("auth/email-confirmation/:token?", "routes/new-verification.tsx")
+    route("auth/email-confirmation/:token?", "routes/new-verification.tsx"),
+
+    // route("auth/password-recovery", "routes/password-recovery.tsx"),
+    route("auth/password-recovery/:token?", "routes/password-recovery.tsx")
+
 
 
 
