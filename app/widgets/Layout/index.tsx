@@ -1,13 +1,11 @@
 import React from 'react'
-import { Outlet, useParams } from 'react-router'
+import { Outlet } from 'react-router'
 import { Container } from '~/components/container'
-import { useProfile } from '~/hooks/useProfile'
-import { useAuthStore } from '~/lib/store/authStore'
+import { useProfile } from '~/hooks/auth/useProfile'
 import { Header } from '~/widgets/header/ui'
 import { AppSidebar } from '~/widgets/sidebar/app-sidebar'
 import { FooterSidebar } from '../sidebar/footer-sidebar'
-import { useGetUserProfile } from '~/hooks/queries/user/useGetUserProfile'
-import { Toaster } from '~/components/ui/sonner'
+
 
 interface Props {
     className?: string

@@ -1,8 +1,6 @@
 import { api, apiWithAuth } from "~/lib/api/api.interceptor";
 import { API_URL } from "~/lib/config/api.config";
 import type { IUser, IUserUpdate } from "~/entities/user/user.types";
-import axios from "axios";
-import { type IImgbbResponse } from "~/lib/types/imgbb.types";
 
 class UserService {
     async getProfile() {

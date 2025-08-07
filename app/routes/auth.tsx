@@ -8,10 +8,6 @@ export function meta({ matches }: Route.MetaArgs) {
     ];
 }
 
-// export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-//     return params
-// }
-
 export default function Auth({ loaderData }: Route.ComponentProps) {
     return <AuthPage />
 }

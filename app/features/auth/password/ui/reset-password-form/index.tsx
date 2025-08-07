@@ -5,7 +5,6 @@ import { CustomButton } from '~/components/custom-button'
 import { Input } from '~/components/ui/input'
 import { Spinner } from '~/components/ui/spinner'
 import { resetPasswordSchema, type ResetPasswordSchema } from '~/entities/auth/auth.schema'
-import { useNewPassword } from '~/hooks/password/useNewPassword'
 import { useResetPassword } from '~/hooks/password/useResetPassword'
 
 interface Props {

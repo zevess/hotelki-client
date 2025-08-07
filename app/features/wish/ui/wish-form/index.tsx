@@ -10,13 +10,10 @@ import { Checkbox } from '~/components/ui/checkbox'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { wishSchema, type WishSchema } from '~/entities/wish/wish.schema'
-import { useGetEvent } from '~/hooks/queries/event/useGetEvent'
 import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
-
 import { useCreateWish } from '~/hooks/queries/wish/useCreateWish'
 import { useGetWishBySlug } from '~/hooks/queries/wish/useGetWishBySlug'
 import { useUpdateWish } from '~/hooks/queries/wish/useUpdateWish'
-import { useProfile } from '~/hooks/useProfile'
 import { useAuthStore } from '~/lib/store/authStore'
 import { priorities } from '~/lib/types/priorities.types'
 

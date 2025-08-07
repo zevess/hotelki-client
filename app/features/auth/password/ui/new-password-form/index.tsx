@@ -4,9 +4,9 @@ import { useForm, type SubmitHandler } from 'react-hook-form'
 import { CustomButton } from '~/components/custom-button'
 import { Input } from '~/components/ui/input'
 import { Spinner } from '~/components/ui/spinner'
-import { newPasswordSchema, resetPasswordSchema, type NewPasswordSchema, type ResetPasswordSchema } from '~/entities/auth/auth.schema'
+import { newPasswordSchema, type NewPasswordSchema } from '~/entities/auth/auth.schema'
 import { useNewPassword } from '~/hooks/password/useNewPassword'
-import { useResetPassword } from '~/hooks/password/useResetPassword'
+
 
 interface Props {
     className?: string,
@@ -23,15 +23,12 @@ export const NewPasswordForm: React.FC<Props> = ({ className, token }) => {
     })
 
     const onSubmit: SubmitHandler<NewPasswordSchema> = (data) => {
-
         const newPasswordData = {
             password: data.password,
             token: token
         }
-
         setNewPassword(newPasswordData)
     }
-
 
 
     return (

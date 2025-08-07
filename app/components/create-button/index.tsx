@@ -1,7 +1,7 @@
 import React from 'react'
 import { CustomButton } from '../custom-button'
 import type { IButtonVariants } from '../custom-button/model/types'
-import { useProfile } from '~/hooks/useProfile'
+import { useProfile } from '~/hooks/auth/useProfile'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { Link } from 'react-router'
 

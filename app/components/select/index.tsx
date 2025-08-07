@@ -1,6 +1,6 @@
 import React from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select'
-import type { IEvent, IEventResponse } from '~/entities/event/event.types'
+import type { IEventResponse } from '~/entities/event/event.types'
 
 interface Props {
     className?: string,
@@ -12,8 +12,6 @@ interface Props {
 
 export const SelectInput: React.FC<Props> = ({ className, selectItems, setValue, disabled, defaultValue }) => {
     
-    // const [selectedOption, setSelectedOption] = React.useState(defaultValue)
-
     return (
         <Select value={defaultValue} disabled={disabled} onValueChange={setValue}>
             <SelectTrigger className={className}>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { CustomButton } from '~/components/custom-button'
-import { Spinner } from '~/components/ui/spinner'
-import { useProfile } from '~/hooks/useProfile'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 import { useAuthStore } from '~/lib/store/authStore'
 import { MobileSidebar } from '~/widgets/sidebar/mobile-sidebar'

@@ -7,7 +7,8 @@ export default [
         route("profile/:userId", "routes/profile.tsx"),
         route("profile/edit", "routes/profile-edit.tsx"),
 
-        route("events/:userId/:slug?", "routes/events.tsx"),
+        route("events/:userId", "routes/events.tsx"),
+        route("events/:userId/:slug", "routes/events-slug.tsx"),
         route("events/create", "routes/event-create.tsx"),
         route("events/:userId/:slug/edit", "routes/event-edit.tsx"),
 
@@ -17,8 +18,6 @@ export default [
     ]),
     route("auth", "routes/auth.tsx"),
     route("auth/email-confirmation/:token?", "routes/new-verification.tsx"),
-
-    // route("auth/password-recovery", "routes/password-recovery.tsx"),
     route("auth/password-recovery/:token?", "routes/password-recovery.tsx")
 
 

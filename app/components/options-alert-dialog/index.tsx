@@ -1,9 +1,5 @@
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "../ui/alert-dialog";
-import { Button } from "../ui/button";
-
 import React from 'react'
-import { DropdownMenuItem } from "../ui/dropdown-menu";
-import { Trash2 } from "lucide-react";
 import { cn } from "~/lib/utils";
 
 interface Props {

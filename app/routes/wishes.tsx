@@ -13,10 +13,9 @@ export function meta({ }: Route.MetaArgs) {
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
     const userData = await userService.getUser(params.userId)
-    const wishesData = await wishService.getByUser(params.userId)
-    return { userData, wishesData }
+    return { userData}
 }
 
 export default function Wishes({ loaderData }: Route.ComponentProps) {
-    return <WishesPage userData={loaderData.userData} title={"Все хотелки"} wishesData={loaderData.wishesData} />
+    return <WishesPage userData={loaderData.userData} title={"Все хотелки"} />
 }

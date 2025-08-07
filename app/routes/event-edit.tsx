@@ -1,7 +1,6 @@
-import { EventsPage } from "~/pages/events";
 import { EventEditPage } from "~/pages/events/ui/event-edit";
 import type { Route } from "./+types/event-edit";
-import { eventService } from "~/entities/event/event.service";
+
 
 
 export function meta({ }: Route.MetaArgs) {

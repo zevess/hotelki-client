@@ -1,18 +1,6 @@
 import React from 'react'
-import { Input } from '~/components/ui/input'
 import { cn } from '~/lib/utils'
 import { Title } from '../title'
-import { EmojiIcon } from '../emoji/emoji-icon'
-import { CustomButton } from '../custom-button'
-import { RadioFormGroup } from '../radio-form-group'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { priorities } from '~/lib/types/priorities.types'
-import EmojiPicker from 'emoji-picker-react'
-import { EmojiChoose } from '../emoji/emoji-select'
-
-
 import { EventForm } from '~/features/event/ui/event-form'
 import { WishesForm } from '~/features/wish/ui/wish-form'
 

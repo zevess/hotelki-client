@@ -6,8 +6,7 @@ import { CustomButton } from '~/components/custom-button'
 import { Input } from '~/components/ui/input'
 import { Spinner } from '~/components/ui/spinner'
 import { loginSchema, type LoginSchema } from '~/entities/auth/auth.schema'
-import { authService } from '~/entities/auth/auth.service'
-import { useAuth } from '~/hooks/useAuth'
+import { useAuth } from '~/hooks/auth/useAuth'
 import { PUBLIC_URL } from '~/lib/config/url.config'
 
 

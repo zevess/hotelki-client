@@ -1,17 +1,14 @@
 import React from 'react'
-import { CustomButton } from '~/components/custom-button'
 import { LoginForm } from '~/features/auth/login/ui/login-form'
 import { RegisterForm } from '~/features/auth/register/ui/register-form'
-import { Input } from '~/components/ui/input'
 import { cn } from '~/lib/utils'
-
-import { useNavigate } from 'react-router'
-import { useProfile } from '~/hooks/useProfile'
-import { useAuthStore } from '~/lib/store/authStore'
+import { redirect, useNavigate } from 'react-router'
+import { useProfile } from '~/hooks/auth/useProfile'
 import { Container } from '~/components/container'
 import { Header } from '~/widgets/header/ui'
 import { Spinner } from '~/components/ui/spinner'
-import { useVerification } from '~/hooks/useVerification'
+import { useVerification } from '~/hooks/verification/useVerification'
+import { PUBLIC_URL } from '~/lib/config/url.config'
 
 interface Props {
     className?: string,
@@ -26,9 +23,9 @@ export const AuthPage: React.FC<Props> = ({ className, token }) => {
 
     const { verify, isVerifying } = useVerification()
 
+    
 
     React.useEffect(() => {
-        user && navigate(-1)
 
         if (token && !isVerifying) {
             verify(token)

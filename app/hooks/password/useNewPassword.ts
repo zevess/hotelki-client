@@ -6,7 +6,6 @@ import { toast } from "sonner"
 import { authService } from "~/entities/auth/auth.service"
 import type { IResetPassword } from "~/entities/auth/auth.types"
 import { PUBLIC_URL } from "~/lib/config/url.config"
-import { useAuthStore } from "~/lib/store/authStore"
 
 export const useNewPassword = () => {
     const navigate = useNavigate()

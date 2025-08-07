@@ -2,20 +2,17 @@ import React from 'react'
 import { cn } from '~/lib/utils'
 import { Input } from '~/components/ui/input'
 import { CustomButton } from '~/components/custom-button'
-import { useProfile } from '~/hooks/useProfile'
-
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { userSchema, type UserSchema } from '~/entities/user/user.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router'
 import { useAuthStore } from '~/lib/store/authStore'
 import { AvatarUploader } from '~/features/user/ui/avatar-upload'
-
 import { useImageUpload } from '~/hooks/useImageUpload'
 import { useUpdateUser } from '~/hooks/queries/user/useUpdateUser'
 import { BadgeCheck } from 'lucide-react'
 import { Separator } from '~/components/ui/separator'
-import { useSendVerification } from '~/hooks/useSendVerification'
+import { useSendVerification } from '~/hooks/verification/useSendVerification'
 
 
 interface Props {
@@ -90,7 +87,6 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex flex-col '>
                         <Input {...register('name')} className='h-12 my-5' placeholder='Имя' />
-                        {/* <Input {...register('email')} className='h-12' placeholder='Email' /> */}
                         <CustomButton disabled={isImageUploading} type='submit' className='ml-auto my-5' variant='purple'>Сохранить</CustomButton>
                     </div>
                 </form>

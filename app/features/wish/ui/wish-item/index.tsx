@@ -1,8 +1,4 @@
-import { Copy, EllipsisVertical } from 'lucide-react'
 import React from 'react'
-import { Card, CardContent, CardFooter, CardHeader } from '~/components/ui/card'
-import { cn } from '~/lib/utils'
-
 import type { IWishResponse } from '~/entities/wish/wish.types'
 import { EmojiIcon } from '~/components/emoji/emoji-icon'
 import { CopyToClipboard } from '~/components/copy-to-clipboard'
@@ -43,7 +39,7 @@ export const WishItem: React.FC<Props> = ({ className, wishData, eventSlug, even
                 </div>}
 
             </div>
-            {eventSlug && <Link to={PUBLIC_URL.eventSlug(wishData.userId, eventSlug)} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit transition duration-200 hover:bg-gray-100'>{eventTitle}</Link>}
+            {eventSlug && <a href={PUBLIC_URL.eventSlug(wishData.userId, eventSlug)} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit transition duration-200 hover:bg-gray-100'>{eventTitle}</a>}
         </div>
     )
 }

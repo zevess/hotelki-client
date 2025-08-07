@@ -1,10 +1,7 @@
 import React from 'react'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from '../ui/dropdown-menu'
-import { Button } from '../ui/button'
-import { Edit, EllipsisVertical, MoreHorizontal, Trash2 } from 'lucide-react'
-import { useNavigate } from 'react-router'
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '../ui/dropdown-menu'
+import { Edit, EllipsisVertical, Trash2 } from 'lucide-react'
+import { Link, useNavigate } from 'react-router'
 import { useDeleteEvent } from '~/hooks/queries/event/useDeleteEvent'
 import { OptionsAlertDialog } from '../options-alert-dialog'
 import { useDeleteWish } from '~/hooks/queries/wish/useDeleteWish'
@@ -26,7 +23,7 @@ export const OptionsDropdown: React.FC<Props> = ({ className, itemId, editPageLi
     return (
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>
-                <div className={cn('p-2 rounded-full hover:bg-gray-100 group cursor-pointer flex items-center transition duration-200', className)}>
+                <div onClick={(e) => e.stopPropagation()} className={cn('p-2 rounded-full hover:bg-gray-100 group cursor-pointer flex items-center transition duration-200', className)}>
                     <EllipsisVertical className='relative group-hover:text-[#C084FC] transition duration-200' />
                 </div>
             </DropdownMenuTrigger>
@@ -34,13 +31,20 @@ export const OptionsDropdown: React.FC<Props> = ({ className, itemId, editPageLi
                 <DropdownMenuLabel>Опции</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup className='flex flex-col gap-1'>
-                    <DropdownMenuItem className='cursor-pointer' onClick={() => navigate(`${editPageLink}/edit`)}><Edit /> Редактировать</DropdownMenuItem>
+                    <DropdownMenuItem className='cursor-pointer'>
+                        <Link className='flex items-center gap-2' to={`${editPageLink}/edit`}>
+                            <Edit /> Редактировать
+                        </Link>
+                    </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                        <OptionsAlertDialog title='Вы уверены?' description={type == 'EVENT' ? 'Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.': "Это действие не может быть отменено"} action='Удалить' onConfirm={() => {
+                        <OptionsAlertDialog title='Вы уверены?' description={type == 'EVENT' ? 'Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.' : "Это действие не может быть отменено"} action='Удалить' onConfirm={() => {
                             type == 'EVENT' && deleteEvent(itemId)
                             type == 'WISH' && deleteWish(itemId)
                             setOpen(false)
-                        }}><DropdownMenuItem onSelect={(e) => e.preventDefault()} className='bg-red-500 text-white hover:!bg-red-600 hover:!text-white cursor-pointer'><Trash2 className='text-white hover:text-white' /> Удалить</DropdownMenuItem></OptionsAlertDialog>
+                        }}>
+                            <DropdownMenuItem onSelect={(e) => e.preventDefault()} className='bg-red-500 text-white hover:!bg-red-600 hover:!text-white cursor-pointer'><Trash2 className='text-white hover:text-white' /> Удалить
+                            </DropdownMenuItem>
+                        </OptionsAlertDialog>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
             </DropdownMenuContent>

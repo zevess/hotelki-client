@@ -4,8 +4,8 @@ export const API_URL = {
     root: (url = '') => `${url ? url : ''}`,
 
     auth: (url = '') => API_URL.root(`/auth${url}`),
-    verify: () => API_URL.auth('/email-confirmation'),
-    sendToken: () => API_URL.root('/auth/email-confirmation/send-token'),
+    verify: (url = '') => API_URL.auth(`/email-confirmation${url}`),
+    sendToken: () => API_URL.verify('/send-token'),
     resetPassword: () => API_URL.auth('/password-recovery/reset'),
     newPassword: (token = '') => API_URL.auth(`/password-recovery/new/${token}`),
     event: (eventId = '') => API_URL.root(`/event${eventId}`),

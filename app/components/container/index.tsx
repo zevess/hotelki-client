@@ -1,5 +1,4 @@
 import React, { type PropsWithChildren } from 'react'
-import { useProfile } from '~/hooks/useProfile';
 import { cn } from '~/lib/utils';
 
 interface Props {

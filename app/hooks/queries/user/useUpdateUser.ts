@@ -1,15 +1,12 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router"
-import { authService } from "~/entities/auth/auth.service"
-import type { IAuth } from "~/entities/auth/auth.types"
-
-import { useMemo, useState } from "react"
-import type { IUser, IUserUpdate } from "~/entities/user/user.types"
+import { useMemo} from "react"
+import type { IUserUpdate } from "~/entities/user/user.types"
 import { useAuthStore } from "~/lib/store/authStore"
 import { PUBLIC_URL } from "~/lib/config/url.config"
 import { userService } from "~/entities/user/user.service"
 import { toast } from "sonner"
-import axios from "axios"
+
 
 export const useUpdateUser = () => {
 
