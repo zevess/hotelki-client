@@ -17,5 +17,5 @@ export async function clientLoader({ params }: Route.ClientLoaderArgs) {
 }
 
 export default function Events({ loaderData }: Route.ComponentProps) {
-    return <EventsPage userId={loaderData.params.userId} userData={loaderData.userData} slug="" />
+    return <EventsPage userId={loaderData.params.userId} userData={loaderData.userData} />
 }

@@ -4,9 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "dev": "node ./server.js",
-    "start": "cross-env NODE_ENV=production node ./server.js",
-    "typecheck": "react-router typegen && tsc"
+    "dev": "cross-env NODE_ENV=development node ./server.js",
+    "start": "node ./server.js",
+    "typecheck": "react-router typegen && tsc",
+    "routerdev": "cross-env NODE_ENV=development react-router dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

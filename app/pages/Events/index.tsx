@@ -15,7 +15,7 @@ interface Props {
     className?: string,
     userData: IUser,
     userId: string,
-    slug: string,
+    slug?: string,
 }
 
 export const EventsPage: React.FC<Props> = ({ className, slug, userData, userId }) => {
