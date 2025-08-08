@@ -1,158 +1,93 @@
 {
   "buildManifest": {
-    "serverBundles": {
-      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
-        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
-        "config": {
-          "runtime": "nodejs"
-        }
-      }
-    },
-    "routeIdToServerBundleId": {
-      "routes/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/profile": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/profile-edit": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/events": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/events-slug": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/event-create": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/event-edit": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/wishes": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/wish-create": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/wish-edit": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/auth": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/new-verification": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/password-recovery": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
-    },
     "routes": {
       "root": {
-        "path": "",
         "id": "root",
-        "file": "app/root.tsx",
-        "config": {}
+        "file": "root.tsx",
+        "path": ""
       },
       "routes/home": {
         "id": "routes/home",
         "parentId": "root",
-        "file": "app/routes/home.tsx",
-        "index": true,
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/home.tsx",
+        "index": true
       },
       "routes/dashboard": {
         "id": "routes/dashboard",
         "parentId": "root",
-        "file": "app/routes/dashboard.tsx",
-        "config": {}
+        "file": "routes/dashboard.tsx"
       },
       "routes/profile": {
         "id": "routes/profile",
         "parentId": "routes/dashboard",
-        "file": "app/routes/profile.tsx",
-        "path": "profile/:userId",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/profile.tsx",
+        "path": "profile/:userId"
       },
       "routes/profile-edit": {
         "id": "routes/profile-edit",
         "parentId": "routes/dashboard",
-        "file": "app/routes/profile-edit.tsx",
-        "path": "profile/edit",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/profile-edit.tsx",
+        "path": "profile/edit"
       },
       "routes/events": {
         "id": "routes/events",
         "parentId": "routes/dashboard",
-        "file": "app/routes/events.tsx",
-        "path": "events/:userId",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/events.tsx",
+        "path": "events/:userId"
       },
       "routes/events-slug": {
         "id": "routes/events-slug",
         "parentId": "routes/dashboard",
-        "file": "app/routes/events-slug.tsx",
-        "path": "events/:userId/:slug",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/events-slug.tsx",
+        "path": "events/:userId/:slug"
       },
       "routes/event-create": {
         "id": "routes/event-create",
         "parentId": "routes/dashboard",
-        "file": "app/routes/event-create.tsx",
-        "path": "events/create",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/event-create.tsx",
+        "path": "events/create"
       },
       "routes/event-edit": {
         "id": "routes/event-edit",
         "parentId": "routes/dashboard",
-        "file": "app/routes/event-edit.tsx",
-        "path": "events/:userId/:slug/edit",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/event-edit.tsx",
+        "path": "events/:userId/:slug/edit"
       },
       "routes/wishes": {
         "id": "routes/wishes",
         "parentId": "routes/dashboard",
-        "file": "app/routes/wishes.tsx",
-        "path": "wishes/:userId",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/wishes.tsx",
+        "path": "wishes/:userId"
       },
       "routes/wish-create": {
         "id": "routes/wish-create",
         "parentId": "routes/dashboard",
-        "file": "app/routes/wish-create.tsx",
-        "path": "wishes/create",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/wish-create.tsx",
+        "path": "wishes/create"
       },
       "routes/wish-edit": {
         "id": "routes/wish-edit",
         "parentId": "routes/dashboard",
-        "file": "app/routes/wish-edit.tsx",
-        "path": "wishes/:userId/:slug/edit",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/wish-edit.tsx",
+        "path": "wishes/:userId/:slug/edit"
       },
       "routes/auth": {
         "id": "routes/auth",
         "parentId": "root",
-        "file": "app/routes/auth.tsx",
-        "path": "auth",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/auth.tsx",
+        "path": "auth"
       },
       "routes/new-verification": {
         "id": "routes/new-verification",
         "parentId": "root",
-        "file": "app/routes/new-verification.tsx",
-        "path": "auth/email-confirmation/:token?",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/new-verification.tsx",
+        "path": "auth/email-confirmation/:token?"
       },
       "routes/password-recovery": {
         "id": "routes/password-recovery",
         "parentId": "root",
-        "file": "app/routes/password-recovery.tsx",
-        "path": "auth/password-recovery/:token?",
-        "config": {
-          "runtime": "nodejs"
-        }
+        "file": "routes/password-recovery.tsx",
+        "path": "auth/password-recovery/:token?"
       }
     }
   },
@@ -169,9 +104,9 @@
     },
     "routes": {
       "root": {
-        "path": "",
         "id": "root",
-        "file": "root.tsx"
+        "file": "root.tsx",
+        "path": ""
       },
       "routes/home": {
         "id": "routes/home",
@@ -258,12 +193,77 @@
       }
     },
     "routeDiscovery": {
-      "mode": "lazy",
-      "manifestPath": "/__manifest"
+      "mode": "initial"
     },
     "serverBuildFile": "index.js",
     "serverModuleFormat": "esm",
-    "ssr": true
+    "ssr": false,
+    "unstable_routeConfig": [
+      {
+        "id": "root",
+        "path": "",
+        "file": "root.tsx",
+        "children": [
+          {
+            "file": "routes/home.tsx",
+            "index": true
+          },
+          {
+            "file": "routes/dashboard.tsx",
+            "children": [
+              {
+                "file": "routes/profile.tsx",
+                "path": "profile/:userId"
+              },
+              {
+                "file": "routes/profile-edit.tsx",
+                "path": "profile/edit"
+              },
+              {
+                "file": "routes/events.tsx",
+                "path": "events/:userId"
+              },
+              {
+                "file": "routes/events-slug.tsx",
+                "path": "events/:userId/:slug"
+              },
+              {
+                "file": "routes/event-create.tsx",
+                "path": "events/create"
+              },
+              {
+                "file": "routes/event-edit.tsx",
+                "path": "events/:userId/:slug/edit"
+              },
+              {
+                "file": "routes/wishes.tsx",
+                "path": "wishes/:userId"
+              },
+              {
+                "file": "routes/wish-create.tsx",
+                "path": "wishes/create"
+              },
+              {
+                "file": "routes/wish-edit.tsx",
+                "path": "wishes/:userId/:slug/edit"
+              }
+            ]
+          },
+          {
+            "file": "routes/auth.tsx",
+            "path": "auth"
+          },
+          {
+            "file": "routes/new-verification.tsx",
+            "path": "auth/email-confirmation/:token?"
+          },
+          {
+            "file": "routes/password-recovery.tsx",
+            "path": "auth/password-recovery/:token?"
+          }
+        ]
+      }
+    ]
   },
   "viteConfig": {
     "build": {
