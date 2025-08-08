@@ -11,6 +11,83 @@
         "parentId": "root",
         "file": "routes/home.tsx",
         "index": true
+      },
+      "routes/dashboard": {
+        "id": "routes/dashboard",
+        "parentId": "root",
+        "file": "routes/dashboard.tsx"
+      },
+      "routes/profile": {
+        "id": "routes/profile",
+        "parentId": "routes/dashboard",
+        "file": "routes/profile.tsx",
+        "path": "profile/:userId"
+      },
+      "routes/profile-edit": {
+        "id": "routes/profile-edit",
+        "parentId": "routes/dashboard",
+        "file": "routes/profile-edit.tsx",
+        "path": "profile/edit"
+      },
+      "routes/events": {
+        "id": "routes/events",
+        "parentId": "routes/dashboard",
+        "file": "routes/events.tsx",
+        "path": "events/:userId"
+      },
+      "routes/events-slug": {
+        "id": "routes/events-slug",
+        "parentId": "routes/dashboard",
+        "file": "routes/events-slug.tsx",
+        "path": "events/:userId/:slug"
+      },
+      "routes/event-create": {
+        "id": "routes/event-create",
+        "parentId": "routes/dashboard",
+        "file": "routes/event-create.tsx",
+        "path": "events/create"
+      },
+      "routes/event-edit": {
+        "id": "routes/event-edit",
+        "parentId": "routes/dashboard",
+        "file": "routes/event-edit.tsx",
+        "path": "events/:userId/:slug/edit"
+      },
+      "routes/wishes": {
+        "id": "routes/wishes",
+        "parentId": "routes/dashboard",
+        "file": "routes/wishes.tsx",
+        "path": "wishes/:userId"
+      },
+      "routes/wish-create": {
+        "id": "routes/wish-create",
+        "parentId": "routes/dashboard",
+        "file": "routes/wish-create.tsx",
+        "path": "wishes/create"
+      },
+      "routes/wish-edit": {
+        "id": "routes/wish-edit",
+        "parentId": "routes/dashboard",
+        "file": "routes/wish-edit.tsx",
+        "path": "wishes/:userId/:slug/edit"
+      },
+      "routes/auth": {
+        "id": "routes/auth",
+        "parentId": "root",
+        "file": "routes/auth.tsx",
+        "path": "auth"
+      },
+      "routes/new-verification": {
+        "id": "routes/new-verification",
+        "parentId": "root",
+        "file": "routes/new-verification.tsx",
+        "path": "auth/email-confirmation/:token?"
+      },
+      "routes/password-recovery": {
+        "id": "routes/password-recovery",
+        "parentId": "root",
+        "file": "routes/password-recovery.tsx",
+        "path": "auth/password-recovery/:token?"
       }
     }
   },
@@ -36,6 +113,83 @@
         "parentId": "root",
         "file": "routes/home.tsx",
         "index": true
+      },
+      "routes/dashboard": {
+        "id": "routes/dashboard",
+        "parentId": "root",
+        "file": "routes/dashboard.tsx"
+      },
+      "routes/profile": {
+        "id": "routes/profile",
+        "parentId": "routes/dashboard",
+        "file": "routes/profile.tsx",
+        "path": "profile/:userId"
+      },
+      "routes/profile-edit": {
+        "id": "routes/profile-edit",
+        "parentId": "routes/dashboard",
+        "file": "routes/profile-edit.tsx",
+        "path": "profile/edit"
+      },
+      "routes/events": {
+        "id": "routes/events",
+        "parentId": "routes/dashboard",
+        "file": "routes/events.tsx",
+        "path": "events/:userId"
+      },
+      "routes/events-slug": {
+        "id": "routes/events-slug",
+        "parentId": "routes/dashboard",
+        "file": "routes/events-slug.tsx",
+        "path": "events/:userId/:slug"
+      },
+      "routes/event-create": {
+        "id": "routes/event-create",
+        "parentId": "routes/dashboard",
+        "file": "routes/event-create.tsx",
+        "path": "events/create"
+      },
+      "routes/event-edit": {
+        "id": "routes/event-edit",
+        "parentId": "routes/dashboard",
+        "file": "routes/event-edit.tsx",
+        "path": "events/:userId/:slug/edit"
+      },
+      "routes/wishes": {
+        "id": "routes/wishes",
+        "parentId": "routes/dashboard",
+        "file": "routes/wishes.tsx",
+        "path": "wishes/:userId"
+      },
+      "routes/wish-create": {
+        "id": "routes/wish-create",
+        "parentId": "routes/dashboard",
+        "file": "routes/wish-create.tsx",
+        "path": "wishes/create"
+      },
+      "routes/wish-edit": {
+        "id": "routes/wish-edit",
+        "parentId": "routes/dashboard",
+        "file": "routes/wish-edit.tsx",
+        "path": "wishes/:userId/:slug/edit"
+      },
+      "routes/auth": {
+        "id": "routes/auth",
+        "parentId": "root",
+        "file": "routes/auth.tsx",
+        "path": "auth"
+      },
+      "routes/new-verification": {
+        "id": "routes/new-verification",
+        "parentId": "root",
+        "file": "routes/new-verification.tsx",
+        "path": "auth/email-confirmation/:token?"
+      },
+      "routes/password-recovery": {
+        "id": "routes/password-recovery",
+        "parentId": "root",
+        "file": "routes/password-recovery.tsx",
+        "path": "auth/password-recovery/:token?"
       }
     },
     "routeDiscovery": {
@@ -53,6 +207,59 @@
           {
             "file": "routes/home.tsx",
             "index": true
+          },
+          {
+            "file": "routes/dashboard.tsx",
+            "children": [
+              {
+                "file": "routes/profile.tsx",
+                "path": "profile/:userId"
+              },
+              {
+                "file": "routes/profile-edit.tsx",
+                "path": "profile/edit"
+              },
+              {
+                "file": "routes/events.tsx",
+                "path": "events/:userId"
+              },
+              {
+                "file": "routes/events-slug.tsx",
+                "path": "events/:userId/:slug"
+              },
+              {
+                "file": "routes/event-create.tsx",
+                "path": "events/create"
+              },
+              {
+                "file": "routes/event-edit.tsx",
+                "path": "events/:userId/:slug/edit"
+              },
+              {
+                "file": "routes/wishes.tsx",
+                "path": "wishes/:userId"
+              },
+              {
+                "file": "routes/wish-create.tsx",
+                "path": "wishes/create"
+              },
+              {
+                "file": "routes/wish-edit.tsx",
+                "path": "wishes/:userId/:slug/edit"
+              }
+            ]
+          },
+          {
+            "file": "routes/auth.tsx",
+            "path": "auth"
+          },
+          {
+            "file": "routes/new-verification.tsx",
+            "path": "auth/email-confirmation/:token?"
+          },
+          {
+            "file": "routes/password-recovery.tsx",
+            "path": "auth/password-recovery/:token?"
           }
         ]
       }
