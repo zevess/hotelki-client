@@ -9,6 +9,12 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import { Header } from "./widgets/header/ui";
+import { Container } from "./components/container";
+import { QueryProvider } from "./lib/providers/queryProvider";
+import { Toaster } from "./components/ui/sonner";
+
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -32,14 +38,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="min-h-screen flex flex-col">
+        <QueryProvider>
+          <Toaster position='top-center' richColors />
+          {children}
+        </QueryProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
 }
+
+
 
 export default function App() {
   return <Outlet />;
@@ -62,14 +73,25 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    
+
+    < Container >
+      
+      <Header />
+      <div className='flex flex-col'>
+        <section className='flex flex-wrap justify-center gap-6 mb-10 animate-[fadeIn_1.5s_ease-in-out_1]'>
+
+          <div className='w-[588px] flex flex-col flex-wrap gap-6'>
+            <span className='font-bold text-6xl'>СТРАНИЦА <br /> НЕ НАЙДЕНА</span>
+            
+          </div>
+
+          <div className='max-w-[588px]'>
+            <img src="/app/components/assets/not-found.jpg" className='rounded-[20px] h-full' alt="" />
+          </div>
+        </section>
+      </div>
+    
+    </Container >
   );
 }
