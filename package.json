@@ -1,13 +1,11 @@
 {
-  "name": "hotelki-client-shadcn",
+  "name": "my-react-router-app",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "react-router build",
     "start": "node ./server.js",
-    "typecheck": "react-router typegen && tsc",
-    "dev": "cross-env NODE_ENV=development node ./server.js",
-    "routerdev": "cross-env NODE_ENV=development react-router dev"
+    "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
