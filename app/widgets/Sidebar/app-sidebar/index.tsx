@@ -1,9 +1,7 @@
 import React from 'react'
 import { Avatar, AvatarImage } from '~/components/ui/avatar'
 import { useNavigationItems } from '../model/hooks/useNavigationItems'
-import { useNavigate} from 'react-router'
 import { useAuthStore } from '~/lib/store/authStore'
-import { useLogout } from '~/hooks/queries/user/useLogout'
 import { SignOutButton } from '~/components/sign-out-button'
 import { LinkItem } from './ui/link-item'
 
