@@ -1,0 +1,43 @@
+import React from 'react'
+import { Title } from '~/components/title'
+import { cn } from '~/lib/utils'
+import { CreateButton } from '~/components/create-button'
+import { WishItem } from '~/features/wish/ui/wish-item'
+import { PUBLIC_URL } from '~/lib/config/url.config'
+import { useAuthStore } from '~/lib/store/authStore'
+import type { IUser } from '~/entities/user/user.types'
+import { useGetWishes } from '~/hooks/queries/wish/useGetWishes'
+
+
+interface Props {
+    className?: string,
+    title: string,
+    userData: IUser,
+
+}
+
+export const WishesPage: React.FC<Props> = ({ className, title, userData }) => {
+
+    const { setCurrentUser } = useAuthStore()
+
+    const { wishes } = useGetWishes(userData.id)
+
+    React.useEffect(() => {
+        setCurrentUser(userData)
+    }, [])
+
+    return (
+        <div className={cn('flex flex-col', className)}>
+            <div className='flex items-center'>
+                <Title text={title || 'Все хотелки'} />
+                <CreateButton href={PUBLIC_URL.wishesCreate()} variant='purpleOutline' />
+            </div>
+            <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
+                {wishes?.length == 0 && <span className='font-inter text-xl font-semibold text-center mx-auto mt-6'>Тут еще нет хотелок🙁</span>}
+                {wishes && wishes.map((item, index) => (
+                    <WishItem key={index} wishData={item} eventSlug={item.event && item.event.slug} eventTitle={item.event && item.event.title} />
+                ))}
+            </div>
+        </div>
+    )
+}
