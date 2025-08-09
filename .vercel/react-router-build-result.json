@@ -92,9 +92,9 @@
     }
   },
   "reactRouterConfig": {
-    "appDirectory": "C:/Users/nazoc/Documents/progg/TEST/my-react-router-app/app",
+    "appDirectory": "C:/Users/nazoc/Documents/progg/REACT/hotelki/hotelki-client/app",
     "basename": "/",
-    "buildDirectory": "C:/Users/nazoc/Documents/progg/TEST/my-react-router-app/build",
+    "buildDirectory": "C:/Users/nazoc/Documents/progg/REACT/hotelki/hotelki-client/build",
     "future": {
       "unstable_middleware": false,
       "unstable_optimizeDeps": false,
