@@ -1,12 +1,15 @@
 import { Menu } from 'lucide-react'
 import React from 'react'
-import { CustomButton } from '~/components/custom-button'
-import { Button } from '~/components/ui/button'
-import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '~/components/ui/drawer'
-import { useAuthStore } from '~/lib/store/authStore'
+import { CustomButton } from '~/shared/ui/custom-button'
+
+import { useAuthStore } from '~/shared/store/authStore'
 import { useNavigationItems } from '../model/hooks/useNavigationItems'
 import { MobileLinkItem } from './ui/mobile-link-item'
-import { Avatar, AvatarImage } from '~/components/ui/avatar'
+import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '~/shared/ui/shadcn/drawer'
+import { Avatar, AvatarImage } from '~/shared/ui/shadcn/avatar'
+import { Button } from '~/shared/ui/shadcn/button'
+
+
 
 interface Props {
     className?: string

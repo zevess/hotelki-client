@@ -1,12 +1,12 @@
 import React from 'react'
-import { Title } from '~/components/title'
-import { cn } from '~/lib/utils'
-import { CreateButton } from '~/components/create-button'
-import { WishItem } from '~/features/wish/ui/wish-item'
-import { PUBLIC_URL } from '~/lib/config/url.config'
-import { useAuthStore } from '~/lib/store/authStore'
-import type { IUser } from '~/entities/user/user.types'
-import { useGetWishes } from '~/hooks/queries/wish/useGetWishes'
+import { Title } from '~/shared/ui/title'
+import { cn } from '~/shared/lib/utils'
+import { CreateButton } from '~/shared/ui/create-button'
+import { WishItem } from '~/entities/wish/ui/wish-item'
+import { useAuthStore } from '~/shared/store/authStore'
+import type { IUser } from '~/entities/user/model/user.types'
+import { useGetWishes } from '~/entities/wish/api/useGetWishes'
+import { PUBLIC_URL } from '~/shared/config/url.config'
 
 
 interface Props {

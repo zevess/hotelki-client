@@ -1,4 +1,4 @@
-import { EventEditPage } from "~/pages/events/ui/event-edit";
+import { EventEditPage } from "~/pages/event-edit";
 import type { Route } from "./+types/event-edit";
 
 

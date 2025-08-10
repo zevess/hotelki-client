@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { cn } from '~/lib/utils'
+import { cn } from '~/shared/lib/utils'
 
 interface Props {
     className?: string,

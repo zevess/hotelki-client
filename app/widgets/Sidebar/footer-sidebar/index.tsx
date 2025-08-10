@@ -1,7 +1,7 @@
 import React from 'react'
 import { LinkItem } from './ui/footer-link-item'
 import { useNavigationItemsMobile } from '../model/hooks/useNavigationItemsMobile';
-import { useAuthStore } from '~/lib/store/authStore';
+import { useAuthStore } from '~/shared/store/authStore';
 
 interface Props {
     className?: string

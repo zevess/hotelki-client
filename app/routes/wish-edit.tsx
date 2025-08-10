@@ -1,4 +1,4 @@
-import { WishEditPage } from "~/pages/wishes/ui/wish-edit";
+import { WishEditPage } from "~/pages/wish-edit";
 import type { Route } from "./+types/wish-edit";
 
 

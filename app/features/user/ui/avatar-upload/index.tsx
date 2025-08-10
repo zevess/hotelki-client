@@ -1,7 +1,7 @@
 import React from 'react'
-import { CustomButton } from '~/components/custom-button';
-import { Avatar, AvatarImage } from '~/components/ui/avatar';
-import { Input } from '~/components/ui/input';
+import { CustomButton } from '~/shared/ui/custom-button';
+import { Avatar, AvatarImage } from '~/shared/ui/shadcn/avatar';
+import { Input } from '~/shared/ui/shadcn/input';
 
 
 interface Props {

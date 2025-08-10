@@ -9,10 +9,13 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { Header } from "./widgets/header/ui";
-import { Container } from "./components/container";
-import { QueryProvider } from "./lib/providers/queryProvider";
-import { Toaster } from "./components/ui/sonner";
+
+import { Container } from "./shared/ui/container";
+import { QueryProvider } from "./shared/providers/queryProvider";
+
+import { Header } from "./widgets/header";
+import { Toaster } from "./shared/ui/shadcn/sonner";
+
 
 
 
@@ -73,25 +76,25 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    
+
 
     < Container >
-      
+
       <Header />
       <div className='flex flex-col'>
         <section className='flex flex-wrap justify-center gap-6 mb-10 animate-[fadeIn_1.5s_ease-in-out_1]'>
 
           <div className='w-[588px] flex flex-col flex-wrap gap-6'>
             <span className='font-bold text-6xl'>СТРАНИЦА <br /> НЕ НАЙДЕНА</span>
-            
+
           </div>
 
           <div className='max-w-[588px]'>
-            <img src="/app/components/assets/not-found.jpg" className='rounded-[20px] h-full' alt="" />
+            <img src="/app/shared/assets/not-found.jpg" className='rounded-[20px] h-full' alt="" />
           </div>
         </section>
       </div>
-    
+
     </Container >
   );
 }

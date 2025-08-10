@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
-import { Container } from '~/components/container'
-import { CustomButton } from '~/components/custom-button'
-import { useProfile } from '~/hooks/auth/useProfile'
-import { PUBLIC_URL } from '~/lib/config/url.config'
-import { cn } from '~/lib/utils'
-import { Header } from '~/widgets/header/ui'
+import { Container } from '~/shared/ui/container'
+import { CustomButton } from '~/shared/ui/custom-button'
+import { useProfile } from '~/entities/auth/api/useProfile'
+import { cn } from '~/shared/lib/utils'
+import { Header } from '~/widgets/header'
+import { PUBLIC_URL } from '~/shared/config/url.config'
 
 interface Props {
     className?: string
@@ -32,7 +32,7 @@ export const Welcome: React.FC<Props> = ({ className }) => {
                     </div>
 
                     <div className='max-w-[588px] aspect-video'>
-                        <img src="app/components/assets/welcome-bg.jpg" className='rounded-[20px] h-full' alt="" />
+                        <img src="app/shared/assets/welcome-bg.jpg" className='rounded-[20px] h-full' alt="" />
                     </div>
                 </section>
 

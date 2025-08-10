@@ -1,10 +1,11 @@
 import React from 'react'
 import { Outlet } from 'react-router'
-import { Container } from '~/components/container'
-import { useProfile } from '~/hooks/auth/useProfile'
-import { Header } from '~/widgets/header/ui'
+import { Container } from '~/shared/ui/container'
+import { useProfile } from '~/entities/auth/api/useProfile'
+
 import { AppSidebar } from '~/widgets/sidebar/app-sidebar'
 import { FooterSidebar } from '../sidebar/footer-sidebar'
+import { Header } from '../header'
 
 
 interface Props {

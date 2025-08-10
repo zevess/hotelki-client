@@ -1,4 +1,4 @@
-import { EventCreatePage } from "~/pages/events/ui/event-create";
+import { EventCreatePage } from "~/pages/event-create";
 import type { Route } from "./+types/event-create";
 
 

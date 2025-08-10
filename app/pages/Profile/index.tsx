@@ -1,14 +1,14 @@
 import React from 'react'
-import { Avatar, AvatarImage } from '~/components/ui/avatar'
-import { cn } from '~/lib/utils'
-import type { IUser } from '~/entities/user/user.types'
-import { PUBLIC_URL } from '~/lib/config/url.config'
-import { ProfileEditButton } from '~/components/profile-edit-button'
-import { EventIcon } from '~/features/event/ui/event-icon'
-import { useAuthStore } from '~/lib/store/authStore'
-import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
+import { cn } from '~/shared/lib/utils'
+import type { IUser } from '~/entities/user/model/user.types'
+import { ProfileEditButton } from '~/shared/ui/profile-edit-button'
+import { EventIcon } from '~/shared/ui/event-icon'
+import { useAuthStore } from '~/shared/store/authStore'
+import { useGetUserEvents } from '~/entities/event/api/useGetUserEvents'
 import { Link } from 'react-router'
 import { BadgeCheck } from 'lucide-react'
+import { Avatar, AvatarImage } from '~/shared/ui/shadcn/avatar'
+import { PUBLIC_URL } from '~/shared/config/url.config'
 
 
 interface Props {

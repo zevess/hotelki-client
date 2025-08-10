@@ -1,9 +1,9 @@
 import React from 'react'
-import { Container } from '~/components/container'
-import { NewPasswordForm } from '~/features/auth/password/ui/new-password-form'
-import { ResetPasswordForm } from '~/features/auth/password/ui/reset-password-form'
-import { cn } from '~/lib/utils'
-import { Header } from '~/widgets/header/ui'
+import { Container } from '~/shared/ui/container'
+import { NewPasswordForm } from '~/features/password/ui/new-password-form'
+import { ResetPasswordForm } from '~/features/password/ui/reset-password-form'
+import { cn } from '~/shared/lib/utils'
+import { Header } from '~/widgets/header'
 
 interface Props {
     className?: string,

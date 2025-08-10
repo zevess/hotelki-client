@@ -1,9 +1,11 @@
 import React from 'react'
-import { Avatar, AvatarImage } from '~/components/ui/avatar'
+
 import { useNavigationItems } from '../model/hooks/useNavigationItems'
-import { useAuthStore } from '~/lib/store/authStore'
-import { SignOutButton } from '~/components/sign-out-button'
+import { useAuthStore } from '~/shared/store/authStore'
+import { SignOutButton } from '~/shared/ui/sign-out-button'
 import { LinkItem } from './ui/link-item'
+import { Avatar, AvatarImage } from '~/shared/ui/shadcn/avatar'
+
 
 
 interface Props {

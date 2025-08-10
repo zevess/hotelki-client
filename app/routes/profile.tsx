@@ -1,5 +1,5 @@
 import { ProfilePage } from "~/pages/profile";
-import { userService } from "~/entities/user/user.service";
+import { userService } from "~/entities/user/model/user.service";
 import type { Route } from "./+types/profile";
 
 

@@ -1,4 +1,4 @@
-import { ProfileEditPage } from "~/pages/profile/ui/profile-edit";
+import { ProfileEditPage } from "~/pages/profile-edit";
 import type { Route } from "./+types/profile-edit";
 
 export function meta({ }: Route.MetaArgs) {

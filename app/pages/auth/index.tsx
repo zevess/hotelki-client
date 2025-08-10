@@ -1,14 +1,14 @@
 import React from 'react'
-import { LoginForm } from '~/features/auth/login/ui/login-form'
-import { RegisterForm } from '~/features/auth/register/ui/register-form'
-import { cn } from '~/lib/utils'
+import { LoginForm } from '~/features/login/ui/login-form'
+import { RegisterForm } from '~/features/register/ui/register-form'
+import { cn } from '~/shared/lib/utils'
 import { redirect, useNavigate } from 'react-router'
-import { useProfile } from '~/hooks/auth/useProfile'
-import { Container } from '~/components/container'
-import { Header } from '~/widgets/header/ui'
-import { Spinner } from '~/components/ui/spinner'
-import { useVerification } from '~/hooks/verification/useVerification'
-import { PUBLIC_URL } from '~/lib/config/url.config'
+import { useProfile } from '~/entities/auth/api/useProfile'
+import { Container } from '~/shared/ui/container'
+import { Spinner } from '~/shared/ui/spinner'
+import { useVerification } from '~/entities/verification/api/useVerification'
+import { Header } from '~/widgets/header'
+
 
 interface Props {
     className?: string,

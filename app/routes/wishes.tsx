@@ -1,7 +1,7 @@
 import { WishesPage } from "~/pages/wishes";
 import type { Route } from "./+types/wishes";
-import { userService } from "~/entities/user/user.service";
-import { wishService } from "~/entities/wish/wish.service";
+import { userService } from "~/entities/user/model/user.service";
+
 
 
 export function meta({ }: Route.MetaArgs) {

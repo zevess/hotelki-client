@@ -1,14 +1,15 @@
 import React from 'react'
-import { CreateButton } from '~/components/create-button'
-import { Title } from '~/components/title'
-import type { IUser } from '~/entities/user/user.types'
-import { EventItem } from '~/features/event/ui/event-item'
-import { WishItem } from '~/features/wish/ui/wish-item'
-import { useGetEventBySlug } from '~/hooks/queries/event/useGetEventBySlug'
-import { useGetUserEvents } from '~/hooks/queries/event/useGetUserEvents'
-import { PUBLIC_URL } from '~/lib/config/url.config'
-import { useAuthStore } from '~/lib/store/authStore'
-import { cn } from '~/lib/utils'
+import { CreateButton } from '~/shared/ui/create-button'
+import { Title } from '~/shared/ui/title'
+import type { IUser } from '~/entities/user/model/user.types'
+import { EventItem } from '~/entities/event/ui/event-item'
+import { WishItem } from '~/entities/wish/ui/wish-item'
+import { useGetEventBySlug } from '~/entities/event/api/useGetEventBySlug'
+import { useGetUserEvents } from '~/entities/event/api/useGetUserEvents'
+
+import { useAuthStore } from '~/shared/store/authStore'
+import { cn } from '~/shared/lib/utils'
+import { PUBLIC_URL } from '~/shared/config/url.config'
 
 
 interface Props {

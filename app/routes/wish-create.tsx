@@ -1,4 +1,4 @@
-import { WishCreatePage } from '~/pages/wishes/ui/wish-create';
+import { WishCreatePage } from '~/pages/wish-create';
 import type { Route } from './+types/wish-create';
 
 export function meta({ }: Route.MetaArgs) {

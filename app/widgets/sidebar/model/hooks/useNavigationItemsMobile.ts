@@ -1,7 +1,7 @@
-import ProfileIcon from '../../../../components/icons/User.svg?react'
-import PlusCircleIcon from '../../../../components/icons/PlusCircle.svg?react'
-import HeartIcon from '../../../../components/icons/Heart.svg?react'
-import { PUBLIC_URL } from '~/lib/config/url.config'
+import { PUBLIC_URL } from '~/shared/config/url.config'
+import ProfileIcon from '~/shared/ui/icons/User.svg?react'
+import PlusCircleIcon from '~/shared/ui/icons/PlusCircle.svg?react'
+import HeartIcon from '~/shared/ui/icons/Heart.svg?react'
 
 export const useNavigationItemsMobile = (userId: string | undefined, isAuth: boolean): INavItem[] => {
     return [
