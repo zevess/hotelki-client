@@ -83,7 +83,7 @@ class AuthService {
             method: 'POST'
         })
 
-        if (response.data) removeFromStorage()
+        removeFromStorage()
 
         return response
 
