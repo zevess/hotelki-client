@@ -78,14 +78,15 @@ class AuthService {
     }
 
     async logout() {
-        const response = await api<boolean>({
-            url: API_URL.auth('/logout'),
-            method: 'POST'
-        })
+        removeFromStorage()
+        // const response = await api<boolean>({
+        //     url: API_URL.auth('/logout'),
+        //     method: 'POST'
+        // })
 
-        if (response.data) removeFromStorage()
+        // if (response.data) removeFromStorage()
 
-        return response
+        // return response
 
     }
 
