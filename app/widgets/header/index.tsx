@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { CustomButton } from '~/shared/ui/custom-button'
-
 import { useAuthStore } from '~/shared/store/authStore'
 import { MobileSidebar } from '~/widgets/sidebar/mobile-sidebar'
 import { PUBLIC_URL } from '~/shared/config/url.config'
@@ -21,8 +20,8 @@ export const Header: React.FC<Props> = ({ className }) => {
         ХОТЕЛКИ
       </Link>
 
-      <CustomButton asChild variant='purpleOutline'>
-        <Link to={!user ? PUBLIC_URL.auth() : PUBLIC_URL.profile(user.id)}>{!user ? "Войти" : "Профиль"}</Link>
+      <CustomButton asChild variant='purpleOutline' className='hidden md:block'>
+        <a href={!user ? PUBLIC_URL.auth() : PUBLIC_URL.profile(user.username)}>{!user ? "Войти" : "Профиль"}</a>
       </CustomButton>
 
       <MobileSidebar />

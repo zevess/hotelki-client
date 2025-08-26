@@ -11,11 +11,11 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-    const userData = await userService.getUser(params.userId)
+    const userData = await userService.getUserByUsername(params.username)
 
     return { userData, params }
 }
 
 export default function Events({ loaderData }: Route.ComponentProps) {
-    return <EventsPage userId={loaderData.params.userId} userData={loaderData.userData} />
+    return <EventsPage userId={loaderData.userData.id} userData={loaderData.userData} />
 }

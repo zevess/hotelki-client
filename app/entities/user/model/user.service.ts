@@ -13,7 +13,24 @@ class UserService {
 
     async getUser(userId: string) {
         const { data } = await api<IUser>({
-            url: API_URL.user(`/by-id/${userId}`),
+            url: API_URL.getUserById(userId),
+            method: 'GET'
+        })
+
+        return data
+    }
+
+    async findUser(slug: string) {
+        const { data } = await api<IUser[]>({
+            url: API_URL.findUser(slug),
+            method: 'GET',
+        })
+        return data
+    }
+
+    async getUserByUsername(username: string) {
+        const { data } = await api<IUser>({
+            url: API_URL.getUserByUsername(username),
             method: 'GET'
         })
 
@@ -22,7 +39,7 @@ class UserService {
 
     async updateUser(data: IUserUpdate) {
         const response = await apiWithAuth<IUser>({
-            url: API_URL.user('/update'),
+            url: API_URL.updateUser(),
             method: "PATCH",
             data
         })

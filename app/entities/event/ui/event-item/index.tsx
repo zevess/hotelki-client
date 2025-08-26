@@ -17,6 +17,9 @@ interface Props {
 export const EventItem: React.FC<Props> = ({ className, eventData }) => {
 
     const { user } = useAuthStore()
+
+    const isSameUser = user?.id === eventData.userId
+
     const eventDate = new Date(eventData.date)
     const dateNow = Date.now();
     const diffDays = differenceInDays(eventDate, dateNow)
@@ -33,10 +36,10 @@ export const EventItem: React.FC<Props> = ({ className, eventData }) => {
                     <span className='font-inter text-[14px] font-bold'>{eventData.emoji} {eventData.title}</span>
                     {wishes && <span className='font-inter font-normal text-xs'>{wishes.length} {wishesCount}</span>}
                 </div>
-                {user && <OptionsDropdown type='EVENT' itemId={eventData.id} editPageLink={`/events/${eventData.userId}/${eventData.slug}`} />}
+                {isSameUser && <OptionsDropdown type='EVENT' itemId={eventData.id} editPageLink={`/events/${eventData.user.username}/${eventData.slug}`} />}
 
             </CardHeader>
-            <a href={PUBLIC_URL.eventSlug(eventData.userId, eventData.slug)}>
+            <a href={PUBLIC_URL.eventSlug(eventData.user.username, eventData.slug)}>
                 <CardContent className='min-h-[132px] flex flex-wrap items-center justify-around p-0 sm:gap-3' >
 
                     {wishes.length == 0 && <span className='font-inter text-base font-normal text-center mx-auto'>Тут еще нет хотелок 🙁</span>}

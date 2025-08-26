@@ -38,7 +38,7 @@ export const RegisterForm: React.FC<Props> = ({ className, setAuthType }) => {
                 {errors.name && <span className='text-red-500'>{errors.name.message}</span>}
                 <Input {...register('email')} placeholder='Email' />
                 {errors.email && <span className='text-red-500'>{errors.email.message}</span>}
-                <Input {...register('password')} placeholder='Пароль' />
+                <Input {...register('password')} type='password' placeholder='Пароль' />
                 {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
             </div>
             <div className='flex flex-col gap-5 mt-5'>

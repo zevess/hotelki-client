@@ -16,7 +16,7 @@ export const useUpdateEvent = (eventId: string) => {
         mutationFn: (data: IEvent) =>
             eventService.update(eventId, data),
         onSuccess(data) {
-            navigate(PUBLIC_URL.events(data.data.userId))
+            navigate(PUBLIC_URL.events(data.data.user.username))
             toast.success("Событие обновлено")
         },
         onError(error) {

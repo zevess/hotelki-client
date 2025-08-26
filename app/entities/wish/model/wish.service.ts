@@ -6,7 +6,7 @@ import { api, apiWithAuth } from "~/shared/api/api.interceptor";
 class WishService {
     async getById(wishId: string) {
         const { data } = await api<IWishResponse>({
-            url: API_URL.wish(`/by-id/${wishId}`),
+            url: API_URL.getWishById(wishId),
             method: 'GET'
         })
         return data
@@ -14,7 +14,7 @@ class WishService {
 
     async getByEvent(eventId: string) {
         const { data } = await api<IWishResponse[]>({
-            url: API_URL.wish(`/by-event/${eventId}`),
+            url: API_URL.getWishByEvent(eventId),
             method: 'GET'
         })
         return data
@@ -22,7 +22,7 @@ class WishService {
 
     async getByUser(userId: string | undefined) {
         const { data } = await api<IWishResponse[]>({
-            url: API_URL.wish(`/by-user/${userId}`),
+            url: API_URL.getWishByUser(userId),
             method: 'GET'
         })
         return data
@@ -30,7 +30,7 @@ class WishService {
 
     async getByUserAndSlug(userId: string | undefined, slug?: string | undefined) {
         const { data } = await api<IWishResponse>({
-            url: API_URL.wish(`/by-user/${userId}/${slug}`),
+            url: API_URL.getWishByUserAndSlug(userId, slug),
             method: 'GET'
         })
         return data
@@ -38,7 +38,7 @@ class WishService {
 
     async create(data: IWish) {
         const response = await apiWithAuth<IWishResponse>({
-            url: API_URL.wish('/create'),
+            url: API_URL.createWish(),
             method: 'POST',
             data
         })
@@ -48,7 +48,7 @@ class WishService {
 
     async update(data: IWish, wishId: string) {
         const response = await apiWithAuth<IWishResponse>({
-            url: API_URL.wish(`/update/${wishId}`),
+            url: API_URL.updateWish(wishId),
             method: 'PATCH',
             data
         })
@@ -58,7 +58,7 @@ class WishService {
 
     async delete(wishId: string) {
         const response = await apiWithAuth<IWishResponse>({
-            url: API_URL.wish(`/delete/${wishId}`),
+            url: API_URL.deleteWish(wishId),
             method: 'DELETE',
         })
 

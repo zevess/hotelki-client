@@ -1,4 +1,5 @@
 import type { IEvent } from "~/entities/event/model/event.types";
+import type { IUser } from "~/entities/user/model/user.types";
 
 export interface IWish {
     title: string,
@@ -15,5 +16,6 @@ export interface IWishResponse extends IWish {
     createdAt: Date,
     updatedAt: Date,
     userId: string,
-    event?: IEvent
+    event?: IEvent,
+    user: IUser
 }

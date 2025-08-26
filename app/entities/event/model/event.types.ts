@@ -1,3 +1,4 @@
+import type { IUser } from "~/entities/user/model/user.types"
 import type { IWish, IWishResponse } from "~/entities/wish/model/wish.types"
 
 export interface IEvent {
@@ -11,10 +12,11 @@ export interface IEvent {
 export interface IEventResponse extends IEvent {
     userId: string,
     id: string,
+    user: IUser
     wish: IWishResponse[],
 }
 
-export interface IEventsWishes{
+export interface IEventsWishes {
     id: string,
     title: string,
     slug: string,

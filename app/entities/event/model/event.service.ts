@@ -1,4 +1,3 @@
-
 import { api, apiWithAuth } from "~/shared/api/api.interceptor";
 import type { IEvent, IEventResponse } from "./event.types";
 import { API_URL } from "~/shared/config/api.config";
@@ -6,7 +5,7 @@ import { API_URL } from "~/shared/config/api.config";
 class EventService {
     async getById(eventId: string | undefined) {
         const { data } = await api<IEvent>({
-            url: API_URL.event(`/by-id/${eventId}`),
+            url: API_URL.getEventById(eventId),
             method: 'GET'
         })
         return data
@@ -14,7 +13,7 @@ class EventService {
 
     async getByUser(userId: string | undefined) {
         const { data } = await api<IEventResponse[]>({
-            url: API_URL.event(`/by-user/${userId}`),
+            url: API_URL.getEventByUser(userId),
             method: 'GET'
         })
         return data
@@ -22,7 +21,7 @@ class EventService {
 
     async getByUserAndSlug(userId: string | undefined, slug: string | undefined) {
         const { data } = await api<IEventResponse>({
-            url: API_URL.event(`/by-user/${userId}/${slug}`),
+            url: API_URL.getEventByUserAndSlug(userId, String(slug)),
             method: 'GET'
         })
         return data
@@ -30,7 +29,7 @@ class EventService {
 
     async create(data: IEvent) {
         const response = await apiWithAuth<IEventResponse>({
-            url: API_URL.event('/create'),
+            url: API_URL.createEvent(),
             method: 'POST',
             data
         })
@@ -40,7 +39,7 @@ class EventService {
 
     async update(eventId: string, data: IEvent) {
         const response = await apiWithAuth<IEventResponse>({
-            url: API_URL.event(`/update/${eventId}`),
+            url: API_URL.updateEvent(eventId),
             method: 'PATCH',
             data
         })
@@ -49,8 +48,8 @@ class EventService {
     }
 
     async delete(eventId: string) {
-        const response = await apiWithAuth<IEvent>({
-            url: API_URL.event(`/delete/${eventId}`),
+        const response = await apiWithAuth<IEventResponse>({
+            url: API_URL.deleteEvent(eventId),
             method: 'DELETE',
         })
 

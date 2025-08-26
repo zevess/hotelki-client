@@ -10,12 +10,13 @@ interface Props {
     emoji?: string,
     title?: string,
     eventSlug?: string,
-    userId?: string
+    userId?: string,
+    username?: string
 }
 
-export const EventIcon: React.FC<Props> = ({ className, variant, emoji, title, eventSlug, userId }) => {
+export const EventIcon: React.FC<Props> = ({ className, variant, emoji, title, eventSlug, userId, username }) => {
     return (
-        <Link to={variant == 'create' ? PUBLIC_URL.eventCreate() : PUBLIC_URL.eventSlug(userId, eventSlug)} className={cn('group flex flex-col items-center ml-0 max-w-[77.5px]', className)}>
+        <Link to={variant == 'create' ? PUBLIC_URL.eventCreate() : PUBLIC_URL.eventSlug(username, eventSlug)} className={cn('group flex flex-col items-center ml-0 max-w-[77.5px]', className)}>
             <div className='bg-[#FAF5FF] w-[77.5px] h-[77.5px] rounded-full flex items-center justify-center transition duration-200 group-hover:bg-[#efe1fc]'>
                 {variant == 'create' && <PlusIcon width={24} height={24} />}
                 {variant == 'event' &&

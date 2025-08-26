@@ -18,7 +18,7 @@ interface Props {
 
 export const WishesPage: React.FC<Props> = ({ className, title, userData }) => {
 
-    const { setCurrentUser } = useAuthStore()
+    const { setCurrentUser, user } = useAuthStore()
 
     const { wishes } = useGetWishes(userData.id)
 
@@ -26,16 +26,20 @@ export const WishesPage: React.FC<Props> = ({ className, title, userData }) => {
         setCurrentUser(userData)
     }, [])
 
+    const isSameUser = user?.id === userData.id
+
+
     return (
         <div className={cn('flex flex-col', className)}>
             <div className='flex items-center'>
                 <Title text={title || 'Все хотелки'} />
-                <CreateButton href={PUBLIC_URL.wishesCreate()} variant='purpleOutline' />
+                {isSameUser && <CreateButton href={PUBLIC_URL.wishesCreate()} variant='purpleOutline' />}
+
             </div>
             <div className='flex flex-col justify-center mt-3 gap-4 sm:flex-wrap sm:flex-row sm:justify-around md:justify-normal'>
                 {wishes?.length == 0 && <span className='font-inter text-xl font-semibold text-center mx-auto mt-6'>Тут еще нет хотелок🙁</span>}
                 {wishes && wishes.map((item, index) => (
-                    <WishItem key={index} wishData={item} eventSlug={item.event && item.event.slug} eventTitle={item.event && item.event.title} />
+                    <WishItem username={userData.username} key={index} wishData={item} eventSlug={item.event && item.event.slug} eventTitle={item.event && item.event.title} />
                 ))}
             </div>
         </div>

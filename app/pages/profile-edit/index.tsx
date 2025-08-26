@@ -2,7 +2,7 @@ import React from 'react'
 import { cn } from '~/shared/lib/utils'
 import { CustomButton } from '~/shared/ui/custom-button'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { userSchema, type UserSchema } from '~/entities/user/model/user.schema'
+import { updateUserSchema,  type UpdateUserSchema } from '~/entities/user/model/user.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from 'react-router'
 import { useAuthStore } from '~/shared/store/authStore'
@@ -13,6 +13,7 @@ import { BadgeCheck } from 'lucide-react'
 import { useSendVerification } from '~/entities/verification/api/useSendVerification'
 import { Separator } from '~/shared/ui/shadcn/separator'
 import { Input } from '~/shared/ui/shadcn/input'
+import { Label } from '~/shared/ui/shadcn/label'
 
 
 interface Props {
@@ -24,7 +25,7 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
     const { user } = useAuthStore()
     const { imageUpload, uploadedImage, isImageUploading } = useImageUpload()
     const { update, isUserUpdating } = useUpdateUser()
-    const { sendVerification } = useSendVerification()
+    const { sendVerification, isSuccess } = useSendVerification()
     const navigate = useNavigate()
 
     const [newImage, setNewImage] = React.useState<File | null>(null)
@@ -34,21 +35,23 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
     React.useEffect(() => {
         if (!user) navigate(-1)
 
-        setValue("name", user?.name)
+        setValue("name", String(user?.name))
+        setValue("username", String(user?.username))
 
     }, [user])
 
-    const { register, handleSubmit, setValue } = useForm<UserSchema>({
-        resolver: zodResolver(userSchema)
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm<UpdateUserSchema>({
+        resolver: zodResolver(updateUserSchema)
     })
 
-    const onSubmit: SubmitHandler<UserSchema> = async (data) => {
+    const onSubmit: SubmitHandler<UpdateUserSchema> = async (data) => {
 
         if (newImage) {
             imageUpload(newImage, {
                 onSuccess: (uploadedImageUrl) => {
                     update({
                         name: data.name,
+                        username: data.username,
                         avatar: uploadedImageUrl
                     })
                 }
@@ -56,6 +59,7 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
         } else {
             update({
                 name: data.name,
+                username: data.username,
                 avatar: isDefaultImage ? "https://i.ibb.co/chBSqBxn/default-avatar.jpg" : user?.avatar
             })
         }
@@ -70,12 +74,10 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
             <div className='flex flex-col'>
 
                 {user?.isVerified == false && <div className='flex flex-col gap-4'>
-                    <span className='text-xl font-semibold'>Аккаунт не подтвержден. Некоторые функции могут быть ограничены</span>
-                    <CustomButton onClick={() => sendVerification(user.email)} variant='purple' className='w-fit'>Подтвердить аккаунт</CustomButton>
-
+                    <span className='text-xl font-semibold'>{isSuccess ? "Пожалуйста, проверьте свою почту" : "Аккаунт не подтвержден. Некоторые функции могут быть ограничены"}</span>
+                    <CustomButton onClick={() => sendVerification(user.email)} disabled={isSuccess} variant='purple' className='w-fit'>Подтвердить аккаунт</CustomButton>
                     <Separator className='mb-3' />
                 </div>}
-
 
                 <div className='flex justify-between'>
                     <span className='font-inter text-base'>Фотография</span>
@@ -85,8 +87,16 @@ export const ProfileEditPage: React.FC<Props> = ({ className }) => {
                 <AvatarUploader setImage={setNewImage} avatar={user?.avatar} setDefaultImage={setIsDefaultImage} isDefaultImage={isDefaultImage} />
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className='flex flex-col '>
-                        <Input {...register('name')} className='h-12 my-5' placeholder='Имя' />
+                    <div className='flex flex-col my-4'>
+
+                        <Label htmlFor='name'>Имя</Label>
+                        {errors.name && <span className='text-red-500'>{errors.name.message}</span>}
+                        <Input id='name' {...register('name')} className='h-12 my-2' placeholder='Имя' />
+
+                        <Label htmlFor='username'>Ник</Label>
+                        {errors.username && <span className='text-red-500'>{errors.username.message}</span>}
+                        <Input id='username' {...register('username')} className='h-12 my-2' placeholder='Ник' />
+
                         <CustomButton disabled={isImageUploading} type='submit' className='ml-auto my-5' variant='purple'>Сохранить</CustomButton>
                     </div>
                 </form>

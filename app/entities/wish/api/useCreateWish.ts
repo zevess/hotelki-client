@@ -14,7 +14,7 @@ export const useCreateWish = () => {
         mutationFn: (data: IWish) =>
             wishService.create(data),
         onSuccess(data) {
-            navigate(PUBLIC_URL.wishes(data.data.userId))
+            navigate(PUBLIC_URL.wishes(data.data.user.username))
             toast.success("Хотелка создана")
         },
         onError(error) {

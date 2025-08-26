@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Edit, EllipsisVertical, Trash2 } from 'lucide-react'
 import { Link, useNavigate } from 'react-router'
 import { useDeleteEvent } from '~/entities/event/api/useDeleteEvent'
@@ -19,8 +18,8 @@ interface Props {
 export const OptionsDropdown: React.FC<Props> = ({ className, itemId, editPageLink, type }) => {
     const navigate = useNavigate()
     const [open, setOpen] = React.useState(false)
-    const { deleteEvent } = useDeleteEvent()
-    const { deleteWish } = useDeleteWish()
+    const { deleteEvent } = useDeleteEvent('list')
+    const { deleteWish } = useDeleteWish('list')
     return (
         <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuTrigger asChild>

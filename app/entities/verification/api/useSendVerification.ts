@@ -8,7 +8,7 @@ import { authService } from "~/entities/auth/model/auth.service"
 
 export const useSendVerification = () => {
    
-    const { mutate: sendVerification, isPending: isVerificationSending, error: sendingError } = useMutation({
+    const { mutate: sendVerification, isSuccess, isPending: isVerificationSending, error: sendingError } = useMutation({
         mutationKey: ['verify user'],
         mutationFn: (email: string) =>
             authService.sendVerification(email),
@@ -29,8 +29,8 @@ export const useSendVerification = () => {
         () => ({
             sendVerification,
             isVerificationSending,
-            sendingError
+            sendingError, isSuccess
         }),
-        [sendVerification, isVerificationSending, sendingError]
+        [sendVerification, isVerificationSending, sendingError, isSuccess]
     )
 }

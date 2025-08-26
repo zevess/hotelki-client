@@ -1,6 +1,7 @@
 export interface IUser {
-    id?: string,
+    id: string,
     name: string,
+    username: string,
     email: string,
     avatar: string,
     password: string,
@@ -11,5 +12,10 @@ export interface IUser {
 export interface IUserUpdate{
     name?: string,
     email?: string,
-    avatar?: string 
+    avatar?: string,
+    username?: string
+}
+
+export interface IUserFind{
+    slug: string
 }

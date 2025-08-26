@@ -6,7 +6,6 @@ import { CustomButton } from '~/shared/ui/custom-button'
 import { EmojiChoose } from '~/features/emoji/ui/emoji-select'
 import { RadioFormGroup } from '~/shared/ui/radio-form-group'
 import { SelectInput } from '~/shared/ui/select'
-
 import { useGetUserEvents } from '~/entities/event/api/useGetUserEvents'
 import { useCreateWish } from '~/entities/wish/api/useCreateWish'
 import { useGetWishBySlug } from '~/entities/wish/api/useGetWishBySlug'
@@ -17,6 +16,8 @@ import { Input } from '~/shared/ui/shadcn/input'
 import { Label } from '~/shared/ui/shadcn/label'
 import { Checkbox } from '~/shared/ui/shadcn/checkbox'
 import { wishSchema, type WishSchema } from '~/entities/wish/model/wish.schema'
+import { OptionsAlertDialog } from '~/shared/ui/options-alert-dialog'
+import { useDeleteWish } from '~/entities/wish/api/useDeleteWish'
 
 
 interface Props {
@@ -31,14 +32,15 @@ export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
 
     const { user } = useAuthStore()
     const { events } = useGetUserEvents(user?.id)
-    const { wishBySlug } = useGetWishBySlug(params?.userId, params?.slug)
+    const { wishBySlug } = useGetWishBySlug(user?.id, params?.slug)
 
+    
     const { createWish } = useCreateWish()
     const { updateWish } = useUpdateWish(wishBySlug?.id ? wishBySlug.id : "")
+    const { deleteWish } = useDeleteWish('edit')
+
 
     const [event, setEvent] = React.useState('');
-    console.log(event)
-
     const [priority, setPriority] = React.useState<"LOW" | "MEDIUM" | "HIGH" | "DREAM">("LOW");
     const [emoji, setEmoji] = React.useState('🎁');
     const [isEventDisabled, setIsEventDisabled] = React.useState(false)
@@ -63,7 +65,6 @@ export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
         setValue('priority', priority);
         setValue('eventId', event)
         setValue('emoji', emoji);
-
 
     }, [user, wishBySlug])
 
@@ -109,7 +110,16 @@ export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
                     </span>
                     <RadioFormGroup radioGroupValues={priorities} setSelected={setPriority} selected={priority} className='mt-2.5' />
                 </div>
-                <CustomButton type='submit' className='w-fit' variant='purple'>Сохранить</CustomButton>
+
+                <div className='flex justify-between'>
+                    <CustomButton type='submit' className='mt-5' variant='purple'>Сохранить</CustomButton>
+
+                    {isEditing && <OptionsAlertDialog title='Вы уверены?' description={'Это действие не может быть отменено.'} action='Удалить' onConfirm={() => {
+                        deleteWish(String(wishBySlug?.id))
+                    }}>
+                        <CustomButton className='mt-5' variant='redOutline'>Удалить</CustomButton>
+                    </OptionsAlertDialog>}
+                </div>
             </form>
         </>
     )

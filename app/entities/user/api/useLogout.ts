@@ -14,10 +14,8 @@ export const useLogout = () => {
         mutationKey: ['logout'],
         mutationFn: () => authService.logout(),
         onSuccess() {
-            // useAuthStore.persist.clearStorage()
-            useAuthStore.setState({user: null, currentUser: null})
+            useAuthStore.setState({ user: null, currentUser: null })
             navigate(PUBLIC_URL.auth())
-
         }
     })
     return useMemo(

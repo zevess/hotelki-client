@@ -8,7 +8,6 @@ import { Spinner } from '~/shared/ui/spinner'
 import { newPasswordSchema, type NewPasswordSchema } from '~/entities/password/model/password.schema'
 
 
-
 interface Props {
     className?: string,
     token: string
@@ -35,7 +34,7 @@ export const NewPasswordForm: React.FC<Props> = ({ className, token }) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className='flex flex-col gap-2.5'>
-                <Input {...register('password')} placeholder='Новый пароль' />
+                <Input {...register('password')} placeholder='Новый пароль' type='password' />
                 {errors.password && <span className='text-red-500'>{errors.password.message}</span>}
             </div>
             <div className='flex flex-col gap-5 mt-5'>

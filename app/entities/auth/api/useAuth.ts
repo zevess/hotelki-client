@@ -1,9 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { useNavigate } from "react-router"
-
 import { useMemo} from "react"
 import { useAuthStore } from "~/shared/store/authStore"
-
 import { toast } from "sonner"
 import axios from "axios"
 import { PUBLIC_URL } from "~/shared/config/url.config"
@@ -24,7 +22,7 @@ export const useAuth = (isRegister: boolean) => {
             console.log(data)
             setUser(data.data.user)
             setCurrentUser(data.data.user)
-            navigate(PUBLIC_URL.profile(data.data.user.id))
+            navigate(PUBLIC_URL.profile(data.data.user.username))
         },
         onError(error) {
             if (axios.isAxiosError(error)) {

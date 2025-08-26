@@ -19,12 +19,15 @@ export const useVerification = () => {
             toast.success("Аккаунт успешно подтвержден")
             setUser(data.data.user)
             setCurrentUser(data.data.user)
-            navigate(PUBLIC_URL.profile(data.data.user.id))
+            navigate(PUBLIC_URL.profile(data.data.user.username))
         },
         onError(error) {
             if (axios.isAxiosError(error)) {
                 console.log(error)
                 error.response && toast.error(error.response?.data.message)
+                if(error.response?.data.statusCode == 404){
+                    navigate('/')
+                }
             } else {
                 console.log("Ошибка при подтверждении")
             }

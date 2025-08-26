@@ -3,7 +3,6 @@ import type { Route } from "./+types/wishes";
 import { userService } from "~/entities/user/model/user.service";
 
 
-
 export function meta({ }: Route.MetaArgs) {
     return [
         { title: "Хотелки" },
@@ -12,8 +11,8 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-    const userData = await userService.getUser(params.userId)
-    return { userData}
+    const userData = await userService.getUserByUsername(params.username)
+    return { userData }
 }
 
 export default function Wishes({ loaderData }: Route.ComponentProps) {

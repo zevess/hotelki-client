@@ -2,12 +2,12 @@ import React from 'react'
 import { LoginForm } from '~/features/login/ui/login-form'
 import { RegisterForm } from '~/features/register/ui/register-form'
 import { cn } from '~/shared/lib/utils'
-import { redirect, useNavigate } from 'react-router'
-import { useProfile } from '~/entities/auth/api/useProfile'
+import { useNavigate } from 'react-router'
 import { Container } from '~/shared/ui/container'
 import { Spinner } from '~/shared/ui/spinner'
 import { useVerification } from '~/entities/verification/api/useVerification'
 import { Header } from '~/widgets/header'
+import { useAuthStore } from '~/shared/store/authStore'
 
 
 interface Props {
@@ -19,13 +19,13 @@ export const AuthPage: React.FC<Props> = ({ className, token }) => {
     const [authType, setAuthType] = React.useState<"register" | "login" | "verify">(token ? "verify" : "login")
 
     const navigate = useNavigate();
-    const { user } = useProfile()
 
+    const { user } = useAuthStore()
     const { verify, isVerifying } = useVerification()
 
-    
-
     React.useEffect(() => {
+
+        user && navigate(-1)
 
         if (token && !isVerifying) {
             verify(token)

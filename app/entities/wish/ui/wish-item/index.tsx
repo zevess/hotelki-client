@@ -12,11 +12,13 @@ interface Props {
     wishData: IWishResponse,
     eventTitle?: string,
     eventSlug?: string,
+    username?: string
 }
 
-export const WishItem: React.FC<Props> = ({ className, wishData, eventSlug, eventTitle }) => {
+export const WishItem: React.FC<Props> = ({ className, wishData, eventSlug, eventTitle, username }) => {
 
-    const { user } = useAuthStore()
+    const { user, currentUser } = useAuthStore()
+    const isSameUser = currentUser?.id === user?.id
 
     return (
         <div className='w-full sm:w-[275px] sm:h-[176px] bg-[#FAF5FF] rounded-2xl p-3 gap-4 flex flex-col' >
@@ -27,7 +29,7 @@ export const WishItem: React.FC<Props> = ({ className, wishData, eventSlug, even
                         <span className='font-inter text-[14px] font-bold'>{wishData.title} </span>
                         <span className='font-inter font-normal text-xs'>{wishData.price} Р</span>
                     </div>
-                    {user && <OptionsDropdown className='hover:bg-white' type='WISH' itemId={wishData.id} editPageLink={`/wishes/${wishData.userId}/${wishData.slug}`} />}
+                    {isSameUser && <OptionsDropdown className='hover:bg-white' type='WISH' itemId={wishData.id} editPageLink={`/wishes/${username}/${wishData.slug}`} />}
                 </div>
             </div>
             <div className='h-9'>
@@ -39,7 +41,7 @@ export const WishItem: React.FC<Props> = ({ className, wishData, eventSlug, even
                 </div>}
 
             </div>
-            {eventSlug && <a href={PUBLIC_URL.eventSlug(wishData.userId, eventSlug)} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit transition duration-200 hover:bg-gray-100'>{eventTitle}</a>}
+            {eventSlug && <Link viewTransition to={PUBLIC_URL.eventSlug(username, eventSlug)} className='bg-white h-6 rounded-full text-xs font-normal font-inter py-1 px-2 flex items-center w-fit transition duration-200 hover:bg-gray-100'>{eventTitle}</Link>}
         </div>
     )
 }

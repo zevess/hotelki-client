@@ -6,7 +6,7 @@ import { authService } from "~/entities/auth/model/auth.service"
 
 export const useResetPassword = () => {
 
-    const { mutate: resetPassword, isPending: isPasswordReseting, error: resetPasswordError, } = useMutation({
+    const { mutate: resetPassword, isPending: isPasswordReseting, error: resetPasswordError, isSuccess } = useMutation({
         mutationKey: ['reset password'],
         mutationFn: (email: string) =>
             authService.resetPassword(email),
@@ -27,8 +27,8 @@ export const useResetPassword = () => {
         () => ({
             resetPassword,
             isPasswordReseting,
-            resetPasswordError,
+            resetPasswordError, isSuccess
         }),
-        [resetPassword, isPasswordReseting, resetPasswordError,]
+        [resetPassword, isPasswordReseting, resetPasswordError, isSuccess]
     )
 }

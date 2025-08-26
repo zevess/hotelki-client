@@ -5,9 +5,9 @@ import { CustomButton } from '~/shared/ui/custom-button'
 import { useAuthStore } from '~/shared/store/authStore'
 import { useNavigationItems } from '../model/hooks/useNavigationItems'
 import { MobileLinkItem } from './ui/mobile-link-item'
-import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '~/shared/ui/shadcn/drawer'
+import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '~/shared/ui/shadcn/drawer'
 import { Avatar, AvatarImage } from '~/shared/ui/shadcn/avatar'
-import { Button } from '~/shared/ui/shadcn/button'
+import { SignOutButton } from '~/shared/ui/sign-out-button'
 
 
 
@@ -18,7 +18,7 @@ interface Props {
 export const MobileSidebar: React.FC<Props> = ({ className }) => {
     const [open, setOpen] = React.useState(false)
     const { setCurrentUser, currentUser, user } = useAuthStore()
-    const items = useNavigationItems(currentUser?.id, Boolean(user?.id));
+    const items = useNavigationItems(currentUser?.username, Boolean(user?.username), Boolean(user?.id !== currentUser?.id));
 
     return (
         <Drawer direction='left' open={open} onOpenChange={setOpen}>
@@ -28,7 +28,7 @@ export const MobileSidebar: React.FC<Props> = ({ className }) => {
                 </CustomButton>
             </DrawerTrigger>
             <DrawerContent>
-                <DrawerHeader className="text-left">
+                <DrawerHeader className="text-left p-2">
 
                     <div className='flex justify-between items-center mb-4'>
                         <span className='font-inter font-semibold text-base'>{currentUser?.name}</span>
@@ -38,13 +38,14 @@ export const MobileSidebar: React.FC<Props> = ({ className }) => {
                     </div>
 
                     {items.map((item, index) => (
-                        <MobileLinkItem item={item} key={index} />
+                        <div onClick={() => setOpen(!open)} key={index}>
+                            <MobileLinkItem isVisible={item.isVisible} item={item} key={index} />
+                        </div>
+
                     ))}
                 </DrawerHeader>
-                <DrawerFooter className="pt-2">
-                    <DrawerClose asChild>
-                        <Button variant="outline">Закрыть</Button>
-                    </DrawerClose>
+                <DrawerFooter className="p-2 pb-4">
+                    <SignOutButton />
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>

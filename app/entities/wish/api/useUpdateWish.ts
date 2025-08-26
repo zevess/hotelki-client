@@ -14,7 +14,7 @@ export const useUpdateWish = (wishId: string) => {
         mutationFn: (data: IWish) =>
             wishService.update(data, wishId),
         onSuccess(data) {
-            navigate(PUBLIC_URL.wishes(data.data.userId))
+            navigate(PUBLIC_URL.wishes(data.data.user.username))
             toast.success("Хотелка обновлена")
         },
         onError(error) {

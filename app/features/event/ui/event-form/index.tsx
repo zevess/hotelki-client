@@ -10,6 +10,8 @@ import { useUpdateEvent } from '~/entities/event/api/useUpdateEvent'
 import { useAuthStore } from '~/shared/store/authStore'
 import { Input } from '~/shared/ui/shadcn/input'
 import { eventSchema, type EventSchema } from '~/entities/event/model/event.schema'
+import { OptionsAlertDialog } from '~/shared/ui/options-alert-dialog'
+import { useDeleteEvent } from '~/entities/event/api/useDeleteEvent'
 
 interface Props {
     className?: string,
@@ -22,10 +24,11 @@ export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
     const navigate = useNavigate()
 
     const { user } = useAuthStore()
-    const { wishesByEventSlug } = useGetEventBySlug(params.userId, params.slug)
+    const { wishesByEventSlug } = useGetEventBySlug(user?.id, params.slug)
 
     const { createEvent } = useCreateEvent()
     const { updateEvent } = useUpdateEvent(wishesByEventSlug?.id ? wishesByEventSlug?.id : "")
+    const { deleteEvent } = useDeleteEvent('edit')
 
     const [emoji, setEmoji] = React.useState('🎁');
 
@@ -68,7 +71,15 @@ export const EventForm: React.FC<Props> = ({ className, isEditing }) => {
                 </div>
                 <Input className='mt-5' {...register('date')} placeholder='Дата' type='date'></Input>
                 {errors.date && <span className='text-red-500 absolute'>{errors.date.message}</span>}
-                <CustomButton type='submit' className='mt-5' variant='purple'>Сохранить</CustomButton>
+                <div className='flex justify-between'>
+                    <CustomButton type='submit' className='mt-5' variant='purple'>Сохранить</CustomButton>
+
+                    {isEditing && <OptionsAlertDialog title='Вы уверены?' description={'Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.'} action='Удалить' onConfirm={() => {
+                        deleteEvent(String(wishesByEventSlug?.id))
+                    }}>
+                        <CustomButton className='mt-5' variant='redOutline'>Удалить</CustomButton>
+                    </OptionsAlertDialog>}
+                </div>
             </form>
         </>
 

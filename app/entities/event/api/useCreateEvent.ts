@@ -14,7 +14,7 @@ export const useCreateEvent = () => {
         mutationFn: (data: IEvent) =>
             eventService.create(data),
         onSuccess(data) {
-            navigate(PUBLIC_URL.events(data.data.userId))
+            navigate(PUBLIC_URL.events(data.data.user.username))
             toast.success("Событие создано")
         },
         onError(error) {

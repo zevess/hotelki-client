@@ -9,8 +9,6 @@ export function meta({ }: Route.MetaArgs) {
     ];
 }
 
-export async function clientLoader({ params }: Route.ClientLoaderArgs) {
-}
 
 export default function WishEdit({ loaderData }: Route.ComponentProps) {
     return <WishEditPage />

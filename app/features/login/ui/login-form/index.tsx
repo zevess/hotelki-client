@@ -3,7 +3,6 @@ import React from 'react'
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { Link } from 'react-router'
 import { CustomButton } from '~/shared/ui/custom-button'
-
 import { useAuth } from '~/entities/auth/api/useAuth'
 import { Input } from '~/shared/ui/shadcn/input'
 import { PUBLIC_URL } from '~/shared/config/url.config'
@@ -28,7 +27,6 @@ export const LoginForm: React.FC<Props> = ({ className, setAuthType }) => {
     }
 
 
-
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className='flex flex-col gap-2.5'>
@@ -45,7 +43,6 @@ export const LoginForm: React.FC<Props> = ({ className, setAuthType }) => {
                 </CustomButton>
                 <CustomButton disabled={isAuthLoading} className='' onClick={() => setAuthType("register")} variant='purpleBorderless'>Регистрация</CustomButton>
                 {(authError?.message == "Network Error") && <span className='text-center font-semibold'>Ошибка при соединении с сервером.<br />Повторите попытку позже</span>}
-
             </div>
         </form>
     )

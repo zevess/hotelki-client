@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { cn } from "~/shared/lib/utils";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../shadcn/alert-dialog';
@@ -36,7 +35,6 @@ export const OptionsAlertDialog: React.FC<Props> = ({ className, children, onCon
   )
 }
 
-// Вместе с удалением события удалятся и связанные хотелки. Это действие не может быть отменено.
 
 
 
