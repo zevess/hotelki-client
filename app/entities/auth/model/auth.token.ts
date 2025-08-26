@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie'
 
 export enum EnumTokens {
-	'ACCESS_TOKEN' = 'accessToken',
-	'REFRESH_TOKEN' = 'refreshToken'
+    'ACCESS_TOKEN' = 'accessToken',
+    'REFRESH_TOKEN' = 'refreshToken'
 }
 
 export const getAccessToken = () => {
@@ -10,7 +10,7 @@ export const getAccessToken = () => {
     return accessToken || null
 }
 
-export const saveTokenStorage = (accessToken: string) =>{
+export const saveTokenStorage = (accessToken: string) => {
     Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
         domain: import.meta.env.VITE_APP_DOMAIN,
         sameSite: 'strict',
@@ -19,5 +19,8 @@ export const saveTokenStorage = (accessToken: string) =>{
 }
 
 export const removeFromStorage = () => {
-    Cookies.remove(EnumTokens.ACCESS_TOKEN)
+    Cookies.remove(EnumTokens.ACCESS_TOKEN, {
+        domain: import.meta.env.VITE_APP_DOMAIN,
+        sameSite: 'strict',
+    })
 }
