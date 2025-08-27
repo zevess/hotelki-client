@@ -9,7 +9,6 @@ export const useSendFriendRequest = () => {
         mutationFn: (receiverId: string) =>
             friendsService.sendFriendRequest(receiverId),
         onSuccess(data) {
-            console.log(data)
             toast.success("Заявка в друзья отправлена!")
         },
         onError(error) {

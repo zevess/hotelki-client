@@ -29,8 +29,6 @@ export const FriendButton: React.FC<Props> = ({ className, userData, isFriend })
     const isIncomingRequest = incomingRequests?.some(obj => obj.senderId === userData.id)
     const incomingRequestData = incomingRequests?.find(obj => obj.senderId === userData.id)
 
-    console.log(outgoingRequests)
-
     return (
         <div>
             {(!isFriend && !isIncomingRequest) &&

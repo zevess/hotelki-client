@@ -23,7 +23,6 @@ export const EventsPage: React.FC<Props> = ({ className, slug, userData, userId 
     const { setCurrentUser, user } = useAuthStore()
     const { events } = useGetUserEvents(userData.id)
     const { wishesByEventSlug, isLoading } = useGetEventBySlug(userData.id, slug)
-    console.log(wishesByEventSlug)
 
     const isSameUser = user?.id === userData.id
 

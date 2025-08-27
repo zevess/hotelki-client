@@ -16,9 +16,9 @@ export const CopyToClipboard: React.FC<Props> = ({ className, textToCopy }) => {
         setTimeout(() => setIsCopied(false), 2000)
     }
 
-    if (isCopied) return (<Check className='w-10 ml-2 hover:text-[#C084FC]' />)
+    if (isCopied) return (<Check size={'25'} className='transition duration-200 hover:text-[#C084FC]' />)
 
     else return (
-        <Copy onClick={handleCopy} className='w-10 ml-2 hover:text-[#C084FC]' />
+        <Copy onClick={handleCopy} size={'25'} className='transition duration-200 hover:text-[#C084FC] cursor-pointer' />
     )
 }

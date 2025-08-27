@@ -15,7 +15,6 @@ export const FooterSidebar: React.FC<Props> = ({ className }) => {
 
     const location = useLocation()
     let currentLocation = location.pathname
-    console.log(currentLocation)
 
     const items = useNavigationItemsMobile(user?.username, Boolean(user?.username), currentLocation);
 

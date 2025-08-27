@@ -16,8 +16,6 @@ export const useDeleteEvent = (type: "list" | 'edit') => {
         mutationFn: (eventId: string) =>
             eventService.delete(eventId),
         onSuccess(data) {
-            console.log(data)
-
             if(type == 'edit'){
                 navigate(PUBLIC_URL.events(data.data.user.username))
             }

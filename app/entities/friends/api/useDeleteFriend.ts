@@ -11,7 +11,6 @@ export const useDeleteFriend = () => {
         mutationFn: (friendId: string) =>
             friendsService.deleteFriend(friendId),
         onSuccess(data) {
-            console.log(data)
             queryClient.invalidateQueries({
                 queryKey: ['get friends']
             })

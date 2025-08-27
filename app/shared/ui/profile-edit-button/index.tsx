@@ -10,8 +10,8 @@ interface Props {
 
 export const ProfileEditButton: React.FC<Props> = ({ className }) => {
     return (
-        <Link to={PUBLIC_URL.profileEdit()} className='ml-6'>
-            <Settings size={'28'} className='hover:text-[#C084FC] transition duration-200' />
+        <Link to={PUBLIC_URL.profileEdit()}>
+            <Settings size={'25'} className='hover:text-[#C084FC] transition duration-200' />
         </Link>
     )
 }

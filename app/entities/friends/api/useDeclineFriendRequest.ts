@@ -11,7 +11,6 @@ export const useDeclineFriendRequest = () => {
         mutationFn: (requestId: string) =>
             friendsService.declineFriendRequest(requestId),
         onSuccess(data) {
-            console.log(data)
             queryClient.invalidateQueries({
                 queryKey: ['incoming friend requests']
             })

@@ -25,8 +25,7 @@ export const useUpdateUser = () => {
             toast.success("Профиль обновлён")
         },
         onError(error) {
-            console.log(error)
-            // toast.error("Ошибка при обновлении профиля. Попробуйте позже :( ")
+            toast.error("Ошибка при обновлении профиля. Попробуйте позже :( ")
             if (axios.isAxiosError(error)) {
                 console.log(error)
                 error.response && toast.error(error.response?.data.message)

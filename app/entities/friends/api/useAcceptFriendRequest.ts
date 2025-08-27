@@ -11,7 +11,6 @@ export const useAcceptFriendRequest = () => {
         mutationFn: (requestId: string) =>
             friendsService.acceptFriendRequest(requestId),
         onSuccess(data) {
-            console.log(data)
             queryClient.invalidateQueries({
                 queryKey: ['get friends']
             })

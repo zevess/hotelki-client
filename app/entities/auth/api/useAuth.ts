@@ -19,7 +19,6 @@ export const useAuth = (isRegister: boolean) => {
         mutationFn: (data: IAuth) =>
             authService.main(isRegister ? "register" : 'login', data),
         onSuccess(data) {
-            console.log(data)
             setUser(data.data.user)
             setCurrentUser(data.data.user)
             navigate(PUBLIC_URL.profile(data.data.user.username))
