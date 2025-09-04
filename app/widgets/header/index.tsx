@@ -24,7 +24,7 @@ export const Header: React.FC<Props> = ({ className }) => {
         <a href={!user ? PUBLIC_URL.auth() : PUBLIC_URL.profile(user.username)}>{!user ? "Войти" : "Профиль"}</a>
       </CustomButton>
 
-      <MobileSidebar />
+      {user && <MobileSidebar />}
 
     </header>
   )

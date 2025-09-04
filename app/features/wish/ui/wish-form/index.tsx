@@ -73,7 +73,7 @@ export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
             ...data,
             priority: priority,
             emoji: emoji,
-            eventId: isEventDisabled ? null : event
+            eventId: event ? event : null
         }
         isEditing ? updateWish(fullData) : createWish(fullData)
     }
@@ -91,7 +91,10 @@ export const WishesForm: React.FC<Props> = ({ className, isEditing }) => {
                     <Checkbox
                         id="eventDisableToggle"
                         className="data-[state=checked]:border-[#C084FC] data-[state=checked]:bg-white data-[state=checked]:text-white"
-                        onClick={() => setIsEventDisabled(!isEventDisabled)}
+                        onClick={() => {
+                            setIsEventDisabled(!isEventDisabled)
+                            setEvent('')
+                        }}
                     />
                     <div className="grid gap-1.5 font-normal">
                         <p className="text-sm leading-none">

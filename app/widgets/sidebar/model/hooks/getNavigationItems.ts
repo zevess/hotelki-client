@@ -6,7 +6,7 @@ import { PUBLIC_URL } from '~/shared/config/url.config'
 import { CalendarClock, Users } from 'lucide-react'
 
 
-export const useNavigationItems = (username: string | undefined, isAuth: boolean, isSameUser: boolean): INavItem[] => {
+export const getNavigationItems = (username: string | undefined, isAuth: boolean, isSameUser: boolean): INavItem[] => {
     return [
         {
             title: "Профиль",

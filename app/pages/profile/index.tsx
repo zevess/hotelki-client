@@ -49,12 +49,12 @@ export const ProfilePage: React.FC<Props> = ({ className, userData }) => {
                     {isFriend && <InFriendsIcon friendId={userData.id} />}
 
                     {(user && isSameUser) && <ProfileEditButton />}
-                    <CopyToClipboard textToCopy={`${APP_URL}/${PUBLIC_URL.profile(userData.username)}`} />
+                    <CopyToClipboard textToCopy={`${APP_URL}${PUBLIC_URL.profile(userData.username)}`} />
                 </div>
 
             </div>
 
-            {!isSameUser && <FriendButton isFriend={isFriend} className='mt-4' userData={userData} />}
+            {(!isSameUser && user) && <FriendButton isFriend={isFriend} className='mt-4' userData={userData} />}
 
             <div className='mt-10 flex flex-col md:w-[346px]'>
                 <div className='flex justify-between items-center'>

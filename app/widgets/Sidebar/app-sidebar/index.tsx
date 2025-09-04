@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigationItems } from '../model/hooks/useNavigationItems'
+import { getNavigationItems } from '../model/hooks/getNavigationItems'
 import { useAuthStore } from '~/shared/store/authStore'
 import { SignOutButton } from '~/shared/ui/sign-out-button'
 import { LinkItem } from './ui/link-item'
@@ -14,7 +14,7 @@ interface Props {
 export const AppSidebar: React.FC<Props> = ({ className }) => {
 
     const { setCurrentUser, currentUser, user } = useAuthStore()
-    const items = useNavigationItems(currentUser?.username, Boolean(user?.username), Boolean(user?.id !== currentUser?.id));
+    const items = getNavigationItems(currentUser?.username, Boolean(user?.username), Boolean(user?.id !== currentUser?.id));
 
     return (
         <div className={'hidden md:flex md:flex-col max-h-[736px] min-w-[287px] max-w-[287px] bg-white rounded-xl p-3 mr-[50px]'}>
@@ -28,7 +28,8 @@ export const AppSidebar: React.FC<Props> = ({ className }) => {
                         <LinkItem isVisible={item.isVisible} key={index} item={item} />
                     )}
                 </div>
-                <SignOutButton />
+                {(user?.id == currentUser?.id) && <SignOutButton />}
+                
             </div>
         </div>
     )

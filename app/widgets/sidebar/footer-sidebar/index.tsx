@@ -1,8 +1,8 @@
 import React from 'react'
 import { LinkItem } from './ui/footer-link-item'
-import { useNavigationItemsMobile } from '../model/hooks/useNavigationItemsMobile';
 import { useAuthStore } from '~/shared/store/authStore';
 import { useLocation } from 'react-router';
+import { getNavigationItemsMobile } from '../model/hooks/getNavigationItemsMobile';
 
 interface Props {
     className?: string
@@ -16,7 +16,7 @@ export const FooterSidebar: React.FC<Props> = ({ className }) => {
     const location = useLocation()
     let currentLocation = location.pathname
 
-    const items = useNavigationItemsMobile(user?.username, Boolean(user?.username), currentLocation);
+    const items = getNavigationItemsMobile(user?.username, Boolean(user?.username), currentLocation);
 
 
 

@@ -3,11 +3,12 @@ import React from 'react'
 import { CustomButton } from '~/shared/ui/custom-button'
 
 import { useAuthStore } from '~/shared/store/authStore'
-import { useNavigationItems } from '../model/hooks/useNavigationItems'
+import { getNavigationItems } from '../model/hooks/getNavigationItems'
 import { MobileLinkItem } from './ui/mobile-link-item'
 import { Drawer, DrawerContent, DrawerFooter, DrawerHeader, DrawerTrigger } from '~/shared/ui/shadcn/drawer'
 import { Avatar, AvatarImage } from '~/shared/ui/shadcn/avatar'
 import { SignOutButton } from '~/shared/ui/sign-out-button'
+import { useLocation } from 'react-router'
 
 
 
@@ -18,7 +19,11 @@ interface Props {
 export const MobileSidebar: React.FC<Props> = ({ className }) => {
     const [open, setOpen] = React.useState(false)
     const { setCurrentUser, currentUser, user } = useAuthStore()
-    const items = useNavigationItems(currentUser?.username, Boolean(user?.username), Boolean(user?.id !== currentUser?.id));
+
+    const location = useLocation()
+    let currentLocation = location.pathname
+
+    const items = getNavigationItems(String(currentUser?.username), Boolean(user?.username), Boolean(user?.id !== currentUser?.id));
 
     return (
         <Drawer direction='left' open={open} onOpenChange={setOpen}>
@@ -45,7 +50,7 @@ export const MobileSidebar: React.FC<Props> = ({ className }) => {
                     ))}
                 </DrawerHeader>
                 <DrawerFooter className="p-2 pb-4">
-                    <SignOutButton />
+                    {(user?.id == currentUser?.id) && <SignOutButton />}
                 </DrawerFooter>
             </DrawerContent>
         </Drawer>

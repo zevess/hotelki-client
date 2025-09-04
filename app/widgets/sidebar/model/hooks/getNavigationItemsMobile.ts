@@ -3,14 +3,15 @@ import ProfileIcon from '~/shared/ui/icons/User.svg?react'
 import PlusCircleIcon from '~/shared/ui/icons/PlusCircle.svg?react'
 import HeartIcon from '~/shared/ui/icons/Heart.svg?react'
 
-export const useNavigationItemsMobile = (userId: string | undefined, isAuth: boolean, currentLocation: string): INavItem[] => {
+export const getNavigationItemsMobile = (username: string | undefined, isAuth: boolean, currentLocation: string): INavItem[] => {
     return [
         {
             title: "Профиль",
             slug: "/profile",
-            url: PUBLIC_URL.profile(userId),
+            url: isAuth ? PUBLIC_URL.profile(username) : PUBLIC_URL.auth(),
             icon: ProfileIcon,
-            isActive: currentLocation === PUBLIC_URL.profile(userId)
+            isActive: currentLocation === PUBLIC_URL.profile(username),
+            
         },
         {
             title: "Добавить хотелку",
@@ -22,9 +23,9 @@ export const useNavigationItemsMobile = (userId: string | undefined, isAuth: boo
         },
         {
             title: "Хотелки",
-            url: PUBLIC_URL.wishes(userId),
+            url: isAuth ? PUBLIC_URL.wishes(username) : PUBLIC_URL.auth(),
             icon: HeartIcon,
-            isActive: currentLocation === PUBLIC_URL.wishes(userId)
+            isActive: currentLocation === PUBLIC_URL.wishes(username)
         },
 
     ]

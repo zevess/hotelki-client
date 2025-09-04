@@ -4,7 +4,7 @@ export const priorities = [
         label: "Низкий"
     },
     {
-        value: "MIDDLE",
+        value: "MEDIUM",
         label: "Средний"
     },
     {
